@@ -25,27 +25,57 @@
 // console.log(player);
 
 
-function sayHello(name, age) {
-  console.log("hello "+ name+ " " + age);
-}
+// function sayHello(name, age) {
+//   console.log("hello "+ name+ " " + age);
+// }
 
-sayHello('name',1);
-sayHello('nameA',11);
-sayHello('nameB',223);0
+// sayHello('name',1);
+// sayHello('nameA',11);
+// sayHello('nameB',223);
 
-function plus(a, b) {
-  console.log(a+b);
-}
+// function plus(a, b) {
+//   console.log(a+b);
+// }
 
-plus(12,23);
+// plus(12,23);
 
-const player = {
-  name : "myName",
-  hello: function(otherName) {
-    console.log("hello " + otherName + " my name is " + player.name);
+// const player = {
+//   name : "myName",
+//   hello: function(otherName) {
+//     console.log("hello " + otherName + " my name is " + player.name);
+//   },
+// };
+
+// console.log(player.name);
+// player.hello("otherName");
+
+// const player = {
+//   name: 'jdh',
+//   age: 27,
+// };
+
+// console.log(player.name = 'Jung dh');
+
+// console.log(player.name)
+// console.log(console);
+
+// function plus(a, b) {
+//   console.log(a+b);
+// }
+
+// plus(1,2);
+// plus(123,4541);
+
+// alert('aaaaa');
+
+const calculator = {
+  plus: function (a,b) {
+    console.log(a+b);
+  },
+  minus: function (a,b) {
+    console.log(a-b);
   },
 };
 
-console.log(player.name);
-player.hello("otherName");
-
+calculator.plus(1,2);
+calculator.minus(22,12)
