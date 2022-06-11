@@ -68,14 +68,22 @@
 
 // alert('aaaaa');
 
-const calculator = {
-  plus: function (a,b) {
-    console.log(a+b);
-  },
-  minus: function (a,b) {
-    console.log(a-b);
-  },
-};
+// const calculator = {
+//   plus: function (a,b) {
+//     console.log(a+b);
+//   },
+//   minus: function (a,b) {
+//     console.log(a-b);
+//   },
+// };
 
-calculator.plus(1,2);
-calculator.minus(22,12)
+// calculator.plus(1,2);
+// calculator.minus(22,12)
+
+const age = 23;
+function calculateKrAge(age) {
+  return age + 2;
+}
+
+const krAge = calculateKrAge(age);
+console.log(krAge);
