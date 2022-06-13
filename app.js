@@ -88,12 +88,14 @@
 // const krAge = calculateKrAge(age);
 // console.log(krAge);
 
-const age = parseInt(prompt('How old are you?'));
+// const age = parseInt(prompt('How old are you?'));
 
-console.log(isNaN(age));
+// console.log(isNaN(age));
 
-if (isNaN(age) == false) {
-  console.log('input is num');
-} else {
-  console.log('input is nan');
-}
+// if (isNaN(age) == false) {
+//   console.log('input is num');
+// } else {
+//   console.log('input is nan');
+// }
+
+document.title = "hello from js";
