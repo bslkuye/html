@@ -98,4 +98,9 @@
 //   console.log('input is nan');
 // }
 
-document.title = "hello from js";
+// document.title = "hello from js";
+
+const title = document.getElementById("title");
+
+console.dir(title);
+title.innerText = 'Got you!';
