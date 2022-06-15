@@ -100,7 +100,20 @@
 
 // document.title = "hello from js";
 
-const title = document.getElementById("title");
+// const title = document.getElementById("title");
 
-console.dir(title);
-title.innerText = 'Got you!';
+// console.dir(title);
+// title.innerText = 'Got you!';
+
+// const hellos = document.getElementsByClassName("hello");
+// //hello class 전부를 가져온다.
+// console.log(hellos);
+
+// const title = document.querySelector("h1");//class 내부에 있는 h1 을 가져올 수 있다. css처럼 가져옴
+// const title = document.querySelector(".hello h1"); // 같은게 많을때 첫번째것만 가져옴
+// const title = document.querySelector("div h1");
+const title = document.querySelectorAll(".hello h1"); // 다 가져오고 싶을때 쓰는 function
+
+// const title = document.querySelector("#hello");//아레와 같은 역할을 하는 코드
+// const title = document.getElementById("hello");//위와 같음
+console.log(title);
