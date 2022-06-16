@@ -112,8 +112,21 @@
 // const title = document.querySelector("h1");//class 내부에 있는 h1 을 가져올 수 있다. css처럼 가져옴
 // const title = document.querySelector(".hello h1"); // 같은게 많을때 첫번째것만 가져옴
 // const title = document.querySelector("div h1");
-const title = document.querySelectorAll(".hello h1"); // 다 가져오고 싶을때 쓰는 function
+// const title = document.querySelectorAll(".hello h1"); // 다 가져오고 싶을때 쓰는 function
 
 // const title = document.querySelector("#hello");//아레와 같은 역할을 하는 코드
 // const title = document.getElementById("hello");//위와 같음
-console.log(title);
+// console.log(title);
+
+const title = document.querySelector("div.hello:first-child h1");
+
+console.dir(title);
+
+// title.style.color = "blue";
+
+function handleTitleClick() {
+  console.log("title was clicked!");
+  title.style.color = "blue";
+}
+
+title.addEventListener("click", handleTitleClick);//handleTitleClick()처럼 실행하지 않고 함수의 이름만을 기입해서 클릭 시 함수를 실행함
