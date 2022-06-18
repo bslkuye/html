@@ -126,7 +126,10 @@ console.dir(title);
 
 function handleTitleClick() {
   console.log("title was clicked!");
-  title.style.color = "blue";
+  if (title.style.color == "blue") {
+    title.style.color = "black";  
+  }else{
+    title.style.color = "blue";
+  }
 }
-
-title.addEventListener("click", handleTitleClick);//handleTitleClick()처럼 실행하지 않고 함수의 이름만을 기입해서 클릭 시 함수를 실행함
+title.addEventListener("copy", handleTitleClick);//handleTitleClick()처럼 실행하지 않고 함수의 이름만을 기입해서 클릭 시 함수를 실행함
