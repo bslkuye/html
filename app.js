@@ -132,4 +132,14 @@ function handleTitleClick() {
     title.style.color = "blue";
   }
 }
-title.addEventListener("copy", handleTitleClick);//handleTitleClick()처럼 실행하지 않고 함수의 이름만을 기입해서 클릭 시 함수를 실행함
+
+function handleMouseEnter() {
+  title.innerText = "mouse is here";
+}
+function handleMouseLeave() {
+  title.innerText = "mouse is gone";
+}
+
+title.addEventListener("click", handleTitleClick);//handleTitleClick()처럼 실행하지 않고 함수의 이름만을 기입해서 클릭 시 함수를 실행함
+title.addEventListener("mouseenter", handleMouseEnter);
+title.addEventListener("mouseleave", handleMouseLeave);
