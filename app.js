@@ -143,3 +143,18 @@ function handleMouseLeave() {
 title.addEventListener("click", handleTitleClick);//handleTitleClick()처럼 실행하지 않고 함수의 이름만을 기입해서 클릭 시 함수를 실행함
 title.addEventListener("mouseenter", handleMouseEnter);
 title.addEventListener("mouseleave", handleMouseLeave);
+
+// title.onmouseenter = handleMouseEnter;
+// title.onmouseleave = handleMouseLeave;
+
+//addEventListener 가 더 나은 이유 .removeEventListener 로 event를 없앨 수 있다.
+function handleWindowResize() {
+  document.body.style.backgroundColor = 'tomato'; 
+}
+
+function handleWindowCopy() {
+  document.body.style.backgroundColor = 'tomato'; 
+}
+
+window.addEventListener("resize", handleWindowResize);
+window.addEventListener("copy", handleWindowCopy);
