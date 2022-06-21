@@ -103,7 +103,7 @@
 // const title = document.getElementById("title");
 
 // console.dir(title);
-// title.innerText = 'Got you!';
+// h1.innerText = 'Got you!';
 
 // const hellos = document.getElementsByClassName("hello");
 // //hello class 전부를 가져온다.
@@ -118,34 +118,34 @@
 // const title = document.getElementById("hello");//위와 같음
 // console.log(title);
 
-const title = document.querySelector("div.hello:first-child h1");
+const h1 = document.querySelector("div.hello:first-child h1");
 
-console.dir(title);
+console.dir(h1);
 
-// title.style.color = "blue";
+// h1.style.color = "blue";
 
 function handleTitleClick() {
   console.log("title was clicked!");
-  if (title.style.color == "blue") {
-    title.style.color = "black";  
+  if (h1.style.color == "blue") {
+    h1.style.color = "black";  
   }else{
-    title.style.color = "blue";
+    h1.style.color = "blue";
   }
 }
 
 function handleMouseEnter() {
-  title.innerText = "mouse is here";
+  h1.innerText = "mouse is here";
 }
 function handleMouseLeave() {
-  title.innerText = "mouse is gone";
+  h1.innerText = "mouse is gone";
 }
 
-title.addEventListener("click", handleTitleClick);//handleTitleClick()처럼 실행하지 않고 함수의 이름만을 기입해서 클릭 시 함수를 실행함
-title.addEventListener("mouseenter", handleMouseEnter);
-title.addEventListener("mouseleave", handleMouseLeave);
+h1.addEventListener("click", handleTitleClick);//handleTitleClick()처럼 실행하지 않고 함수의 이름만을 기입해서 클릭 시 함수를 실행함
+h1.addEventListener("mouseenter", handleMouseEnter);
+h1.addEventListener("mouseleave", handleMouseLeave);
 
-// title.onmouseenter = handleMouseEnter;
-// title.onmouseleave = handleMouseLeave;
+// h1.onmouseenter = handleMouseEnter;
+// h1.onmouseleave = handleMouseLeave;
 
 //addEventListener 가 더 나은 이유 .removeEventListener 로 event를 없앨 수 있다.
 function handleWindowResize() {
@@ -158,3 +158,13 @@ function handleWindowCopy() {
 
 window.addEventListener("resize", handleWindowResize);
 window.addEventListener("copy", handleWindowCopy);
+
+function handleWindowOffline() {
+  alert("sos no wifi");
+}
+
+function handleWindowOnline() {
+  alert("all good");
+}
+window.addEventListener("offline", handleWindowOffline);
+window.addEventListener("online", handleWindowOnline);
