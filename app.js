@@ -120,51 +120,53 @@
 
 const h1 = document.querySelector("div.hello:first-child h1");
 
-console.dir(h1);
+// console.dir(h1);
 
-// h1.style.color = "blue";
+// // h1.style.color = "blue";
 
 function handleTitleClick() {
-  console.log("title was clicked!");
-  if (h1.style.color == "blue") {
-    h1.style.color = "black";  
+  const currentColor = h1.style.color;
+  let newColor
+  if(currentColor == 'blue'){
+    newColor = 'tomato';
   }else{
-    h1.style.color = "blue";
+    newColor = 'blue';
   }
+  h1.style.color = newColor;
 }
 
-function handleMouseEnter() {
-  h1.innerText = "mouse is here";
-}
-function handleMouseLeave() {
-  h1.innerText = "mouse is gone";
-}
+// function handleMouseEnter() {
+//   h1.innerText = "mouse is here";
+// }
+// function handleMouseLeave() {
+//   h1.innerText = "mouse is gone";
+// }
 
 h1.addEventListener("click", handleTitleClick);//handleTitleClick()처럼 실행하지 않고 함수의 이름만을 기입해서 클릭 시 함수를 실행함
-h1.addEventListener("mouseenter", handleMouseEnter);
-h1.addEventListener("mouseleave", handleMouseLeave);
+// h1.addEventListener("mouseenter", handleMouseEnter);
+// h1.addEventListener("mouseleave", handleMouseLeave);
 
 // h1.onmouseenter = handleMouseEnter;
 // h1.onmouseleave = handleMouseLeave;
 
 //addEventListener 가 더 나은 이유 .removeEventListener 로 event를 없앨 수 있다.
-function handleWindowResize() {
-  document.body.style.backgroundColor = 'tomato'; 
-}
+// function handleWindowResize() {
+//   document.body.style.backgroundColor = 'tomato'; 
+// }
 
-function handleWindowCopy() {
-  document.body.style.backgroundColor = 'tomato'; 
-}
+// function handleWindowCopy() {
+//   document.body.style.backgroundColor = 'tomato'; 
+// }
 
-window.addEventListener("resize", handleWindowResize);
-window.addEventListener("copy", handleWindowCopy);
+// window.addEventListener("resize", handleWindowResize);
+// window.addEventListener("copy", handleWindowCopy);
 
-function handleWindowOffline() {
-  alert("sos no wifi");
-}
+// function handleWindowOffline() {
+//   alert("sos no wifi");
+// }
 
-function handleWindowOnline() {
-  alert("all good");
-}
-window.addEventListener("offline", handleWindowOffline);
-window.addEventListener("online", handleWindowOnline);
+// function handleWindowOnline() {
+//   alert("all good");
+// }
+// window.addEventListener("offline", handleWindowOffline);
+// window.addEventListener("online", handleWindowOnline);
