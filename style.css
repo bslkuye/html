@@ -11,3 +11,7 @@ h1{
 .clicked{
   color: tomato;
 }
+
+.cool-font {
+  font: italic 1.2em "Fira Sans", serif;
+}
