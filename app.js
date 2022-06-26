@@ -125,12 +125,13 @@ const h1 = document.querySelector("div.hello:first-child h1");
 // // h1.style.color = "blue";
 
 function handleTitleClick() {
-  const clickedClass = "clicked"
-  if (h1.className === clickedClass) {
-    h1.className = "";
-  }else{
-    h1.className = clickedClass;
-  }
+  // const clickedClass = "clicked"
+  // if (h1.classList.contains(clickedClass)) {
+  //   h1.classList.remove(clickedClass);
+  // }else{
+  //   h1.classList.add(clickedClass);
+  // } // 아레 toggle과 같음.
+  h1.classList.toggle("clicked"); // toggle = 없으면 추가, 있으면 삭제
 }
 
 // function handleMouseEnter() {
