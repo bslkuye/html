@@ -9,7 +9,11 @@ function onSubmit(event) {
 }
 
 function handleLinkClick() {
-  alert("clicked!");
+  event.preventDefault();
+  const username = loginInput.value;
+  loginForm.classList.add("hidden");
+  
+  console.log(username);
 }
 
 
