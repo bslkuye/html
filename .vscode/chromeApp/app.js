@@ -19,8 +19,6 @@ function onLoginSubmit(event) {
   paintGreeting();
 }
 
-
-
 const savedUsername = localStorage.getItem(USERNAME_KEY);
 
 if(savedUsername == null){
