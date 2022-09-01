@@ -8,5 +8,5 @@ const COLORS = [
     'blue',
     'white',
     'black',
-    'black'
+    'red'
 ];

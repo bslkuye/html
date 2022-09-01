@@ -34,12 +34,12 @@ function boardReset() {
 
 /**보드 위 랜덤한 위치에서 maker시작 */
 function rand_start(){
-    const a = rand(length-1);
-    const b = rand(length-1);
+    const a = rand(length-4);
+    const b = rand(length-4);
     if(a%2 == 1 && b%2 == 1){
-        x_position = a;
-        y_position = b;
-        board[a][b] = 1;
+        x_position = a+2;
+        y_position = b+2;
+        board[x_position][y_position] = 1;
     }else{
         rand_start();
     }

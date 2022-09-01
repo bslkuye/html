@@ -39,8 +39,8 @@ function pixelCheck(a){
 boardReset();
 paintBoard();
 function mazemake(){
-    rand_start();
     boardReset();
+    rand_start();
     var interval = setInterval(() => {
         if (check_board(x_position, y_position) != 0) {
             start_making();
