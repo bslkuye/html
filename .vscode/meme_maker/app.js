@@ -41,18 +41,6 @@ lineWidth.addEventListener("change", onLinewidthCahenge);
 
 // canvas.addEventListener("mousemove", onclick);
 
-// const colors = [
-//     "#ff3838",
-//     "#ffb8b8",
-//     "#c56cf0",
-//     "#ff9f1a",
-//     "#fff200",
-//     "#32ff7e",
-//     "#7efff5",
-//     "#18dcff",
-//     "#7d5fff",
-//   ];
-
 // ctx.lineWidth = 2;
 // ctx.moveTo(0,0);
 
