@@ -66,10 +66,14 @@ function start_making(){
             if (check_board(x, y) == 1 && board[x + 2][y] == 0 && x != length - 2) {
                 board[x + 1][y] = 1;
                 board[x + 2][y] = 1;
+                paintCell(x+1,y,pixelCheck(x+1),pixelCheck(y),board[x+1][y]);
+                paintCell(x+2,y,pixelCheck(x+2),pixelCheck(y),board[x+2][y]);
                 x_position = x + 2;
             } else if (check_board(x, y) == 2 && board[x + 2][y] == 1 && board[x + 1][y] == 1 && x != length - 2) {
                 board[x + 1][y] = 2;
                 board[x][y] = 2;
+                paintCell(x+1,y,pixelCheck(x+1),pixelCheck(y),board[x+1][y]);
+                paintCell(x,y,pixelCheck(x),pixelCheck(y),board[x][y]);
                 x_position = x + 2;
             }
             break;
@@ -77,10 +81,14 @@ function start_making(){
             if (check_board(x, y) == 1 && board[x - 2][y] == 0 && x != 1) {
                 board[x - 1][y] = 1;
                 board[x - 2][y] = 1;
+                paintCell(x-1,y,pixelCheck(x-1),pixelCheck(y),board[x-1][y]);
+                paintCell(x-2,y,pixelCheck(x-2),pixelCheck(y),board[x-2][y]);
                 x_position = x - 2;
             } else if (check_board(x, y) == 2 && board[x - 2][y] == 1 && board[x - 1][y] == 1 && x != 1) {
                 board[x - 1][y] = 2;
                 board[x][y] = 2;
+                paintCell(x-1,y,pixelCheck(x-1),pixelCheck(y),board[x-1][y]);
+                paintCell(x,y,pixelCheck(x),pixelCheck(y),board[x][y]);
                 x_position = x - 2;
             }
             break;
@@ -88,10 +96,14 @@ function start_making(){
             if (check_board(x, y) == 1 && board[x][y + 2] == 0 && y != length - 2) {
                 board[x][y + 1] = 1;
                 board[x][y + 2] = 1;
+                paintCell(x,y+1,pixelCheck(x),pixelCheck(y+1),board[x][y+1]);
+                paintCell(x,y+2,pixelCheck(x),pixelCheck(y+2),board[x][y+2]);
                 y_position = y + 2;
             } else if (check_board(x, y) == 2 && board[x][y + 2] == 1 && board[x][y + 1] == 1 && y != length - 2) {
                 board[x][y + 1] = 2;
                 board[x][y] = 2;
+                paintCell(x,y+1,pixelCheck(x),pixelCheck(y+1),board[x][y+1]);
+                paintCell(x,y,pixelCheck(x),pixelCheck(y),board[x][y]);
                 y_position = y + 2;
             }
             break;
@@ -99,15 +111,19 @@ function start_making(){
             if (check_board(x, y) == 1 && board[x][y - 2] == 0 && y != 1) {
                 board[x][y - 1] = 1;
                 board[x][y - 2] = 1;
+                paintCell(x,y-1,pixelCheck(x),pixelCheck(y-1),board[x][y-1]);
+                paintCell(x,y-2,pixelCheck(x),pixelCheck(y-2),board[x][y-2]);
                 y_position = y - 2;
             } else if (check_board(x, y) == 2 && board[x][y - 2] == 1 && board[x][y - 1] == 1 && y != 1) {
                 board[x][y - 1] = 2;
                 board[x][y] = 2;
+                paintCell(x,y-1,pixelCheck(x),pixelCheck(y-1),board[x][y-1]);
+                paintCell(x,y,pixelCheck(x),pixelCheck(y),board[x][y]);
                 y_position = y - 2;
             }
             break;
         }
-        paintBoard();
+        // paintBoard();
 
 }
 
