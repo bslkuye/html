@@ -2,12 +2,41 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
 const saveBtn = document.getElementById("save");
+const wallSizeInput = document.getElementById("wall_size");
+const blockSizeInput = document.getElementById("block_size");
+const rowInput = document.getElementById("rows");
 
+let arrlength = ROWS * BLOCK_SIZE + (ROWS+1) * WALL_SIZE;
 
-const arrlength = ROWS * BLOCK_SIZE + (ROWS+1) * WALL_SIZE;
+canvas.width = arrlength;
+canvas.height = arrlength;
 
-canvas.width = 601;
-canvas.height = 601;
+function setLength(){
+    arrlength = ROWS * BLOCK_SIZE + (ROWS+1) * WALL_SIZE;
+    canvas.width = arrlength;
+    canvas.height = arrlength;
+    boardReset();
+}
+
+wallSizeInput.addEventListener("change", wallChange);
+blockSizeInput.addEventListener("change", blockChange);
+rowInput.addEventListener("change", rowChange);
+
+function rowChange(event){
+    ROWS = event.target.value;
+    setLength();
+}
+
+function blockChange(event){
+    BLOCK_SIZE = event.target.value;
+    setLength();
+}
+
+function wallChange(event){
+    WALL_SIZE = event.target.value;
+    setLength();
+}
+
 /**x,y = 사각형 위치 row = 가로길이 col = 세로길이 color = 색(color Array 에서 string형태로 가져옴) */
 function paintCell(x,y,row,col,color){
     ctx.beginPath();

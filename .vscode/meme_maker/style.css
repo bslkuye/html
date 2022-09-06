@@ -3,7 +3,7 @@
 body{
     display: flex;
     gap: 20px;
-    justify-content:  space-between;
+    justify-content: space-between;
     align-items: flex-start;
     background-color: gainsboro ;
     padding: 20px;

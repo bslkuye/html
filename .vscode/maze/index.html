@@ -10,24 +10,28 @@
 </head>
 <body>
     <canvas></canvas>
-    <div id="btns">
-        <button type="button" onclick="paintBoard()">paint</button>
-        <button type="button" onclick="mazemake()">make</button>
-        <button type="button" onclick="boardReset()">reset</button>
+    <div class="btn">
+        <button id="paintBtn" type="button" onclick="paintBoard()">paint</button>
+        <button id="makeBtn" type="button" onclick="mazemake()">make</button>
+        <button id="resetBtn" type="button" onclick="boardReset()">reset</button>
         <button id="save">Save image</button>
+        <div id="wall_size">
+            wall size 
+            <input type="number" min="1" max="5" value="3">
+        </div>
+        <div id="block_size">
+            block size
+            <input type="number" min="5" max="30" value="15">
+        </div>
+        <div id="rows">
+            rows      
+            <input type="number" min="20" max="50" value="30">
+        </div>
     </div>
-    <div id="wall_size">
-        wall size
-        <input type="range" min="1" max="5" value="3"> 
+    <div>
+        
     </div>
-    <div id="block_size">
-        block size
-        <input type="range" min="5" max="30" value="15">
-    </div>
-    <div id="rows">
-        rows
-        <input type="range" min="20" max="50"  value="30">
-    </div>
+    
     <script type="text/javascript" src="maze_constants.js"></script>
     <script type="text/javascript" src="mazemake.js"></script>
     <script type="text/javascript" src="main_maze.js"></script>

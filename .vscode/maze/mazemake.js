@@ -8,6 +8,10 @@ let y_position = 0;
 //포인트 위치를 1 늘리고 주변 보드 값과 벽의 상태에 따라 움직여야할듯
 //외곽 벽 2중으로 쳐야 편할듯
 
+function checkLet(){
+    length = ROWS*2+1;
+    board = Array.from(Array(length), () => new Array(length).fill(0));
+}
 
 function rand(num) {
     let rand_num = Math.floor(Math.random() * num);
@@ -16,7 +20,7 @@ function rand(num) {
 
 /*보드 초기화*/
 function boardReset() {
-    board = Array.from(Array(length), () => new Array(length).fill(0));
+    checkLet();
     for (let i = 0; i < length; i++) {
         for (let j = 0; j < length; j++) {
             if (i == 0 || j == 0 || i == length - 1 || j == length - 1) {
