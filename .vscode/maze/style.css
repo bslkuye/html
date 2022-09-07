@@ -1,10 +1,10 @@
 @import "reset.css";
 
 canvas{
-  width: 600px;
-  height: 600px;
+  width: 800px;
+  height: 800px;
   border-radius: 10px;
-  padding: 20px;
+  padding: 5px;
   border: 3px solid black;
 }
 

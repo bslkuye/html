@@ -49,7 +49,6 @@ function paintCell(x,y,row,col,color){
     ctx.fill();
 }
 
-
 function onSaveClick(){
     const url = canvas.toDataURL();
     const a = document.createElement("a");
@@ -58,7 +57,6 @@ function onSaveClick(){
     a.click();
 }
 
-
 function xyPosition(a){
     return parseInt((a-1)/2) * (WALL_SIZE + BLOCK_SIZE) + ((a-1)%2) * BLOCK_SIZE;
 }
@@ -66,8 +64,6 @@ function xyPosition(a){
 function paintBoard(){
     let x_pixel = 0;
     let y_pixel = 0;
-    // ctx.fillStyle = "gainsboro";
-    // ctx.fillRect(0,0,1000,1000);
     for(let i = 2; i < length-2; i++){
         for(let j = 2; j < length-2; j++){
             paintCell(i, j, pixelCheck(i), pixelCheck(j),board[i][j]);
@@ -96,7 +92,6 @@ function mazemake(){
     var interval = setInterval(() => {
         if (check_board(x_position, y_position) != 0) {
             start_making();
-            // paintBoard();
         } else {
             board[x_position][y_position] = 2;
             paintBoard();
