@@ -7,15 +7,16 @@ const blockSizeInput = document.getElementById("block_size");
 const rowInput = document.getElementById("rows");
 
 let arrlength = ROWS * BLOCK_SIZE + (ROWS+1) * WALL_SIZE;
-
-canvas.width = arrlength;
-canvas.height = arrlength;
+console.log(arrlength);
+canvas.width = 543;
+canvas.height = 543;
 
 function setLength(){
-    arrlength = ROWS * BLOCK_SIZE + (ROWS+1) * WALL_SIZE;
+    arrlength = ROWS * BLOCK_SIZE + (ROWS + 1) * WALL_SIZE;
+    console.log(arrlength);
     canvas.width = arrlength;
     canvas.height = arrlength;
-    boardReset();
+    paintBoard();
 }
 
 wallSizeInput.addEventListener("change", wallChange);
@@ -23,17 +24,20 @@ blockSizeInput.addEventListener("change", blockChange);
 rowInput.addEventListener("change", rowChange);
 
 function rowChange(event){
-    ROWS = event.target.value;
+    ROWS = Number(event.target.value);
+    boardReset();   
     setLength();
 }
 
 function blockChange(event){
-    BLOCK_SIZE = event.target.value;
+    BLOCK_SIZE = Number(event.target.value);
+    boardReset();
     setLength();
 }
 
 function wallChange(event){
-    WALL_SIZE = event.target.value;
+    WALL_SIZE = Number(event.target.value);
+    boardReset();
     setLength();
 }
 
@@ -62,6 +66,8 @@ function xyPosition(a){
 function paintBoard(){
     let x_pixel = 0;
     let y_pixel = 0;
+    // ctx.fillStyle = "gainsboro";
+    // ctx.fillRect(0,0,1000,1000);
     for(let i = 2; i < length-2; i++){
         for(let j = 2; j < length-2; j++){
             paintCell(i, j, pixelCheck(i), pixelCheck(j),board[i][j]);
