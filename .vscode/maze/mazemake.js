@@ -49,7 +49,6 @@ function rand_start(){
     }
 }
 
-
 /**array 바깥으로 나가지 않게 */
 function check_board(a, b){
     let value = 0;
@@ -127,8 +126,6 @@ function start_making(){
             }
             break;
         }
-        // paintBoard();
-
 }
 
 
