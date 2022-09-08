@@ -6,19 +6,23 @@
  *
  * 일단은 사각형으로
  */
-let length = 1000;
+let length = 500*1;
 let board = Array.from(Array(length), () => new Array(length).fill(0));
 let x_position = 0;
 let y_position = 0;
-let makeGap = length/2;
 
 board[Math.floor(length/2)][Math.floor(length/2)] = 1;
 
+function randNum(num){
+    return Math.floor(Math.random() * num);
+}
+
 /**랜덤위치 생성 */
 function randMake(){
-    let Xrand = Math.floor(Math.random() * length);
-    let Yrand = Math.floor(Math.random() * length);
-    if(Xrand**2 + Yrand**2 < (length/2)**2 && Xrand**2 + Yrand**2 > (length/3)**2){
+    let Xrand = randNum(length);
+    let Yrand = randNum(length);
+    if((Xrand-(length/2))**2 + (Yrand-(length/2))**2 < (length/2)**2 && (Xrand-(length/2))**2 + (Yrand-(length/2))**2 > (length/3)**2){
+        console.log(Xrand, Yrand ,"randmake");
         x_position = Xrand;
         y_position = Yrand;
     }else{
@@ -28,7 +32,7 @@ function randMake(){
 
 /**랜덤방향 움직이기  */
 function rand4WayMove(){
-    switch (Math.floor(Math.random() * 4)) {
+    switch (randNum(4)) {
         case 0:
             x_position++;
             break;
@@ -60,7 +64,6 @@ function center4WayMove(){
     }
     
     const waycheck = Math.abs(x_position - length/2)/(Math.abs(x_position - length/2) + Math.abs(y_position - length/2));
-
     if(waycheck > Math.random()){
         y_position += ymove;
     }else{
@@ -71,10 +74,11 @@ function center4WayMove(){
 
 /**x,y position 근처에 고정된 점이 있으면 고정하고 true return 외엔 false return */
 function checkBoard(){
-    let x = x_position;
-    let y = y_position;
-    if(board[x+1][y] == 1||board[x-1][y] == 1||board[x][y+1] == 1||board[x][y-1] == 1){
-        board[x][y] = 1;
+    if(board[x_position+1][y_position] == 1 || board[x_position-1][y_position] == 1 || 
+        board[x_position][y_position+1] == 1 || board[x_position][y_position-1] == 1){
+        board[x_position][y_position] = 1;
+        paintCell(x_position,y_position);
+        console.log("paint", x_position," , ",y_position);
         return false;
     }
     return true;
@@ -83,7 +87,7 @@ function checkBoard(){
 function fractalMake(){
     randMake();
     while(checkBoard()){
-        if(Math.random() > 0.5){
+        if(randNum(3)==2){
             center4WayMove();
         }else{
             rand4WayMove();

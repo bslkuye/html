@@ -5,8 +5,8 @@ const runBtn = document.getElementById("run");
 const paintBtn = document.getElementById("paint");
 const oneMoveBtn = document.getElementById("oneMove");
 
-canvas.width = length;
-canvas.height = length;
+canvas.width = 500;
+canvas.height = 500;
 
 function paintBoard(){
     for(let i = 0; i < length; i++){
@@ -21,23 +21,30 @@ function paintBoard(){
 }
 
 function paintCell(x, y){
-    console.log("fillcell");
     ctx.beginPath;
     ctx.fillStyle = "black";
-    ctx.rect(x,y,10,10);
-    ctx.fill;
+    ctx.fillRect(x,y,1,1);
+    console.log("paint",x,y);
 }
 
 function runBtnClick(){
-
+    let count = 0;
+    var interval = setInterval(() => {
+        if (count < 1000) {
+            fractalMake();
+            count++;
+        } else {
+            clearInterval(interval);
+        }
+    }, 1);
 }
 
 function paintBtnClick(){
-
+    paintBoard();
 }
 
 function oneMoveBtnClick(){
-
+    fractalMake();
 }
 
 runBtn.addEventListener("click", runBtnClick);
