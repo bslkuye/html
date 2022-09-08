@@ -21,9 +21,11 @@ function paintBoard(){
 }
 
 function paintCell(x, y){
+    console.log("fillcell");
     ctx.beginPath;
     ctx.fillStyle = "black";
-    ctx.fillRect(x,y,1,1);
+    ctx.rect(x,y,10,10);
+    ctx.fill;
 }
 
 function runBtnClick(){
