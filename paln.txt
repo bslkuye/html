@@ -2,7 +2,12 @@ maze
 백트래킹으로 길찾기, canvas로 길찾는 과정 보이기
 길찾는 과정 그라데이션 색상으로
 막다른곳에 막히면 그쪽으로 뻗던 가지들 안보이게 하기
+기둥 흰색으로 칠해서 위상수학적 방법으로 빠른 탈출구 찾는걸 차단하기, 관련 방법 링크 <https://www.youtube.com/watch?v=kAEBWdjo5Ho>
+위상수학적 방법으로 길찾는것을 벽을 색칠해서 보여주기
 
 fractal 
 만드는 과정 보여주기, 사각형cell과 육각형cell두가지로 구현
 다 만들면 로그스케일 그래프로 fractal차원 계산
+
+사각형 완료, length이용한 격자 크기와 cell개수, color array count 정해야함
+canvas background color 적당한거 정해야함
