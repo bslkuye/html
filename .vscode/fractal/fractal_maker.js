@@ -12,7 +12,7 @@ let x_position = 0;
 let y_position = 0;
 
 board[Math.floor(length/2)][Math.floor(length/2)] = 1;
-
+paintBoard();
 function randNum(num){
     return Math.floor(Math.random() * num);
 }
@@ -22,7 +22,6 @@ function randMake(){
     let Xrand = randNum(length);
     let Yrand = randNum(length);
     if((Xrand-(length/2))**2 + (Yrand-(length/2))**2 < (length/2)**2 && (Xrand-(length/2))**2 + (Yrand-(length/2))**2 > (length/3)**2){
-        console.log(Xrand, Yrand ,"randmake");
         x_position = Xrand;
         y_position = Yrand;
     }else{
@@ -72,13 +71,27 @@ function center4WayMove(){
 
 }
 
+function blockBorder(){
+    if(x_position <= 1){
+        x_position++;
+    }
+    if(x_position >= length-2){
+        x_position--
+    }
+    if(y_position <= 0){
+        y_position++;
+    }
+    if(y_position >= length-2){
+        y_position--;
+    }
+}
+
 /**x,y position 근처에 고정된 점이 있으면 고정하고 true return 외엔 false return */
 function checkBoard(){
     if(board[x_position+1][y_position] == 1 || board[x_position-1][y_position] == 1 || 
         board[x_position][y_position+1] == 1 || board[x_position][y_position-1] == 1){
         board[x_position][y_position] = 1;
         paintCell(x_position,y_position);
-        console.log("paint", x_position," , ",y_position);
         return false;
     }
     return true;
@@ -86,11 +99,10 @@ function checkBoard(){
 
 function fractalMake(){
     randMake();
+    let movecount = 0;
     while(checkBoard()){
-        if(randNum(3)==2){
-            center4WayMove();
-        }else{
-            rand4WayMove();
-        }
+        blockBorder();
+        movecount++;
+        rand4WayMove();
     }
 }

@@ -5,6 +5,27 @@ const runBtn = document.getElementById("run");
 const paintBtn = document.getElementById("paint");
 const oneMoveBtn = document.getElementById("oneMove");
 
+const COLORS = [
+    '#000000',
+    '#111111',
+    '#222222',
+    '#333333',
+    '#444444',
+    '#555555',
+    '#666666',
+    '#777777',
+    '#888888',
+    '#999999',
+    '#AAAAAA',
+    '#BBBBBB',
+    '#CCCCCC',
+    '#DDDDDD',
+    '#EEEEEE',
+    '#FFFFFF'
+];
+
+let count = 0;
+
 canvas.width = 500;
 canvas.height = 500;
 
@@ -22,21 +43,20 @@ function paintBoard(){
 
 function paintCell(x, y){
     ctx.beginPath;
-    ctx.fillStyle = "black";
+    ctx.fillStyle = COLORS[Math.floor(count/700)];
     ctx.fillRect(x,y,1,1);
-    console.log("paint",x,y);
 }
 
 function runBtnClick(){
-    let count = 0;
+    paintBoard();
+    count = 0;
     var interval = setInterval(() => {
-        if (count < 1000) {
-            fractalMake();
-            count++;
-        } else {
+        count++;
+        fractalMake();
+        if(count == 10000){
             clearInterval(interval);
         }
-    }, 1);
+    }, 10);
 }
 
 function paintBtnClick(){
