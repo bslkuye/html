@@ -11,3 +11,4 @@ fractal
 
 사각형 완료, length이용한 격자 크기와 cell개수, color array count 정해야함
 canvas background color 적당한거 정해야함
+fractal 논문 링크걸기
