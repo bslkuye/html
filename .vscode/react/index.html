@@ -11,18 +11,22 @@
         let counter = 0;
         function countUp(){
             counter++;
-            reRender();
+            render();
         }
 
-        function reRender(){
-            ReactDOM.render(<Container />, root);
+        function render(){
+            ReactDOM.render(<App />, root);
         }
-        const Container = () => (
-            <div>
-                <h3>Total click: {counter}</h3>
-                <button onClick={countUp}>Click me</button>
-            </div>
-        );
-        reRender();
+        function App(){
+            const [counter, modifier] = React.useState();
+            
+            return (
+                <div>
+                    <h3>Total click: {counter}</h3>
+                    <button onClick={countUp}>Click me</button>
+                </div>
+            )
+        }
+        render();
         </script>
 </html>
