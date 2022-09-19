@@ -7,7 +7,7 @@
     <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> 
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
-        function MinutesToHours() {
+        /*function MinutesToHours() {
             const [amount, setAmoutn] = React.useState();
             const [hours, setHours] = React.useState();
             const [flipped, setFlipped] = React.useState(false);
@@ -15,10 +15,10 @@
                 setAmoutn(event.target.value);
             };
             const reset = () => setAmoutn(0);
-            const onFlip = () => 
+            const onFlip = () => {
                 reset();
-                setFlipped((current) => !current
-            );
+                setFlipped((current) => !current)
+            };
             return (
                 <div>
                     <div>
@@ -54,8 +54,28 @@
                     <h1>KmToMiles</h1>
                 </div>
             )
+        }*/
+        
+        function Btn({text,big}) {
+            return <button style={{
+                backgroundColor: "tomato",
+                color: "white",
+                padding: "10px 20px",
+                border: 0,
+                borderRadius: 10,
+                fontSize: big ? 18 : 10,
+            }}>
+                {text}
+            </button>;
         }
+        
         function App() {
+            return(
+                <div>
+                    <Btn  text = "Save Change" big = {true}/>
+                    <Btn  text = "Continue"/>
+                </div>
+            );
             const [index, setIndex] = React.useState("x");
             const onSelect = (event) => {
                 setIndex(event.target.value);
@@ -69,6 +89,7 @@
                         <option value="1">Km & Miles</option>
                     </select>
                     <hr />
+                    {index === "x" ? "Please select your units" : null}
                     {index === "0" ? <MinutesToHours /> : null}
                     {index === "1" ? <KmToMiles /> : null}
                 </div>        
