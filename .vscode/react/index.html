@@ -6,6 +6,7 @@
     <script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> 
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
     <script type="text/babel">
         /*function MinutesToHours() {
             const [amount, setAmoutn] = React.useState();
@@ -72,13 +73,14 @@
             );
         }
         
+        const MemorizedBtn = React.memo(Btn);
         function App() {
             const [value, setValue] = React.useState("Save Changes");
             const changeValue = () => setValue("Revert Changes");
             return(
                 <div>
-                    <Btn  text = {value} changeValue={changeValue} />
-                    <Btn  text = "Continue"/>
+                    <MemorizedBtn text = {value} changeValue={changeValue} />
+                    <MemorizedBtn text = "Continue"/>
                 </div>
             );
             const [index, setIndex] = React.useState("x");
