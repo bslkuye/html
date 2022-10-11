@@ -13,7 +13,7 @@ canvas.height = 543;
 
 function setLength(){
     arrlength = ROWS * BLOCK_SIZE + (ROWS + 1) * WALL_SIZE;
-    console.log(arrlength);
+    // console.log(arrlength);
     canvas.width = arrlength;
     canvas.height = arrlength;
     paintBoard();
