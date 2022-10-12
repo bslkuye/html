@@ -75,7 +75,7 @@ function paintBoard(){
 }
 
 document.addEventListener("keydown", keyDownHandler, false);
-const moveCnt = document.querySelector("score");
+const moveCnt = document.getElementById("score");
 let moveCheck = false;
 let move_x = 3;
 let move_y = 3;
@@ -91,7 +91,7 @@ function keyDownHandler(e) {
             paintCell(move_x + 2, move_y, 7);
             move_x += 2;
             moveCount++;
-            moveCnt.innerText = `${strcount}`;
+            moveCnt.innerText = `score ${moveCount}`;
         }
         
     }
