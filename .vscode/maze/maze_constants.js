@@ -7,5 +7,8 @@ const COLORS = [
     'blue',
     'white',
     'black',
-    'red'
+    'red',
+    'blue',
+    '#66FF00',
+    '#00CC00'
 ];
