@@ -41,9 +41,27 @@ function wallChange(event) {
     setLength();
 }
 
+function allReset(){
+    boardReset();
+    direction_reset();
+    direction_draw_reset();
+    move_reset();
+    wallPaint_reset();
+    start_reset();
+}
+
 /**x,y = 사각형 위치 row = 가로길이 col = 세로길이 color = 색(color Array 에서 string형태로 가져옴) */
 function paintCell(x, y, color) {
     ctx.beginPath();
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = COLORS[color];
+    ctx.rect(xyPosition(x), xyPosition(y), pixelCheck(x), pixelCheck(y));
+    ctx.fill();
+}
+
+function paintCell_alpha(x, y, color, alpha) {
+    ctx.beginPath();
+    ctx.globalAlpha = alpha;
     ctx.fillStyle = COLORS[color];
     ctx.rect(xyPosition(x), xyPosition(y), pixelCheck(x), pixelCheck(y));
     ctx.fill();
@@ -82,8 +100,27 @@ let move_x = 3;
 let move_y = 3;
 let moveCount = 0;
 let strcount = String(moveCount);
-
 let move_start = false;
+
+function move_reset(){
+    moveCheck = false;
+    move_x = 3;
+    move_y = 3;
+    moveCount = 0;
+    strcount = String(moveCount);
+    move_start = false;
+}
+
+function start_reset(){
+    move_start = false;
+    paintBoard();
+    move_x = 3;
+    move_y = 3;
+    moveCount = 0;
+    moveCnt.innerText = `score 0`;
+    startBtn.innerText = `start`;
+}
+
 function move_start_btn() {
     if (move_start == false) {
         move_start = true;
@@ -91,13 +128,7 @@ function move_start_btn() {
         paintCell(3, 3, 7);
         startBtn.innerText = `reset`;
     } else if (move_start == true) {
-        move_start = false;
-        paintBoard();
-        move_x = 3;
-        move_y = 3;
-        moveCount = 0;
-        moveCnt.innerText = `score 0`;
-        startBtn.innerText = `start`;
+        start_reset();
     }
 
 }
@@ -148,20 +179,27 @@ function keyDownHandler(e) {
         }
     }
 }
+let red_x = 2;
+let red_y = 2;
+let blue_x = 2;
+let blue_y = 4;
+let wallPaintCheck = true;
+
+function wallPaint_reset(){
+    red_x = 2;
+    red_y = 2;
+    blue_x = 2;
+    blue_y = 4;
+    wallPaintCheck = true;
+}
 
 function wallPaint() {
     board[2][2] = 4;
-    let red_x = 2;
-    let red_y = 2;
     paintCell(2, 2, 4);
     board[2][4] = 5;
-    let blue_x = 2;
-    let blue_y = 4;
     paintCell(2, 4, 5);
-    let wallPaintCheck = true;
-
     var wallPaintingInterval = setInterval(() => {
-        if (wallPaintCheck) {
+        if (wallPaintCheck == true) {
             wallPaintCheck = false;
             for (let i = 2; i < length - 2; i++) {
                 for (let j = 2; j < length - 2; j++) {
@@ -182,7 +220,7 @@ function wallPaint() {
             for (let i = 2; i < length - 2; i++) {
                 for (let j = 2; j < length - 2; j++) {
                     if (board[i][j] == 4 || board[i][j] == 5) {
-                        board[i][j] = 3;
+                        board[i][j] = 30;
                     } else if (board[i][j] == 40) {
                         board[i][j] = 4;
                     } else if (board[i][j] == 50) {
@@ -191,6 +229,13 @@ function wallPaint() {
                 }
             }
         } else {
+            for (let i = 2; i < length - 2; i++) {
+                for (let j = 2; j < length - 2; j++) {
+                    if(board[i][j] == 30){
+                        board[i][j] = 3;
+                    }
+                }
+            }
             console.log("wall paint end");
             clearInterval(wallPaintingInterval);
         }
@@ -219,6 +264,8 @@ function mazemake() {
             board[x_position][y_position] = 2;
             board[2][3] = 2;
             board[length - 3][length - 4] = 2;
+            direction_reset();
+            direction_find();
             paintBoard();
             clearInterval(interval);
         }
@@ -238,30 +285,82 @@ function direction_reset(){
             }
         }
     }
+    distance = 0;
     direction[2][3] = 1;
 }
 
+let distance = 0;
+
 function direction_find(){
-
-}
-
-direction[2][3] = 1;
-for (let i = 2; i < length - 2; i++) {
-    for (let j = 2; j < length - 2; j++) {
-        if (board[i][j] == 0) {
-            if (direction[i + 1][j] > 0) {
-                direction[i][j] = direction[i+1][j] + 1;
-            }else if(direction[i-1][j] > 0){
-                direction[i][j] = direction[i-1][j] + 1;
-            }else if(direction[i][j+1] > 0){
-                direction[i][j] = direction[i][j+1] + 1;
-            }else if(direction[i][j-1] > 0){
-                direction[i][j] = direction[i][j-1] + 1;
+    while (direction[length-3][length-4] == 0) {
+        for (let i = 2; i < length - 2; i++) {
+            for (let j = 2; j < length - 2; j++) {
+                if (direction[i][j] == 0) {
+                    if (direction[i + 1][j] > 0) {
+                        direction[i][j] = direction[i + 1][j] + 1;
+                    } else if (direction[i - 1][j] > 0) {
+                        direction[i][j] = direction[i - 1][j] + 1;
+                    } else if (direction[i][j + 1] > 0) {
+                        direction[i][j] = direction[i][j + 1] + 1;
+                    } else if (direction[i][j - 1] > 0) {
+                        direction[i][j] = direction[i][j - 1] + 1;
+                    }
+                }
             }
         }
     }
+    distance = direction[length-3][length-4];
+    console.log(distance);
 }
 
-let distance;
+let direction_x_arr;
+let direction_y_arr;
+let direction_x_position = length-3;
+let direction_y_position = length-4;
+let dir_draw_count = 1;
+let direction_count = 0;
 
-distance = direction[length-3][length-4];
+function direction_draw_reset(){
+    direction_x_arr = Array(distance);
+    direction_x_arr[distance-1] = length-3;
+    direction_y_arr = Array(distance);
+    direction_y_arr[distance-1] = length-4;
+    direction_x_position = length-3;
+    direction_y_position = length-4;
+    dir_draw_count = 1;
+    direction_count = 0;
+}
+
+function direction_draw(){
+    direction_draw_reset();
+    for(let i = distance-1; i >= 0; i--){
+        if(direction[direction_x_position+1][direction_y_position] == i){
+            direction_x_arr[i] = direction_x_position + 1;
+            direction_y_arr[i] = direction_y_position;
+            direction_x_position++;
+        }else if(direction[direction_x_position - 1][direction_y_position] == i){
+            direction_x_arr[i] = direction_x_position - 1;
+            direction_y_arr[i] = direction_y_position;
+            direction_x_position--;
+        }else if(direction[direction_x_position][direction_y_position + 1] == i){
+            direction_x_arr[i] = direction_x_position;
+            direction_y_arr[i] = direction_y_position + 1;
+            direction_y_position++;
+        }else if(direction[direction_x_position][direction_y_position - 1] == i){
+            direction_x_arr[i] = direction_x_position;
+            direction_y_arr[i] = direction_y_position - 1;
+            direction_y_position--;
+        }
+    }
+    
+    var dir_draw = setInterval(() => {
+        if(dir_draw_count < distance){
+            paintCell_alpha(direction_x_arr[dir_draw_count],direction_y_arr[dir_draw_count],5,0.3);
+            dir_draw_count++;
+        }else{
+            paintCell_alpha(length-3,length-4,5,0.3);
+            clearInterval(dir_draw);
+        }
+        
+    }, 10);
+}
