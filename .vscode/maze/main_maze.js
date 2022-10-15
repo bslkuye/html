@@ -111,9 +111,9 @@ function move_reset(){
     move_start = false;
 }
 
+
 function start_reset(){
     move_start = false;
-    paintBoard();
     move_x = 3;
     move_y = 3;
     moveCount = 0;
@@ -128,6 +128,13 @@ function move_start_btn() {
         paintCell(3, 3, 7);
         startBtn.innerText = `reset`;
     } else if (move_start == true) {
+        for(let i = 2; i < length; i++){
+            for(let j = 2; j < length; j++){
+                if(board[i][j] == 2){
+                    paintCell(i,j,2);
+                }
+            }
+        }
         start_reset();
     }
 
@@ -179,6 +186,7 @@ function keyDownHandler(e) {
         }
     }
 }
+
 let red_x = 2;
 let red_y = 2;
 let blue_x = 2;
@@ -191,6 +199,16 @@ function wallPaint_reset(){
     blue_x = 2;
     blue_y = 4;
     wallPaintCheck = true;
+}
+
+function paint_wall(){
+    for (let i = 2; i < length - 2; i++) {
+        for (let j = 2; j < length - 2; j++) {
+            if(board[i][j] == 3){
+                paintCell(i,j,3);
+            }
+        }
+    }
 }
 
 function wallPaint() {
@@ -250,8 +268,8 @@ function pixelCheck(a) {
     } else {
         return BLOCK_SIZE
     }
-    return 0;
 }
+
 boardReset();
 paintBoard();
 function mazemake() {
@@ -287,6 +305,16 @@ function direction_reset(){
     }
     distance = 0;
     direction[2][3] = 1;
+}
+
+function paint_direction(){
+    for (let i = 2; i < length - 2; i++) {
+        for (let j = 2; j < length - 2; j++) {
+            if(board[i][j] == 2){
+                paintCell(i,j,2);
+            }
+        }
+    }
 }
 
 let distance = 0;
@@ -329,6 +357,7 @@ function direction_draw_reset(){
     direction_y_position = length-4;
     dir_draw_count = 1;
     direction_count = 0;
+    paint_direction();
 }
 
 function direction_draw(){
