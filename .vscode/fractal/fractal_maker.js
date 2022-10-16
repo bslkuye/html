@@ -89,7 +89,9 @@ function blockBorder(){
 /**x,y position 근처에 고정된 점이 있으면 고정하고 true return 외엔 false return */
 function checkBoard(){
     if(board[x_position+1][y_position] == 1 || board[x_position-1][y_position] == 1 || 
-        board[x_position][y_position+1] == 1 || board[x_position][y_position-1] == 1){
+        board[x_position][y_position+1] == 1 || board[x_position][y_position-1] == 1 ||
+        board[x_position+1][y_position+1] == 1|| board[x_position+1][y_position-1]||
+        board[x_position-1][y_position+1] == 1|| board[x_position-1][y_position-1]){
         board[x_position][y_position] = 1;
         paintCell(x_position,y_position);
         return false;
