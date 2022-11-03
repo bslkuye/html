@@ -54,16 +54,21 @@ function solution(str1, str2) {
             str2low.push(check);
         }
     }
-    sumarr = (str1low.length > str2low.length) ? str1low : str2low;
-    checkarr = (str1low.length > str2low.length) ? str2low : str1low;
-    let count = [0,0];
-    for(let i = 0; i < checkarr.length; i++){
-        if(sumarr.includes(checkarr[i])){
-            count[0]++;
-        }else{
-            count[1]++;
+ 
+    let a = str1low;
+    let b = str2low;
+    let count = 0;
+    for(let i = 0; i < a.length; i++){
+        if(b.includes(a[i])){
+            count++;
+            for(let j = 0; j < b.length; j++){
+                if(b[j] == a[i]) {
+                    b.splice(j,1);
+                    break;
+                }
+            }
         }
     }
-    if(sumarr.length == 0) return 65536;
-    return parseInt(count[0] * 65536 / (count[1] + sumarr.length));
+    if(a.length == 0 && b.length ==0) return 65536;
+    return Math.floor(count * 65536 / (a.length + b.length));
 }
