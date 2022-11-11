@@ -1,0 +1,138 @@
+/* CSS 작성 */
+* {
+    box-sizing: border-box;
+}
+
+.logo{
+    padding: 100px 0 48px 0;
+}
+
+h2 .today{
+
+width: 117px;
+height: 28px;
+
+font-family: 'Noto Sans';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 115%;
+}
+
+.icon{
+    background-color: var(--color-black-20);
+}
+
+.contour{
+    color: var(--color-gray-100);
+}
+
+.today::after{
+    content: '|';
+    color: var(--color-gray-100);
+    width: 117px;
+height: 28px;
+
+font-family: 'Noto Sans';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 115%;
+}
+
+.sub{
+    width: 227px;
+    height: 13px;
+    text-align: center;
+
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 115%;
+    color: var(--color-gray-100);
+}
+
+.TodayTitle {
+    align-items:center;
+    display:flex;
+    height: 83px;
+    padding: 8px 0 24px 0;
+}
+
+body{
+    margin: 0 auto;
+    width: 1036px;
+    height: 1010px;
+}
+
+.section{
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+.buybtn{
+    align-items: center;
+    display: flex;
+    float: right;
+    background-color: var(--color-black-20);
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    left: 20px;
+    bottom: 20px;
+    transition-property: background-color, width;
+    transition-duration: 0.5s,0s;
+}
+
+ul{
+    position:relative;
+    list-style: none;
+    margin:0px; 
+    padding:0px;
+}
+
+li{
+    position:relative;
+    margin: 0 16px 16px 0;
+    float: left;
+    height: 310px;
+}
+
+.item{
+    background-color: var(--color-white-100);
+    border: 1px solid var(--color-gray-100);
+    padding: 15px;
+    height: 310px;
+    transition: 0.5s;
+}
+
+.small{
+    width: 243px;
+}
+.large{
+    width: 502px;
+}
+.buytext{
+    width: -100;
+}
+
+.item:hover .buybtn::before{
+    content: '구매하기';
+    color: var(--color-white-100);
+    font-size: small;
+    padding: 0 0 0 20px;
+}
+
+.item:hover .buybtn{
+    width: 112px;
+    background-color: var(--color-blue-100);
+}
+
+.item:hover {
+    border: 1px solid var(--color-blue-100);
+}
+.item:focus {
+    border: 1px solid var(--color-blue-100);
+}
