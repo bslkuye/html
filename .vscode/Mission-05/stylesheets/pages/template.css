@@ -18,8 +18,8 @@ header{
 /* 내비게이션                                        */
 /* ---------------------------------------------- */
 .navigation{
-  /* visibility: hidden; */
-  font-style:normal;
+  visibility: hidden;
+  font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 120%;
@@ -57,6 +57,9 @@ header{
 }
 
 .navigation__inner{
+  width: 540px;
+  height: 500px;
+  box-shadow: 0px 3px 5px 1px var(--color-gray-500);
   margin: 0 0 0 450px;
 }
 
@@ -69,17 +72,21 @@ header{
 
 .lv1{
   position: absolute;
-  left: 0px;
-  top: -1px;
+}
+
+li:hover{
+  
 }
 
 .lv2{
+  visibility: hidden;
   position: absolute;
   left: 180px;
   top: 0;
 }
 
 .lv3{
+  visibility: hidden;
   position: absolute;
   left: 180px;
   top: 0;
@@ -93,7 +100,7 @@ header{
   flex-direction: column;
   position: relative;
   margin: 0;
-  box-shadow: 0px 3px 5px 1px var(--color-gray-500);
+  box-shadow: -2px 0px 3px 0px var(--color-gray-200);
   background-color: var(--color-white);
 }
 
@@ -110,12 +117,12 @@ ul{
   align-items: center;
   width: 170px;
   height: 30px;
-  border: 1px solid black;
   padding: 0 0 0 20px;
 }
 
-div>span{
-  margin: 8px 0 0 0;
+i>span{
+  margin: 0;
+  font-size: 12px;
 }
 
 .box{
@@ -127,13 +134,27 @@ div>span{
   width: 170px;
 }
 
-li:hover>*>.box{
+i{
+  width: 170px;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  gap: 4px;
+  font-style: normal;
+}
+
+li:hover>a>i{
   color: var(--color-blue-600);
   font-weight: 700;
   background-image: url(../../assets/icon/more-right-active.svg);
   background-repeat: no-repeat;
   background-position-y: center;
-  background-position-x: 80px;
+  background-position-x: 130px;
+}
+
+.lv3_item:hover{
+  color: var(--color-blue-600);
+  font-weight: 700;
 }
 
 /* ---------------------------------------------- */
@@ -151,3 +172,149 @@ li:hover>*>.box{
 /* ---------------------------------------------- */
 /* 푸터                                            */
 /* ---------------------------------------------- */
+
+.customer_guide{
+  text-align: center;
+  align-items: center;
+  margin: auto;
+  width: 1920px;
+  height: 40px;
+  padding: 13px 0 0 0;
+  background-color: var(--color-gray-200);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.customer_guide>a{
+  margin: 5px 14px 6px 14px;
+}
+
+.information{
+  display: flex;
+  align-items: center;
+  width: 1200px;
+  height: 143px;
+  margin: 32px 360px;
+  color: var(--color-gray-800);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.footer_logo{
+  background-image: url(../../assets/logo/logo-mono.svg);
+  background-repeat: no-repeat;
+  width: 239px;
+  height: 143px;
+  text-indent: -3000rem;
+}
+
+.info_list{
+  margin: 0;
+  padding: 0;
+  width: 260px;
+  height: 143px;
+  line-height: 120%;
+  color: var(--color-gray-800);
+}
+
+.info_list>p{
+  margin: 0 0 12px 0;
+  padding: 0;
+}
+
+.customer_center{
+  margin: 0 0 0 62px;
+  width: 293px;
+  height: 143px;
+}
+
+.customer_center>p{
+  margin: 0 0 8px 0;
+}
+
+.customer_title{
+  display: flex;
+}
+
+.c_c_first{
+  height: 12px;
+  font-weight: 700;
+}
+
+.border_line{
+  padding: 0;
+  margin: 5px 15px 0 13px;
+  font-size: 12px;
+  height: 12px;
+  width: 0;
+  border-right: 1px solid var(--color-gray-800);
+}
+
+.payment_guarantee{
+  width: 282px;
+  height: 143px;
+  margin: 0 0 0 62px;
+}
+
+.payment_guarantee>p{
+  margin: 0 0 8px 0;
+}
+
+.tel_container{
+  height: 58px;
+  margin: 8px 0 12px 0;
+  padding: 0;
+}
+
+.tel{
+  height: 58px;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--color-gray-800);
+  margin: 0 0 12px 0;
+  padding: 0;
+}
+
+.payment_guarantee_title{
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.copyright_sns{
+  padding: 16px 450px 16px 450px;
+  width: 1920px;
+  height: 102px;
+  background-color: var(--color-gray-900);
+  color: var(--color-gray-200);
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 120%;
+}
+
+.copyright{
+  position: relative;
+}
+
+.copyright_text{
+  margin: 0;
+  padding: 0;
+}
+
+.instagram{
+  width: 34px;
+  height: 34px;
+  border: 1px none;
+  border-radius: 50%;
+  background: linear-gradient(174.12deg, #285AEB 5.61%, #BC1888 22.32%, #CC2366 36.16%, #DC2743 51.91%, #E6683C 73.38%, #F09433 91.99%);
+}
+
+.sns_container{
+  position: absolute;
+  top: 36px;
+  left: 898px;
+  display: flex;
+  gap: 10px;
+}
