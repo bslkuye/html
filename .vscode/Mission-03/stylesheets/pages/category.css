@@ -175,7 +175,7 @@ h3{
     overflow-x: hidden;
 }
 
-.slide_banner>div{
+.slide_banner>.slide_item{
     position: absolute;
     left: 0;
     top: 0;
@@ -280,6 +280,10 @@ ul{
 }
 
 .ulcontainer{
+    margin: 0;
+    padding: 0;
+    float: left; 
+    width: 528px;
     position: relative;
 }
 

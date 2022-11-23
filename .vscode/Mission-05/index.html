@@ -32,52 +32,48 @@
     <!-- 내비게이션 영역 -->
     <!-- 내비게이션 제목 -->
     <h2 class="nav_title">네비게이션</h2>
-    
+
     <div class="navigation__inner">
       <!-- 카테고리별 내비게이션(메뉴) 영역 -->
-      <ul class="navigation__list">
-        <li class="fashion-sundries">
-          <a class="list_link" role="button">
+      <ul class="navigation__list lv1">
+        <li class="fashion-sundries" tabindex="-1">
+          <a class="list_link" role="button" tabindex="-1">
             <i class="icon-clothes">
-              <span> 패션의류/잡화</span>
+              <span>패션의류/잡화</span>
             </i>
-            <div class="lv2 2Depth is--active">
-              <ul class="navigation__list">
-                <li>
-                  <a role="button">
-                    <i>
-                      <span>여성패션</span>
-                    </i>
-                  </a>
-                  <div class="lv3 is--active">
-                    <ul class="navigation__list">
-                      <li class="lv3_item">
-                        <a href="/">의류</a>
-                      </li>
-                      <li class="lv3_item">
-                        <a href="/">
-                          속옷/잠옷
-                        </a>
-                      <li class="lv3_item">
-                        <a href="/">
-                          신발
-                        </a>
-                    </ul>
-                  </div>
-                </li>
-                <li>
-                  <a role="button">
-                    <span>남성패션</span>
-                  </a>
-                </li>
-                <li>
-                  <a role="button">
-                    <span>유아동패션</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
           </a>
+          <ul class="navigation__list lv2">
+            <li>
+              <a role="button">
+                <i>
+                  <span>여성패션</span>
+                </i>
+              </a>
+              <ul class="navigation__list lv3">
+                <li class="lv3_item">
+                  <a href="/">의류</a>
+                </li>
+                <li class="lv3_item">
+                  <a href="/">
+                    속옷/잠옷
+                  </a>
+                <li class="lv3_item">
+                  <a href="/">
+                    신발
+                  </a>
+              </ul>
+            </li>
+            <li>
+              <a role="button">
+                <span>남성패션</span>
+              </a>
+            </li>
+            <li>
+              <a role="button">
+                <span>유아동패션</span>
+              </a>
+            </li>
+          </ul>
         </li>
         <li>
           <a role="button">
@@ -188,7 +184,7 @@
         </li>
       </ul>
 
-    </di?v>
+    </div>
   </nav>
 
   <main class="main">
@@ -224,7 +220,7 @@
     <div class="information">
       <div class="footer_logo">Coupang</div>
       <div class="info_list">
-        <p>상호명 및 호스팅 서비스 제공: 쿠팡(주)</p>
+        <p>상호명 및 호스팅 서비스 제공 : 쿠팡(주)</p>
         <p>대표이사 : 강한승, 박대준</p>
         <p>서울시 송파구 송파대로 570</p>
         <p>사업자 등록번호 : 120-88-00767</p>
@@ -232,9 +228,9 @@
       </div>
       <div class="customer_center">
         <div class="customer_title">
-          <span class="c_c_first">365고객센터</span>
+          <span class="customer_text bold">365고객센터</span>
           <div class="border_line"></div>
-          <span>전자금융거래분쟁처리담당</span>
+          <span class="customer_text">전자금융거래분쟁처리담당</span>
         </div>
         <div class="tel_container">
           <a class="tel" href="tel:1577-7011">
@@ -249,8 +245,8 @@
       </div>
       <div class="payment_guarantee">
         <p class="payment_guarantee_title">우리은행 채무지급보증 안내</p>
-        <p>당사는 고객님이 현금 결제한 금액에 대해 
-          우리은행과 채무지급보증 계약을 체결하여 
+        <p>당사는 고객님이 현금 결제한 금액에 대해
+          우리은행과 채무지급보증 계약을 체결하여
           안전거래를 보장하고 있습니다.</p>
       </div>
     </div>
@@ -262,19 +258,19 @@
           쿠팡은 마켓플레이스(오픈마켓) 상품, 거래정보 및 거래 등에 대하여 책임을 지지 않습니다.<br>
           쿠팡은 소비자 보호와 안전거래를 위해 신뢰관리센터(CM112@coupang.com)를 운영하고 있으며, 관련 분쟁이 발생할 경우 별도의 분쟁처리절차에 의거 분쟁이 처리됩니다.<br>
           Copyright ⓒ Coupang Corp. 2010-2020 All Right Reserved.</p>
-          <div class="sns_container">
-            <a href="/">
-              <img src="./assets/icon/sns-facebook.svg" alt="sns-facebook">
-            </a>
-            <a href="/">
-              <img src="./assets/icon/sns-naver-blog.svg" alt="sns-naver-blog">
-            </a>
-            <a href="/">
-              <div class="instagram">
-                <img src="./assets/icon/sns-instagram.svg" alt="sns-instagram">
-              </div>
-            </a>
+      </div>
+      <div class="sns_container">
+        <a href="/">
+          <img src="./assets/icon/sns-facebook.svg" alt="sns-facebook">
+        </a>
+        <a href="/">
+          <img src="./assets/icon/sns-naver-blog.svg" alt="sns-naver-blog">
+        </a>
+        <a href="/">
+          <div class="instagram">
+            <img src="./assets/icon/sns-instagram.svg" alt="sns-instagram">
           </div>
+        </a>
       </div>
     </div>
   </footer>

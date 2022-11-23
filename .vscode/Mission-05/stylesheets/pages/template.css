@@ -2,6 +2,13 @@
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   list-style: none;
+  font-family: 'Noto Sans';
+
+}
+
+body{
+  width: 1920px;
+  height: 1024;
 }
 
 /* ---------------------------------------------- */
@@ -29,6 +36,7 @@ header{
 
 .header__inner{
   display: flex;
+  position: relative;
   width: 1020px;
   height: 116px;
   margin: 0 0 0 450px;
@@ -57,9 +65,10 @@ header{
 }
 
 .navigation__inner{
+  position: static;
   width: 540px;
   height: 500px;
-  box-shadow: 0px 3px 5px 1px var(--color-gray-500);
+  box-shadow: 0px 4px 4px var(--color-gray-500);
   margin: 0 0 0 450px;
 }
 
@@ -71,25 +80,21 @@ header{
 }
 
 .lv1{
-  position: absolute;
-}
-
-li:hover{
-  
+  position: relative;
 }
 
 .lv2{
   visibility: hidden;
-  position: absolute;
-  left: 180px;
-  top: 0;
+  position: relative;
+  left: -16px;
+  top: 224px;
 }
 
 .lv3{
   visibility: hidden;
-  position: absolute;
-  left: 180px;
-  top: 0;
+  position: relative;
+  left: -16px;
+  top: 224px;
 }
 
 .navigation__list{
@@ -106,6 +111,19 @@ li:hover{
 
 .is--active{
   visibility: visible;
+}
+
+a.is--active>i{
+  font-weight: 700;
+}
+
+a.is--active{
+  color: var(--color-blue-600);
+  font-weight: 700;
+  background-image: url(../../assets/icon/more-right-active.svg);
+  background-repeat: no-repeat;
+  background-position-y: center;
+  background-position-x: 130px;
 }
 
 ul{
@@ -152,7 +170,38 @@ li:hover>a>i{
   background-position-x: 130px;
 }
 
-.lv3_item:hover{
+li:focus{
+  outline: none;
+}
+
+a:focus{
+  outline: none;
+}
+
+a:focus>i{
+  color: var(--color-blue-600);
+  font-weight: 700;
+  background-image: url(../../assets/icon/more-right-active.svg);
+  background-repeat: no-repeat;
+  background-position-y: center;
+  background-position-x: 130px;
+}
+
+li:focus>a>i{
+  color: var(--color-blue-600);
+  font-weight: 700;
+  background-image: url(../../assets/icon/more-right-active.svg);
+  background-repeat: no-repeat;
+  background-position-y: center;
+  background-position-x: 130px;
+}
+
+.lv3_item>a:hover{
+  color: var(--color-blue-600);
+  font-weight: 700;
+}
+
+.lv3_item>a:focus{
   color: var(--color-blue-600);
   font-weight: 700;
 }
@@ -163,9 +212,6 @@ li:hover>a>i{
 /* 메인 콘텐츠 영역의 최소 높이 설정 */
 .main{
   min-height: 52rem;
-  height: 1024px;
-  width: 1920px;
-  /* border: 1px solid black; */
 }
 
 
@@ -236,11 +282,15 @@ li:hover>a>i{
 
 .customer_title{
   display: flex;
+  align-items: center;
 }
 
-.c_c_first{
-  height: 12px;
+.bole{
   font-weight: 700;
+}
+
+.customer_text{
+  height: 12px;
 }
 
 .border_line{
@@ -292,6 +342,7 @@ li:hover>a>i{
   font-size: 12px;
   font-weight: 300;
   line-height: 120%;
+  display: flex;
 }
 
 .copyright{
@@ -299,8 +350,20 @@ li:hover>a>i{
 }
 
 .copyright_text{
+  width: 848px;
+  height: 70px;
   margin: 0;
   padding: 0;
+  display: block;
+ 
+font-family: 'Noto Sans';
+font-style: normal;
+font-weight: 300;
+font-size: 12px;
+line-height: 120%;
+
+color: var(--color-white);
+
 }
 
 .instagram{
@@ -312,9 +375,9 @@ li:hover>a>i{
 }
 
 .sns_container{
-  position: absolute;
-  top: 36px;
-  left: 898px;
+  margin: 36px 0 0 50px;
+  width: 122px;
+  height: 34px;
   display: flex;
   gap: 10px;
 }

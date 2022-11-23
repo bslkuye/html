@@ -15,6 +15,7 @@
   <script src="./js/main.js" defer></script>
 </head>
 
+<body>
 
 <header>
   <div class="login_bar">
@@ -105,10 +106,12 @@
       </form>
     </div>
 
-    <button class="myCoupang">
-      <span class="my_coupang_icon"></span>
-      <span class="my_coupang_text">마이쿠팡</span>
-      <span class="my_coupang_menu">
+    <div class="myCoupang">
+      <button class="myCoupang_btn">
+        <span class="my_coupang_icon"></span>
+        <span class="my_coupang_text">마이쿠팡</span>
+      </button>
+      <div class="my_coupang_menu">
         <div class="menu_item">
           <a href="/">주문목록</a>
         </div>
@@ -118,12 +121,14 @@
         <div class="menu_item">
           <a href="/">찜리스트</a>
         </div>
-      </span>
-    </button>
+      </div>
+    </div>
 
-    <button class="cart">
-      <span class="my_cart_icon"></span>
-      <span class="my_cart_text">장바구니</span>
+    <div class="cart">
+      <button class="cart_btn">
+        <span class="my_cart_icon"></span>
+        <span class="my_cart_text">장바구니</span>
+      </button>
       <span class="cart_list">
         <span class="cart_text">장바구니에 담긴 상품이 없습니다.</span>
       </span>
@@ -133,10 +138,9 @@
         </div>
 
       </div>
-    </button>
+    </div>
   </div>
 </header>
-<body>
 
 </body>
 

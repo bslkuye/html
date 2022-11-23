@@ -21,18 +21,37 @@ body {
     margin: 0px;
 }
 
+.today_shopping_section{
+    margin: 48px 0 0 0;
+    height: 354px;
+    width: 1022px;
+}
+
+.shopping_title{
+    display: flex;
+    height: 28px;
+}
+
+.shopping_icon{
+    width: 30px;
+    height: 30px;
+    background-image: url(../../assets/icon/shopping.svg);
+    background-repeat: no-repeat;
+}
+
 .today_shopping_proposal{
     height: 28px;
     font-weight: 500;
     font-size: 24px;
     display: flex;
-    margin: 48px 0 24px 0;
+    margin: 0;
 }
 
 .shopping_items{
     display: flex;
     list-style: none;
     padding: 0;
+    margin: 24px 0 0 0;
 }
 
 .item_link>.item_img{
@@ -77,13 +96,6 @@ h3{
 
     border-radius: 0 0 4px 0;
     background-color: var(--color-red-500);
-}
-
-.shopping_icon{
-    width: 30px;
-    height: 30px;
-    background-image: url(../../assets/icon/shopping.svg);
-    background-repeat: no-repeat;
 }
 
 .logo_picture > *{
