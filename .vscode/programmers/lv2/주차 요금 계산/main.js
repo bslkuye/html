@@ -1,3 +1,48 @@
+function solution(fees, records) {
+  let answer = [];
+  let arr = [];
+  let inout = new Map();
+  for(let i = 0; i < records.length; i++){
+      arr[i] = records[i].split(/ |:/);
+      arr[i][0] = parseInt(arr[i][0]) * 60 + parseInt(arr[i][1]);
+      inout.set(arr[i][2], arr[i][3]);
+  }
+  for(const[key,value] of inout){
+      if(value == 'IN'){
+          arr.push(['1439', '00', key, 'OUT']);
+      }
+  }
+  let pay = new Map(); // 총 주차 시간 저장
+  for(let i = 0; i < arr.length; i++){
+      if(arr[i][3] == 'IN'){
+          inout.set(arr[i][2], parseInt(arr[i][0])); // 들어간 시간 저장
+      }else {
+          if(pay.get(arr[i][2]) == undefined) pay.set(arr[i][2] ,0);
+          pay.set(arr[i][2], pay.get(arr[i][2]) + parseInt(arr[i][0] - inout.get(arr[i][2])));
+      }
+  }
+  
+  pay.forEach((value, key) =>{
+      if(pay.get(key) < fees[0]){
+          pay.set(key, fees[1]);
+      }else{
+          pay.set(key, fees[1] + Math.ceil((value - fees[0]) / fees[2]) * fees[3]);
+      }
+  });
+  
+  // for(let i = 10000; i < 20000; i++){
+  //     if(pay.get(i.toString().substr(1)) != undefined) answer.push(pay.get(i.toString().substr(1)))
+  // }
+  
+  let sortarr = [...pay].sort();
+  // console.log(sortarr)
+  for(let i = 0; i < sortarr.length; i++){
+      answer.push(sortarr[i][1]);
+  }
+  return answer;
+}
+
+
 /**문제 설명
 문제 설명
 주차장의 요금표와 차량이 들어오고(입차) 나간(출차) 기록이 주어졌을 때, 차량별로 주차 요금을 계산하려고 합니다. 아래는 하나의 예시를 나타냅니다.
