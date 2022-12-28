@@ -1,19 +1,25 @@
 *{
   box-sizing: border-box;
+}
+
+:root{
   --calender-bord-width: 420px;
 }
 
-element{
-  
-}
-
 body{
+  height: 1000px;
+  width: 1000px;
   padding: 30px;
 }
 
 .title{
   color: red;
+  width: 200px;
   font-size: 30px;
+}
+
+.calender-container{
+  width: 200px;
 }
 
 .datePicker{
@@ -50,7 +56,7 @@ body{
 
 .calender-nav{
   width: 100%;
-  height: 100px;
+  height: calc(var(--calender-bord-width) * 5 / 21);
   border-radius: 10px 10px 0 0;
   background-color: rgb(80, 200, 80);
   display: flex;
@@ -60,7 +66,7 @@ body{
 
 .calender-grid{
   width: 100%;
-  height: 420px;
+  height: calc(var(--calender-bord-width));
   border-radius: 0 0 10px 10px;
   background-color: white;
   display: grid;
@@ -107,6 +113,8 @@ body{
 }
 
 .daybtn{
+  height: calc(var(--calender-bord-width) / 7);
+  width: calc(var(--calender-bord-width) / 7);
   font-size: calc(var(--calender-bord-width) / 30);
   border-radius: 50%;
   background-color: white;

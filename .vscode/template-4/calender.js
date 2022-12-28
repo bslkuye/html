@@ -12,6 +12,12 @@ const calendar = $container => {
   datePicker.tabIndex = '0';
   $container.appendChild(datePicker);
 
+  datePicker.addEventListener('focus', () => {
+    if (calendar.className == 'calender hidden') {
+      calendar.classList.remove('hidden');
+    }
+  })
+
   //calender dom
   const calendar = document.createElement('div');
   calendar.className = 'calender';
@@ -166,8 +172,6 @@ const calendar = $container => {
     if(target.className == 'datePicker'){
       if (calendar.className == 'calender hidden') {
         calendar.classList.remove('hidden');
-      } else {
-        calendar.classList.add('hidden')
       }
     }
 
@@ -219,11 +223,11 @@ const calendar = $container => {
   body.addEventListener('click', clickBodyEvent);
 
   function clickBodyEvent(event) {
-    if(event.target == event.currentTarget.querySelector('.calender-container')) {
+    console.log(event.target);
+    if(event.target == event.currentTarget) {
       $container.childNodes[2].classList.add('hidden');
     }
   }
-
 }
 
 export default calendar;
