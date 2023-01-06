@@ -25,8 +25,6 @@ const AnalogClock = $container => {
   const handSecond = document.createElement('div');
   handSecond.classList.add('hand', 'second')
 
-  const timework = document.createElement('script');
-
   function timeSet() {
     const date = new Date();
     handHour.style.setProperty('--deg', date.getHours() * 30);

@@ -81,11 +81,11 @@ const calendar = $container => {
   }
 
   for (let i = 0; i < 42; i++) {
-    const dayblock = document.createElement('button');
-    dayblock.id = 'day' + i;
-    dayblock.className = 'daybtn'
-    dayblock.innerText = i;
-    calendarGrid.appendChild(dayblock);
+    const dayBlock = document.createElement('button');
+    dayBlock.id = 'day' + i;
+    dayBlock.className = 'daybtn'
+    dayBlock.innerText = i;
+    calendarGrid.appendChild(dayBlock);
   }
 
   function daybtnSet() {
@@ -94,10 +94,10 @@ const calendar = $container => {
     monthDom.innerText = monthArr[date.getMonth()];
     yearDom.innerText = date.getFullYear();
 
-    const daybtns = $container.querySelectorAll('.daybtn');
+    const dayBtns = $container.querySelectorAll('.daybtn');
 
     for (let i = 0; i < 42; i++) {
-      const daybtn = daybtns[i];
+      const daybtn = dayBtns[i];
       daybtn.className = 'daybtn';
       daybtn.classList.remove('last_month');
       daybtn.classList.remove('next_month');
@@ -108,17 +108,17 @@ const calendar = $container => {
     //last month
     for (let i = 0; i < day; i++) {
       let id = 'day' + i;
-      const daybtn = daybtns[i];
+      const daybtn = dayBtns[i];
       let lastMonth = new Date(year, month, 0);
-      daybtns[i].innerText = lastMonth.getDate() - day + i + 1;
-      daybtns[i].classList.add('last_month');
+      dayBtns[i].innerText = lastMonth.getDate() - day + i + 1;
+      dayBtns[i].classList.add('last_month');
       if (month == 0) {
         if (selectDay != null && (date.getFullYear() - 1) == selectDay.getFullYear() && 11 == selectDay.getMonth() && (lastMonth.getDate() - day + i + 1) == selectDay.getDate()) {
-          daybtns[i].classList.add('select');
+          dayBtns[i].classList.add('select');
         }
       }else{
         if (selectDay != null && year == selectDay.getFullYear() && month - 1 == selectDay.getMonth() && (lastMonth.getDate() - day + i + 1) == selectDay.getDate()) {
-          daybtns[i].classList.add('select');
+          dayBtns[i].classList.add('select');
         }
       }
     }
@@ -127,7 +127,7 @@ const calendar = $container => {
     let lastDay = new Date(year, month + 1, 0);
     for (let i = 0; i < lastDay.getDate(); i++) {
       let num = i + day;
-      const daybtn = daybtns[num];
+      const daybtn = dayBtns[num];
       num = i + 1;
       daybtn.innerText = num;
       if (year == today.getFullYear() && month == today.getMonth() && num == today.getDate()) {
@@ -136,22 +136,21 @@ const calendar = $container => {
       if (selectDay != null && year == selectDay.getFullYear() && month == selectDay.getMonth() && num == selectDay.getDate()) {
         daybtn.classList.add('select');
       }
-
     }
 
     //next month
     for (let i = day + lastDay.getDate(); i < 42; i++) {
-      const daybtn = daybtns[i];
+      const daybtn = dayBtns[i];
       let num = i - day - lastDay.getDate() + 1;
       daybtn.innerText = num;
       daybtn.classList.add('next_month');
       if (month == 11) {
         if (selectDay != null && (date.getFullYear() + 1) == selectDay.getFullYear() && 0 == selectDay.getMonth() && num == selectDay.getDate()) {
-          daybtns[i].classList.add('select');
+          dayBtns[i].classList.add('select');
         }
       }else{
         if (selectDay != null && year == selectDay.getFullYear() && month + 1 == selectDay.getMonth() && num == selectDay.getDate()) {
-          daybtns[i].classList.add('select');
+          dayBtns[i].classList.add('select');
         }
       }
     }
@@ -159,7 +158,7 @@ const calendar = $container => {
     //sunday color red
     for (let i = 0; i < 5; i++) {
       let num = i * 7;
-      const daybtn = daybtns[num];
+      const daybtn = dayBtns[num];
       daybtn.classList.add('sun');
     }
   }
@@ -213,18 +212,22 @@ const calendar = $container => {
         }
       }
 
-      $container.childNodes[1].innerText = selectDay.getFullYear() + '-' + (selectDay.getMonth() + 1) + '-' + selectDay.getDate();
+      $container.childNodes[1].innerText = selectDay.getFullYear() + '-' + 
+      ((selectDay.getMonth() + 1) < 10 ? '0' + (selectDay.getMonth() + 1) : (selectDay.getMonth() + 1)) + '-' + 
+      (selectDay.getDate() < 10 ? '0' + selectDay.getDate() : selectDay.getDate());
       $container.childNodes[2].classList.add('hidden');
       daybtnSet();
     }
   };
 
-  var body = document.querySelector("body");
+  const body = document.querySelector("body");
   body.addEventListener('click', clickBodyEvent);
 
   function clickBodyEvent(event) {
-    console.log(event.target);
-    if(event.target == event.currentTarget) {
+    if(event.target.parentNode == $container || 
+      event.target.parentNode.parentNode == $container || 
+      event.target.parentNode.parentNode.parentNode == $container) {
+    }else{
       $container.childNodes[2].classList.add('hidden');
     }
   }
