@@ -7,8 +7,14 @@
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
   <script>
     const root = document.getElementById('root');
-    const react = React.createElement('button');
+    const react = React.createElement('button', {id: 'react'}, 'React');
+    const angular = React.createElement('button', {id: 'angular'}, 'Angular');
+    const vue = React.createElement('button', {id: 'vue'}, 'Vue');
+    const svelte = React.createElement('button', {id: 'svelte'}, 'Svelte');
+    const title = React.createElement('span', {id: 'title'}, 'i like front end')
 
-    ReactDOM.render(react, root);
+    const container = React.createElement('div', null, [react, angular, vue, svelte])
+    // ReactDOM.render([react, angular, vue, svelte], root); 
+    ReactDOM.render(container, root); 
   </script>
 </html>
