@@ -5,20 +5,69 @@
   </body>
   <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-  <script>
-    function clickedButton() {
-      console.log('clicked');
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+
+    let titleName = 'I like front-end';
+
+    function clickedButton(text) {
+      console.log('clicked: ', text);
+      titleName = text;
     }
 
     const root = document.getElementById('root');
-    const react = React.createElement('button', {id: 'react', onClick: clickedButton }, 'React');
-    const angular = React.createElement('button', {id: 'angular', onClick: clickedButton }, 'Angular');
-    const vue = React.createElement('button', {id: 'vue', onClick: clickedButton }, 'Vue');
-    const svelte = React.createElement('button', {id: 'svelte', onClick: clickedButton }, 'Svelte');
-    const title = React.createElement('span', {id: 'title', onClick: clickedButton }, 'i like front end')
+    // const react = React.createElement('button', {id: 'react', onClick: clickedButton }, 'React');
+    // const angular = React.createElement('button', {id: 'angular', onClick: clickedButton }, 'Angular');
+    // const vue = React.createElement('button', {id: 'vue', onClick: clickedButton }, 'Vue');
+    // const svelte = React.createElement('button', {id: 'svelte', onClick: clickedButton }, 'Svelte');
 
-    const container = React.createElement('div', null, [title, react, angular, vue, svelte])
+    // const ReactButton = () => <button onClick={(e) => clickedButton(e.target.innerText)}>React</button>;
+    // const Angular = () => <button onClick={(e) => clickedButton(e.target.innerText)}>Angular</button>;
+    // const Vue = () => <button onClick={(e) => clickedButton(e.target.innerText)}>Vue</button>;
+    // const Svelte = () => <button onClick={(e) => clickedButton(e.target.innerText)}>Svelte</button>;
+
+    // const title = React.createElement('span', {id: 'title', onClick: clickedButton }, 'i like front end');
+    const Title = () => <span>{titleName}</span>;
+
+    // const container = React.createElement('div', null, [title, react, angular, vue, svelte])
+    const Container = () => {
+      const titleState = React.useState('I like Front-end');
+      console.log(titleState[0]); // 초기값
+      console.log(titleState[1]); // setState(원하는 값) -> titleState[0]이 변한다.
+      
+      const [title, setTitle] = React.useState('I like Front-end'); // useState 기본적인 문법
+      // title = 'hello'; //직접 바꾸려고 하면 자동으로 render되지 않기 때문에 set을 통해 바꿔야 한다.
+      /** 
+      state는 비동기적일 수 있다.
+      const [count, setCount] = React.useState(0);
+
+      setCount(count + 1);
+      setCount(count + 1);
+      setCount(count + 1);
+      setCount(count + 1);
+
+      console.log(count); // 4가 아닐 수 있다.
+
+      바꾼것을 바로 적용시키려면 함수형으로 업데이트 해야한다
+
+      setCount((count) => count + 1)
+      
+      */
+      function clickedButton(text) {
+        console.log('clicked: ', text);
+        setTitle(`I like ${text}`)
+      }
+
+      return (<div>
+        <span>{title}</span>
+
+        <button onClick={(e) => clickedButton(e.target.innerText)}>React</button>
+        <button onClick={(e) => clickedButton(e.target.innerText)}>Angular</button>
+        <button onClick={(e) => clickedButton(e.target.innerText)}>Vue</button>
+        <button onClick={(e) => clickedButton(e.target.innerText)}>Svelte</button>
+      </div>)
+    } 
     // ReactDOM.render([react, angular, vue, svelte], root); 
-    ReactDOM.render(container, root); 
+    ReactDOM.render(<Container/>, root); 
   </script>
 </html>
