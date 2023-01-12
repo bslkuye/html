@@ -2,8 +2,7 @@ function solution(bridge_length, weight, truck_weights) {
   var answer = 0;
   let sum = 0;
   let bridge = Array.from({length: bridge_length}, () => 0);
-  while(truck_weights.length > 0 && answer += 1){
-      // answer++;
+  while(truck_weights.length > 0){
       sum -= bridge.shift();
       if(sum + truck_weights[0] <= weight){
           sum += truck_weights[0];
