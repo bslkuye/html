@@ -12,7 +12,7 @@
 
     //props란 부모 컴포넌트가 자식 컴포넌트에게 전달해주는 데이터 
     const Title = (props) => <span>I like {props.titleProps}</span>
-    const Button = (props) => <button onClick={props.onClick}>{props.children}</button>;
+    const Button = (props) => <button onClick={props.onClick} style={props.style}>{props.children}</button>;
 
     const Container = () => {
       const [title, setTitle] = React.useState('Front-end');
@@ -26,10 +26,10 @@
       return (
         <div>
           <Title titleProps={title} />
-          <Button onClick={clickedButton}>React</Button>
-          <Button onClick={clickedButton}>Angular</Button>
-          <Button onClick={clickedButton}>Vue</Button>
-          <Button onClick={clickedButton}>Svelte</Button>
+          <Button onClick={clickedButton} style={{ fontSize: '20px'}}>React</Button>
+          <Button onClick={clickedButton} style={{ color: 'red'}}>Angular</Button>
+          <Button onClick={clickedButton} style={{ fontSize: '14px'}}>Vue</Button>
+          <Button onClick={clickedButton} style={{ color: 'blue'}}>Svelte</Button>
         </div>)
     } 
     ReactDOM.render(<Container/>, root); 
