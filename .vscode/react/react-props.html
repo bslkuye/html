@@ -35,3 +35,25 @@
     ReactDOM.render(<Container/>, root); 
   </script>
 </html>
+<!-- props는 읽기 전용이라 props함수 내부에서 변수를 저장하지 않고 바꿔야 할 경우에는 외부 함수를 이용해서 바꾸어야 한다
+function({name}) {
+  const [changedName, setChangedName] = React.useState(name);
+
+  function onClickButton() {
+    setChangedName('clickedName: ', name);
+  }
+
+  return <button onClick = {onClickButton}>{changeName}</button>
+} 옳은 방법 
+
+function({name}) {
+
+  function onClickButton() {
+    name = `clickedName: ${name}`;
+  }
+
+  return <button onClick = {onClickButton}>{name}</button>
+} 
+
+
+-->
