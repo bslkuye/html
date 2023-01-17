@@ -1,4 +1,5 @@
-const canvas = document.querySelector("canvas");
+const canvas = document.querySelector(".canvas");
+const astro = document.querySelector(".characters");
 const ctx = canvas.getContext("2d");
 
 const leng = 3000;
@@ -30,14 +31,19 @@ const makeStar = setInterval(() => {
   // console.log('paint star');
 }, 10);
 
+let spin = 0;
+let deg = 0;
+console.log(canvas.style.getPropertyValue('--deg'), 'aa');
+
 setTimeout(() => {
   clearTimeout(makeStar);
-  // setInterval(() => {
-  //   x_position--;
-  //   y_position--;
-  //   canvas.style.setProperty('--x-position', x_position + 'px');
-  //   canvas.style.setProperty('--y-position', y_position + 'px');
-  // }, 10);
+  setInterval(() => {
+    x_position--;
+    y_position--;
+    // console.log(canvas.style.getPropertyValue('--x-position'))
+    canvas.style.setProperty('--x-position', x_position + 'px');
+    canvas.style.setProperty('--y-position', y_position + 'px');
+  }, 10);
 }, 10000);
 
 
