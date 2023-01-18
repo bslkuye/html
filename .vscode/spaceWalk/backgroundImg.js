@@ -10,6 +10,11 @@ let y_position = 0;
 canvas.width = leng;
 canvas.height = leng;
 
+function touchCheck(){
+  if(x_position < -2450 && x_position > 450) x_speed *= -1;
+  if(y_position < -2450 && y_position > 450) y_speed *= -1;
+}
+
 function paintCell(x, y, alpha) {
   ctx.beginPath();
   ctx.globalAlpha = alpha;
@@ -38,8 +43,8 @@ function astroSpin() {
   deg = (deg + spin) % 360;
 }
 
-let x_speed = -0.1;
-let y_speed = -1;
+let x_speed = 0.1;
+let y_speed = 1;
 
 setTimeout(() => {
   clearTimeout(makeStar);
@@ -49,6 +54,7 @@ setTimeout(() => {
     canvas.style.setProperty('--x-position', x_position + 'px');
     canvas.style.setProperty('--y-position', y_position + 'px');
     astroSpin();
+    touchCheck();
   }, 10);
 }, 10000);
 

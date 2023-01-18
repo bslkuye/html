@@ -23,6 +23,7 @@ body{
   --y-position : 0px;
   top: var(--x-position);
   left: var(--y-position);
+  border: 2px solid white;
 }
 
 .characters{
