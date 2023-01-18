@@ -28,6 +28,7 @@ const AnalogClock = $container => {
   function timeSet() {
     const date = new Date();
     handHour.style.setProperty('--deg', date.getHours() * 30);
+    console.log(handSecond.style.getPropertyValue('--deg'))
     handMinute.style.setProperty('--deg', date.getMinutes() * 6);
     handSecond.style.setProperty('--deg', date.getSeconds() * 6);
   }

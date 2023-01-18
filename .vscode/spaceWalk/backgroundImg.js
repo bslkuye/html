@@ -1,5 +1,5 @@
 const canvas = document.querySelector(".canvas");
-const astro = document.querySelector(".characters");
+const astro = document.getElementsByClassName("characters");
 const ctx = canvas.getContext("2d");
 
 const leng = 3000;
@@ -10,7 +10,6 @@ let y_position = 0;
 canvas.width = leng;
 canvas.height = leng;
 
-/**x,y = 사각형 위치 row = 가로길이 col = 세로길이 color = 색(color Array 에서 string형태로 가져옴) */
 function paintCell(x, y, alpha) {
   ctx.beginPath();
   ctx.globalAlpha = alpha;
@@ -28,21 +27,28 @@ function getRandomInt(min, max) {
 const makeStar = setInterval(() => {
   getRandomInt(0, leng, Math.random());
   paintCell(getRandomInt(0, leng), getRandomInt(0, leng));
-  // console.log('paint star');
+  astroSpin();
 }, 10);
 
-let spin = 0;
+let spin = 1;
 let deg = 0;
-console.log(canvas.style.getPropertyValue('--deg'), 'aa');
+
+function astroSpin() {
+  document.documentElement.style.setProperty('--deg', deg + spin);
+  deg = (deg + spin) % 360;
+}
+
+let x_speed = -0.1;
+let y_speed = -1;
 
 setTimeout(() => {
   clearTimeout(makeStar);
   setInterval(() => {
-    x_position--;
-    y_position--;
-    // console.log(canvas.style.getPropertyValue('--x-position'))
+    x_position += x_speed;
+    y_position += y_speed;
     canvas.style.setProperty('--x-position', x_position + 'px');
     canvas.style.setProperty('--y-position', y_position + 'px');
+    astroSpin();
   }, 10);
 }, 10000);
 

@@ -1,5 +1,5 @@
 :root{
-  
+  --deg: 45;
 }
 
 body{
@@ -21,15 +21,12 @@ body{
   position: absolute;
   --x-position : 0px;
   --y-position : 0px;
-  --deg: 45deg;
   top: var(--x-position);
   left: var(--y-position);
 }
 
 .characters{
-  --degint : 45;
-  --deg: var(--degint)deg;
-  transform: rotate(var(--deg));
+  transform: rotate(calc(var(--deg) * 1deg));
   position: absolute;
   top: 450px;
   left: 450px;
