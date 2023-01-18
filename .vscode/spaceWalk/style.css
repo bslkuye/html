@@ -26,12 +26,11 @@ body{
 }
 
 .characters{
+  padding: 10px;
   transform: rotate(calc(var(--deg) * 1deg));
   position: absolute;
   top: 450px;
   left: 450px;
-  align-items: center;
-  align-content: center;
   background-color: black;
   color: white;
   font-size: 30px;
