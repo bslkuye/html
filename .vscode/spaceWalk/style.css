@@ -6,12 +6,12 @@ body{
   height: 1000px;
   width: 1000px;
   overflow: hidden;
+  background-color: black;
 }
 
 .container{
   height: 1000px;
   width: 1000px;
-  border: 5px solid blue;
   background-color: black;
   border-radius: 30px;
   overflow: hidden;
@@ -26,6 +26,7 @@ body{
   top: var(--x-position);
   left: var(--y-position);
   border: 2px solid white;
+  overflow: hidden;
 }
 
 .object{

@@ -34,6 +34,16 @@ function paintCellBig(x, y, color, alpha) {
   ctx.fill();
 }
 
+function paintCellMiddle(x, y, color, alpha) {
+  ctx.beginPath();
+  ctx.globalAlpha = alpha;
+  ctx.fillStyle = color;
+  ctx.rect(x - 1, y, 3, 1);
+  ctx.fill();
+  ctx.rect(x, y - 1, 1, 3);
+  ctx.fill();
+}
+
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -44,6 +54,12 @@ const makeStar = setInterval(() => {
   getRandomInt(0, leng, Math.random());
 
   paintCellBig(getRandomInt(2, leng - 2), getRandomInt(2, leng - 2), "white");
+  paintCellBig(
+    getRandomInt(2, leng - 2),
+    getRandomInt(2, leng - 2),
+    "rgb(0, 150, 255)"
+  );
+  paintCellMiddle(getRandomInt(0, leng), getRandomInt(0, leng), "white");
   paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "white");
   paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(255, 100, 100)");
   paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(0, 150, 255)");
