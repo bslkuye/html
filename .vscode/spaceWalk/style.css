@@ -1,32 +1,47 @@
 :root{
   --deg: 45;
+  --width: 3000px
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
 }
 
 body{
-  height: 1000px;
-  width: 1000px;
+  height: calc(var(--width) * 3);
+  width: calc(var(--width) * 3);
   overflow: hidden;
   background-color: black;
+  margin: 0 auto;
 }
 
 .container{
-  height: 1000px;
-  width: 1000px;
+  height: var(--width);
+  width: var(--width);
+  position: relative;
+  top: calc(50vh - (var(--width) / 2));
+  left: calc(50vw - (var(--width) / 2));
   background-color: black;
+  border: 1px solid white;
   border-radius: 30px;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .space{
-  height: 3000px;
-  width: 3000px;
-  position: absolute;
-  --x-position : 0px;
-  --y-position : 0px;
-  top: var(--x-position);
-  left: var(--y-position);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  height: calc(var(--width) * 3);
+  width: calc(var(--width) * 3);
+  position: relative;
+  --x-position : calc(var(--width) * (-1));
+  --y-position : calc(var(--width) * (-1));
+  top: calc(var(--x-position));
+  left: calc(var(--y-position));
   border: 2px solid white;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .object{
@@ -45,10 +60,13 @@ body{
 }
 
 .characters{
+  z-index: 999;
+  background-image: url(./astro_img.png);
+  background-size: cover;
   transform: rotate(calc(var(--deg) * 1deg));
   position: absolute;
-  top: 450px;
-  left: 450px;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
   background-color: black;
   color: white;
   font-size: 30px;
