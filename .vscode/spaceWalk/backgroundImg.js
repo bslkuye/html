@@ -1,5 +1,5 @@
 const canvas = document.querySelector(".canvas");
-const space = document.querySelector('.space')
+const space = document.querySelector(".space");
 const astro = document.getElementsByClassName("characters");
 const ctx = canvas.getContext("2d");
 
@@ -11,9 +11,9 @@ let y_position = 0;
 canvas.width = leng;
 canvas.height = leng;
 
-function touchCheck(){
-  if(x_position < -2450 || x_position > 450) x_speed *= -1;
-  if(y_position < -2450 || y_position > 450) y_speed *= -1;
+function touchCheck() {
+  if (x_position < -2450 || x_position > 450) x_speed *= -1;
+  if (y_position < -2450 || y_position > 450) y_speed *= -1;
 }
 
 function paintCell(x, y, color, alpha) {
@@ -42,11 +42,11 @@ function getRandomInt(min, max) {
 
 const makeStar = setInterval(() => {
   getRandomInt(0, leng, Math.random());
-  
-  paintCellBig(getRandomInt(0, leng), getRandomInt(0, leng), 'white');
-  paintCell(getRandomInt(0, leng), getRandomInt(0, leng), 'white');
-  paintCell(getRandomInt(0, leng), getRandomInt(0, leng), 'rgb(255, 100, 100)');
-  paintCell(getRandomInt(0, leng), getRandomInt(0, leng), 'rgb(0, 150, 255)');
+
+  paintCellBig(getRandomInt(2, leng - 2), getRandomInt(2, leng - 2), "white");
+  paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "white");
+  paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(255, 100, 100)");
+  paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(0, 150, 255)");
   astroSpin();
 }, 1);
 
@@ -54,7 +54,7 @@ let spin = 0.1;
 let deg = 0;
 
 function astroSpin() {
-  document.documentElement.style.setProperty('--deg', deg + spin);
+  document.documentElement.style.setProperty("--deg", deg + spin);
   deg = (deg + spin) % 360;
 }
 
@@ -66,8 +66,8 @@ setTimeout(() => {
   setInterval(() => {
     x_position += x_speed;
     y_position += y_speed;
-    space.style.setProperty('--x-position', x_position + 'px');
-    space.style.setProperty('--y-position', y_position + 'px');
+    space.style.setProperty("--x-position", x_position + "px");
+    space.style.setProperty("--y-position", y_position + "px");
     astroSpin();
     touchCheck();
   }, 10);
