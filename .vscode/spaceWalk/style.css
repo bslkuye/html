@@ -1,5 +1,4 @@
 :root{
-  --deg: 45;
   --width: 3000px
 }
 
@@ -17,6 +16,12 @@ body{
   margin: 0 auto;
 }
 
+.canvasContainer{
+  height: var(--width);
+  width: var(--width);
+  position: relative;
+}
+
 .container{
   height: var(--width);
   width: var(--width);
@@ -24,8 +29,8 @@ body{
   top: calc(50vh - (var(--width) / 2));
   left: calc(50vw - (var(--width) / 2));
   background-color: black;
-  border: 1px solid white;
-  border-radius: 30px;
+  /* border: 1px solid white; */
+  /* border-radius: 30px; */
   /* overflow: hidden; */
 }
 
@@ -40,18 +45,23 @@ body{
   --y-position : calc(var(--width) * (-1));
   top: calc(var(--x-position));
   left: calc(var(--y-position));
-  border: 2px solid white;
+  /* border: 2px solid white; */
   /* overflow: hidden; */
 }
 
+.map{
+  /* border: 1px solid white; */
+}
+
 .object{
+  z-index: 999;
+  background-image: url(./obj.png);
+  background-size: cover;
   position: absolute;
   --x-position : 0px;
   --y-position : 0px;
-  top: var(--x-position);
-  left: var(--y-position);
-  top: 0;
-  left: 0;
+  top: calc(var(--x-position) - 50px);
+  left: calc(var(--y-position) - 50px);
   height: 100px;
   width: 100px;
   border: 3px solid white;
@@ -60,6 +70,7 @@ body{
 }
 
 .characters{
+  --deg: 0;
   z-index: 999;
   background-image: url(./astro_img.png);
   background-size: cover;
