@@ -10,6 +10,16 @@ function App() {
  */
   const [count, setCount] = useState(0)
 
+  if (!count) {
+    return
+  }
+
+  useEffect(() => {
+    if (count === 5) {
+      console.log("this is five")
+    }
+  })
+
   useEffect(() => console.log("hello"), [count]) // count가 변할때마다 호출됨 update
   useEffect(() => console.log("hello"), []) // mount
   useEffect(() => console.log("hello")) // unmount
@@ -20,6 +30,9 @@ function App() {
    */
 
   //hook 사용 규칙
+  /**
+   * 최상위에서 호출되어야 한다.
+   */
 
   return <div className="App"></div>
 }

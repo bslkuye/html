@@ -22,8 +22,33 @@ for (let i = 0; i < 9; i++) {
   canvas[i].height = leng;
 }
 
-function touchCheck(info_arr) {
-  [x, y] = info_arr.slice(0, 2);
+function check() {
+  for (let i = 0; i < obj_info.length - 1; i++) {
+    for (let j = i + 1; j < obj_info.length; j++) {
+      if (
+        (obj_info[i][0] - obj_info[j][0]) ** 2 +
+          (obj_info[i][1] - obj_info[j][1]) ** 2 <
+          10000 ||
+        (obj_info[i][0] - obj_info[j][0] + leng) ** 2 +
+          (obj_info[i][1] - obj_info[j][1] + leng) ** 2 <
+          10000 ||
+        (obj_info[i][0] - obj_info[j][0] - leng) ** 2 +
+          (obj_info[i][1] - obj_info[j][1] - leng) ** 2 <
+          10000 ||
+        (obj_info[i][0] - obj_info[j][0] + leng) ** 2 +
+          (obj_info[i][1] - obj_info[j][1] - leng) ** 2 <
+          10000 ||
+        (obj_info[i][0] - obj_info[j][0] - leng) ** 2 +
+          (obj_info[i][1] - obj_info[j][1] + leng) ** 2 <
+          10000
+      ) {
+        console.log("touch");
+      }
+    }
+  }
+}
+
+function touchCheck() {
   if (x_position > -1 * leng * 0.5) x_position -= leng;
   if (x_position < -1 * leng * 1.5) x_position += leng;
   if (y_position > -1 * leng * 0.5) y_position -= leng;
@@ -106,14 +131,23 @@ function astroSpin() {
   deg = (deg + spin) % 360;
 }
 
-let x_speed = 0.2;
-let y_speed = 0.1;
+let x_speed = -2;
+let y_speed = 2;
 
 function astroMove() {
   x_position += x_speed;
   y_position += y_speed;
   space.style.setProperty("--x-position", x_position + "px");
   space.style.setProperty("--y-position", y_position + "px");
+  obj_info[0] = [
+    x_position * -1 - 1000,
+    y_position * -1 - 1000,
+    x_speed,
+    y_speed,
+    spin,
+    deg,
+  ];
+  check();
   astroSpin();
 }
 
@@ -131,7 +165,8 @@ item -
 배경 obj : 우주선, 우주인, 작은 행성, 성운
 obj : 사진 직접 추가로 날아다니게 , 크기
 
-
 캔버스마다 오브젝트를 넣어서 포지션을 복잡하게 안해도 되게
 
+-1000 = -leng - 1000
+-3000 = 2000
  */

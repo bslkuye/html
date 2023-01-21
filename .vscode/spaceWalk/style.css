@@ -58,7 +58,7 @@ body{
   background-image: url(./obj.png);
   background-size: cover;
   position: absolute;
-  --x-position : 0px;
+  --x-position : 2000px;
   --y-position : 0px;
   top: calc(var(--x-position) - 50px);
   left: calc(var(--y-position) - 50px);
