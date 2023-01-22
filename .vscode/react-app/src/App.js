@@ -10,9 +10,9 @@ function App() {
  */
   const [count, setCount] = useState(0)
 
-  if (!count) {
-    return
-  }
+  // if (!count) {
+  //   return
+  // } // hook 이 최상위가 아니므로 오류
 
   useEffect(() => {
     if (count === 5) {
@@ -32,9 +32,17 @@ function App() {
   //hook 사용 규칙
   /**
    * 최상위에서 호출되어야 한다.
+   * 오직 react함수에서만 hook을 호출해야 한다.
    */
 
   return <div className="App"></div>
+}
+
+function example() {
+  // react함수 외부에 hook이 호출되어 오류 / 분류를 위해 외부에서 호출하기 위해서는 useExample처럼 use를 붙여야 함
+  useEffect(() => {
+    console.log("hello")
+  })
 }
 
 export default App
