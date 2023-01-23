@@ -8,11 +8,11 @@ document.documentElement.style.setProperty("--width", leng + "px");
 
 /** [x_position, y_position, x_speed, y_speed, deg, spin] */
 let obj_info = [
-  [leng / 2, leng / 2, 0.2, 0.1, 0, 0.1],
+  [leng / 2, leng / 2, 0, 0, 0, 0.1],
   [0, 0, 6, -6, 0, 1],
 ];
 
-let x_position = -leng;
+let x_position = -leng - 50;
 let y_position = -leng;
 
 for (let i = 0; i < 9; i++) {
@@ -27,7 +27,19 @@ function check() {
       if (
         (obj_info[i][0] - obj_info[j][0]) ** 2 +
           (obj_info[i][1] - obj_info[j][1]) ** 2 <
-          10000 ||
+        10000
+      ) {
+        const xdeg =
+          (obj_info[i][0] - obj_info[j][0]) /
+          (Math.abs(obj_info[i][0] - obj_info[j][0]) +
+            Math.abs(obj_info[i][1] - obj_info[j][1]));
+        const ydeg =
+          (obj_info[i][1] - obj_info[j][1]) /
+          (Math.abs(obj_info[i][0] - obj_info[j][0]) +
+            Math.abs(obj_info[i][1] - obj_info[j][1]));
+        console.log(xdeg, ydeg);
+      }
+      if (
         (obj_info[i][0] - obj_info[j][0] + leng) ** 2 +
           (obj_info[i][1] - obj_info[j][1]) ** 2 <
           10000 ||
@@ -138,21 +150,15 @@ function astroSpin() {
 }
 
 let x_speed = -2;
-let y_speed = 2;
+let y_speed = 0;
 
 function astroMove() {
-  x_position += x_speed;
-  y_position += y_speed;
+  x_position += obj_info[0][2];
+  y_position += obj_info[0][3];
   space.style.setProperty("--x-position", x_position + "px");
   space.style.setProperty("--y-position", y_position + "px");
-  obj_info[0] = [
-    x_position * -1 - leng / 2, // 4050 3950
-    y_position * -1 - leng / 2,
-    x_speed,
-    y_speed,
-    spin,
-    deg,
-  ];
+  obj_info[0][0] = [x_position * -1 - leng / 2];
+  obj_info[0][1] = [y_position * -1 - leng / 2];
   check();
   astroSpin();
 }
