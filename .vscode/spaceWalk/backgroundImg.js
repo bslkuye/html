@@ -3,7 +3,7 @@ const space = document.querySelector(".space");
 const astro = document.querySelector(".characters");
 const ctx = canvas[0].getContext("2d");
 
-const leng = 5000;
+const leng = 2000;
 document.documentElement.style.setProperty("--width", leng + "px");
 
 /** [x_position, y_position, x_speed, y_speed, deg, spin] */
@@ -12,8 +12,8 @@ let obj_info = [
   [0, 0, 6, -6, 0, 1],
 ];
 
-let x_position = -leng - 50;
-let y_position = -leng;
+let x_position = -leng + leng / 2;
+let y_position = -leng + leng / 2;
 
 for (let i = 0; i < 9; i++) {
   console.log(i);
@@ -22,22 +22,18 @@ for (let i = 0; i < 9; i++) {
 }
 
 function check() {
+  let checkArr = [...obj_info];
   for (let i = 0; i < obj_info.length - 1; i++) {
-    for (let j = i + 1; j < obj_info.length; j++) {
+    for (let j = 0; j < obj_info.length; j++) {
+      if (i == j) continue;
+      let xlen = 0;
+      let ylen = 0;
       if (
         (obj_info[i][0] - obj_info[j][0]) ** 2 +
           (obj_info[i][1] - obj_info[j][1]) ** 2 <
         10000
       ) {
-        const xdeg =
-          (obj_info[i][0] - obj_info[j][0]) /
-          (Math.abs(obj_info[i][0] - obj_info[j][0]) +
-            Math.abs(obj_info[i][1] - obj_info[j][1]));
-        const ydeg =
-          (obj_info[i][1] - obj_info[j][1]) /
-          (Math.abs(obj_info[i][0] - obj_info[j][0]) +
-            Math.abs(obj_info[i][1] - obj_info[j][1]));
-        console.log(xdeg, ydeg);
+        checkArr[i][2];
       }
       if (
         (obj_info[i][0] - obj_info[j][0] + leng) ** 2 +
@@ -53,7 +49,9 @@ function check() {
           (obj_info[i][1] - obj_info[j][1] - leng) ** 2 <
           10000
       ) {
-        console.log("touch");
+        let xlen = obj_info[i][0] - obj_info[j][0];
+        console.log(obj_info[i][0] - obj_info[j][0], "x");
+        console.log(obj_info[i][0] - obj_info[j][0], "y");
       }
     }
   }
@@ -157,8 +155,8 @@ function astroMove() {
   y_position += obj_info[0][3];
   space.style.setProperty("--x-position", x_position + "px");
   space.style.setProperty("--y-position", y_position + "px");
-  obj_info[0][0] = [x_position * -1 - leng / 2];
-  obj_info[0][1] = [y_position * -1 - leng / 2];
+  obj_info[0][0] = x_position * -1 - leng / 2;
+  obj_info[0][1] = y_position * -1 - leng / 2;
   check();
   astroSpin();
 }
@@ -177,7 +175,7 @@ function objMove() {
     }
   }
 }
-
+console.log(obj_info);
 setTimeout(() => {
   clearTimeout(makeStar);
   setInterval(() => {
