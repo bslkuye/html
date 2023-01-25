@@ -13,7 +13,7 @@ export default function Tabs() {
           key={`${idx}`}
           title={tab}
           selected={selectedTabIdx === idx}
-          onclick={() => setSelectedTabIdx(idx)}
+          onClick={() => setSelectedTabIdx(idx)}
         />
       ))}
     </ul>
