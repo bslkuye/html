@@ -12,51 +12,59 @@ let obj_info = [
   [0, 0, 6, -6, 0, 1],
 ];
 
-let x_position = -leng + leng / 2;
-let y_position = -leng + leng / 2;
+let x_position = -leng;
+let y_position = -leng;
 
 for (let i = 0; i < 9; i++) {
   console.log(i);
   canvas[i].width = leng;
   canvas[i].height = leng;
 }
-
+let a = 0;
 function check() {
-  let checkArr = [...obj_info];
-  for (let i = 0; i < obj_info.length - 1; i++) {
-    for (let j = 0; j < obj_info.length; j++) {
-      if (i == j) continue;
-      let xlen = 0;
-      let ylen = 0;
-      if (
-        (obj_info[i][0] - obj_info[j][0]) ** 2 +
-          (obj_info[i][1] - obj_info[j][1]) ** 2 <
-        10000
-      ) {
-        checkArr[i][2];
-      }
-      if (
-        (obj_info[i][0] - obj_info[j][0] + leng) ** 2 +
-          (obj_info[i][1] - obj_info[j][1]) ** 2 <
-          10000 ||
-        (obj_info[i][0] - obj_info[j][0] - leng) ** 2 +
-          (obj_info[i][1] - obj_info[j][1]) ** 2 <
-          10000 ||
-        (obj_info[i][0] - obj_info[j][0]) ** 2 +
-          (obj_info[i][1] - obj_info[j][1] + leng) ** 2 <
-          10000 ||
-        (obj_info[i][0] - obj_info[j][0]) ** 2 +
-          (obj_info[i][1] - obj_info[j][1] - leng) ** 2 <
+  let checkArr = obj_info.map((v) => [...v]);
+  for (let i = 0; i < obj_info.length; i++) {
+    for (let j = i; j < obj_info.length; j++) {
+      if (i != j) {
+        if (
+          (obj_info[i][0] - obj_info[j][0]) ** 2 +
+            (obj_info[i][1] - obj_info[j][1]) ** 2 <
           10000
-      ) {
-        let xlen = obj_info[i][0] - obj_info[j][0];
-        console.log(obj_info[i][0] - obj_info[j][0], "x");
-        console.log(obj_info[i][0] - obj_info[j][0], "y");
+        ) {
+          a =
+            ((obj_info[j][0] - obj_info[i][0]) /
+              (obj_info[j][1] - obj_info[i][1])) *
+            (obj_info[j][3] / obj_info[j][2]);
+          console.log("a", a);
+
+          checkArr = obj_info.map((v) => [...v]);
+          console.log("touch", i, j, obj_info, checkArr);
+          obj_info[i][2] += obj_info[j][2] * a;
+          obj_info[i][3] += obj_info[j][3] * a;
+          obj_info[j][2] -= obj_info[j][2] * a;
+          obj_info[j][3] -= obj_info[j][3] * a;
+        }
       }
     }
+    // obj_info = checkArr.map((v) => [...v]);
   }
 }
 
+// if (
+//   (obj_info[i][0] - obj_info[j][0] + leng) ** 2 +
+//     (obj_info[i][1] - obj_info[j][1]) ** 2 <
+//     10000 ||
+//   (obj_info[i][0] - obj_info[j][0] - leng) ** 2 +
+//     (obj_info[i][1] - obj_info[j][1]) ** 2 <
+//     10000 ||
+//   (obj_info[i][0] - obj_info[j][0]) ** 2 +
+//     (obj_info[i][1] - obj_info[j][1] + leng) ** 2 <
+//     10000 ||
+//   (obj_info[i][0] - obj_info[j][0]) ** 2 +
+//     (obj_info[i][1] - obj_info[j][1] - leng) ** 2 <
+//     10000
+// ) {
+// }
 function touchCheck() {
   if (x_position > -1 * leng * 0.5) x_position -= leng;
   if (x_position < -1 * leng * 1.5) x_position += leng;
@@ -179,8 +187,8 @@ console.log(obj_info);
 setTimeout(() => {
   clearTimeout(makeStar);
   setInterval(() => {
-    astroMove();
     touchCheck();
+    astroMove();
     objMove();
   }, 16);
 }, 1000);
