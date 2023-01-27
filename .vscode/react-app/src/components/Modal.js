@@ -8,6 +8,7 @@ export default function Modal({
   onClose,
   placeholder,
   searchDataList,
+  onClickCell,
 }) {
   const [searchValue, setSearchValue] = useState("");
   const [filteredData, setFilteredData] = useState(searchDataList);
@@ -34,7 +35,9 @@ export default function Modal({
         ></input>
       </div>
       {filteredData.map((data) => (
-        <div key={data}>{data}</div>
+        <div key={data} onClick={onClickCell} role="button">
+          {data}
+        </div>
       ))}
     </div>
   );
