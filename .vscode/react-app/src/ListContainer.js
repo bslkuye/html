@@ -57,20 +57,22 @@ export default function ListContainer() {
 function ListFilterItem({ onClick, children, onChangeFilter }) {
   const [showModal, setShowModal] = useState(false);
   return (
-    <>
+    <div className={styles.filterItem}>
       <span role="button" onClick={() => setShowModal(true)}>
         {children} ▾
       </span>
-      <Modal
-        opened={showModal}
-        onClose={() => setShowModal(false)}
-        placeholder="Filters labels"
-        searchDataList={["bug", "labels", "apple"]}
-        onClickCell={() => {
-          onChangeFilter();
-        }}
-      />
-    </>
+      <div className={styles.modalContainer}>
+        <Modal
+          opened={showModal}
+          onClose={() => setShowModal(false)}
+          placeholder="Filters labels"
+          searchDataList={["bug", "labels", "apple"]}
+          onClickCell={() => {
+            onChangeFilter();
+          }}
+        />
+      </div>
+    </div>
   );
 }
 
