@@ -8,6 +8,7 @@
 .topSection{
   display: flex;
   flex-direction: 'space-between';
+  margin-bottom: 20px;
 }
 
 .input{
@@ -19,4 +20,36 @@
   width: 60%;
   margin-right: auto;
   box-shadow: none;
+}
+
+.filterList{
+  display: flex;
+  align-items: center;
+}
+
+.filterList > span{
+  padding: 0 16px;
+  line-height: 21px;
+  cursor: pointer;
+  color: rgb(63, 63, 63);
+}
+
+.filterList > span:hover{
+  color: black;
+}
+
+.listFilter{
+  margin-top: 20px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background: rgb(210, 210, 210);
+}
+
+.textFilter{
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.selected{
+  font-weight: 800;
 }
