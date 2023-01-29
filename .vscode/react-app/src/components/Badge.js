@@ -1,6 +1,9 @@
 import styles from "./Badge.module.css";
-import clsx from "clsx";
 
-export default function Badge({ title, color }) {
-  return <span className={clsx(styles.badge, styles[color])}>{title}</span>;
+export default function Badge({ name, color }) {
+  return (
+    <span className={styles.badge} style={{ background: `#${color}` }}>
+      {name}
+    </span>
+  );
 }
