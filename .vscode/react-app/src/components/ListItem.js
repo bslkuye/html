@@ -4,18 +4,20 @@ import ListItemLayout from "./ListItemLayout";
 
 export default function ListItem({
   checked,
-  onChangeCheckBox,
+  onClickCheckBox,
   onClickTitle,
   badges,
+  title,
+  data,
 }) {
   return (
-    <ListItemLayout>
+    <ListItemLayout checked={checked} onClick={onClickCheckBox}>
       <div>
         <div role="button" onClick={onClickTitle} className={styles.title}>
-          Issue Example
+          {data.title}
           {badges && //badges가 있으면
             badges.map((badgeProps, idx) => (
-              <Badge key={idx} {...badgeProps} />
+              <Badge key={`${idx}`} {...badgeProps} />
             ))}
         </div>
         <div className={styles.description}># Description</div>

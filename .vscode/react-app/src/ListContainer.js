@@ -1,11 +1,12 @@
 import clsx from "clsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "./components/Button";
 import ListItem from "./components/ListItem";
 import ListItemLayout from "./components/ListItemLayout";
 import styles from "./ListContainer.module.css";
 import Pagination from "./components/Pagination";
 import ListFilter from "./components/ListFilter";
+import axios from "axios";
 
 export default function ListContainer() {
   const [inputValue, setInputValue] = useState("is:pr is:open");
@@ -16,6 +17,17 @@ export default function ListContainer() {
 
   // const openModeDataSize = 1;
   // const closeModeDataSize = 2;
+
+  async function getData() {
+    const { data } = await axios.get(
+      `https://api.github.com/repos/facebook/react/issues`,
+    );
+    setList(data.data);
+  }
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <>
@@ -47,6 +59,8 @@ export default function ListContainer() {
               // onChangeCheckBox={() =>
               //   setcheckedList((checkedList) => [...checkedList, "0"])
               // }
+              data={ListItem}
+              checked={checked}
               key={index}
               badges={[
                 {

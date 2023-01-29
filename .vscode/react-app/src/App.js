@@ -5,16 +5,9 @@ import Button from "./components/Button";
 import Header from "./Header";
 import ListContainer from "./ListContainer";
 import Footer from "./Footer";
+import { useEffect } from "react";
 
 function App() {
-  async function getData() {
-    const data = await axios.get(
-      `https://api.github.com/repos/facebook/react/issues`,
-    );
-  }
-
-  getData();
-
   return (
     <>
       <div className={styles.nav}>Nav</div>
