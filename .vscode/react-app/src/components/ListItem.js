@@ -22,8 +22,7 @@ export default function ListItem({
             badges.map((props, idx) => <Badge {...props} key={`${idx}`} />)}
         </div>
         <div className={styles.description}>
-          #{data.number} {state}
-          {/* {dayjs(date).fromNow()} */}
+          #{data.number} {state}* *{/* {dayjs(date).fromNow()} */}
           by {data.user.login}
         </div>
       </div>

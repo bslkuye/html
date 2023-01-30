@@ -27,6 +27,7 @@
 }
 
 .listFilter{
+  margin-top: 20px;
   background: rgb(206, 206, 206);
   border-radius: 6px 6px 0 0;
   /* border-bottom: 1px solid rgba(177, 177, 177, 0.496); */
