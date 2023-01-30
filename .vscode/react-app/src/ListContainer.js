@@ -25,7 +25,7 @@ export default function ListContainer() {
       `https://api.github.com/repos/facebook/react/issues`,
     );
     setList(data);
-    console.log(data);
+    // console.log(data);
   }
 
   useEffect(() => {
