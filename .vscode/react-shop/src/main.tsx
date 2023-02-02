@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM, { createRoot } from 'react-dom/client'
 import { RecoilRoot } from 'recoil'
-// import { createRoot } from 'react-dom/client'
 import { CART_ITEM } from './composables/useCartLoad';
 import {cartState} from './store/cart';
 import App from './App'
