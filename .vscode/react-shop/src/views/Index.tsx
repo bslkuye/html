@@ -1,7 +1,7 @@
 import Slider from '../components/Slider';
 import ItemList from '../components/ItemList';
 
-const index = (): JSX.Element => {
+const Index = (): JSX.Element => {
   return(
     <>
       <Slider />
@@ -17,3 +17,5 @@ const index = (): JSX.Element => {
     </>
   );
 };
+
+export default Index;

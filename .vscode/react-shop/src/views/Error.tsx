@@ -13,3 +13,5 @@ const Error = (): JSX.Element => {
     </>
   )
 }
+
+export default Error;
