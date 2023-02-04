@@ -24,30 +24,19 @@ const App = (): JSX.Element => {
   const [count, setCount] = useState(0)
 
   const $hamburger = useRef<HTMLIFrameElement>(null);
+  const closeOverlay = () => {
+    $hamburger?.current?.click();
+  };
+  useCartLoad();
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <BrowserRouter>
+      <ScrollToTop />
+      <input type='checkbox' id='side-menu' className='drawer-toggle' ref={$hamburger} />
+      <section className='drawer-content'>
+        <Nav />
+      </section>
+    </BrowserRouter>
   )
 }
 
