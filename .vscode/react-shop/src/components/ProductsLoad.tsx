@@ -6,10 +6,18 @@ const ProductsLoad = ({ limit }: { limit: number }): JSX.Element => {
           return(
             <div key={index} className='card bordered animation-pulse'>
               <div className="h-80 rounded bg-gray-100"></div>
-              <div></div>
+              <div className="card-body">
+                <div className="apace-y-4">
+                  <div className="h-6 bg-gray-100 rounded"></div>
+                  <div className="h-6 bg-gray-100 rounded w-5/7"></div>
+                  <div className="h-6 bg-gray-100 rounded w-1/4"></div>
+                </div>
+              </div>
             </div>
-          )
+          );
         })
+      ) : (
+        <div>제품이 없습니다.</div>
       )}
     </>
   )
