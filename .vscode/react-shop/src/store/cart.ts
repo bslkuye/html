@@ -65,10 +65,10 @@ export const cartList = selector<CartItmes[]>({
 
 export const addToCart = (cart: CartState, id: number) => {
   if(!cartState[id]){
-    cartState[id] = [
+    cartState[id] = {
       id,
       count: 1,
-    ];
+    };
     return {
       ...cart,
       [id]: {
@@ -87,7 +87,7 @@ export const removeFromCart = (cart: CartState, id: number) => {
     delete tempCart[id];
     return tempCart;
   } else {
-    return { ...tempCart, [id]: { id: id, count: cart[id].count - 1} };
+    return { ...tempCart, [id]: { id: id, count: cart[id].count - 1 } };
   }
 };
 
