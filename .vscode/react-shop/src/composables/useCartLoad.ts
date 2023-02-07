@@ -7,9 +7,9 @@ export const CART_ITEM = 'CART_ITEM';
 export const useCartLoad = () => {
   const cartStore = useRecoilValue(cartState);
   const setCartData = () => {
-    localStorage.setItem(CART_ITEM, JSON.stringify(cartState));
+    localStorage.setItem(CART_ITEM, JSON.stringify(cartStore));
   };
   useEffect(() => {
     setCartData();
-  }, [cartState]);
-}
+  }, [cartStore]);
+};

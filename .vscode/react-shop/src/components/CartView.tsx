@@ -5,7 +5,7 @@ import { CartItems, cartList, cartTotal } from '../store/cart';
 import BreadCrumb from './Breadcrumb';
 import CartList from './CartList';
 import Confirm from './Confirm';
-import ProductsViewLoad from './ProductsViewLoad';
+// import ProductsViewLoad from './ProductsViewLoad';
 
 const CartView = (): JSX.Element => {
   const cartLoadable = useRecoilValueLoadable<CartItems[]>(cartList);
@@ -13,7 +13,8 @@ const CartView = (): JSX.Element => {
   const totalPrice = useRecoilValueLoadable(cartTotal).contents;
 
   if('loading' === cartLoadable.state){
-    return <ProductsViewLoad />;
+    // return <ProductsViewLoad />;
+    return <div>ProductsViewLoad</div>
   }
 
   return(

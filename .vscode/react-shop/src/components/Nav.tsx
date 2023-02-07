@@ -21,5 +21,6 @@ const Nav = () => {
       // setLight();
     }
   }
-
 }
+
+export default Nav;

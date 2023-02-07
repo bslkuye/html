@@ -1,5 +1,5 @@
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { Carousel } from 'react-responsive-carousel'
+// import { Carousel } from 'react-responsive-carousel'
 import { Link } from 'react-router-dom';
 
 const Slider = () => {
@@ -28,6 +28,7 @@ const Slider = () => {
   }
 
   return(
-    <Carousel autoPlay showThumbs=(false) interval=(6000) showStatus=(false) infiniteLoop=(true) className='carousel'
+    <div>carousel</div>
+    // <Carousel autoPlay showThumbs=(false) interval=(6000) showStatus=(false) infiniteLoop=(true) className='carousel'
   )
 }
