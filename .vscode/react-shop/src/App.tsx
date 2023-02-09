@@ -49,6 +49,6 @@ const App = (): JSX.Element => {
       <Drawer closeOverlay={closeOverlay} />
     </BrowserRouter>
   );
-}
+};
 
 export default App;
