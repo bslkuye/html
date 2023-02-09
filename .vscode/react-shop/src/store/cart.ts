@@ -45,7 +45,7 @@ export const cartTotal = selector<number>({
   },
 })
 
-export const cartList = selector<CartItmes[]>({
+export const cartList = selector<CartItems[]>({
   key: 'cartList',
   get: ({ get }) => {
     const products = get(productsList);

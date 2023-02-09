@@ -30,7 +30,7 @@ const Slider = () => {
   return(
     <div>
       carousel
-      <Carousel autoPlay showThumbs=(false) interval=(6000) showStatus=(false) infiniteLoop=(true) className='carousel'>
+      {/* <Carousel autoPlay showThumbs=(false) interval=(6000) showStatus=(false) infiniteLoop=(true) className='carousel'> */}
     </div>
   )
 }
