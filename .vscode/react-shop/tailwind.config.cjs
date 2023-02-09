@@ -19,7 +19,7 @@ module.exports = {
       },
     },
   },
-  plugins: [require("daisyui"), require("@tailwindcss/line-clamp")],
+  plugins: [require("daisyui")],
   daisyui: {
     styled: true,
     themes: ["emerald", "dark", "forest", "synthwave"],

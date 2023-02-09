@@ -19,7 +19,7 @@ export interface Product {
 
 export const productsList = selector<Product[]>({
   key: 'productsList',
-  get:async () => {
+  get: async () => {
     try{
       const response = await fetch(productsURL);
       return (await response.json()) || [];
