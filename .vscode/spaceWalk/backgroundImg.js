@@ -21,6 +21,7 @@ for (let i = 0; i < 9; i++) {
   canvas[i].height = leng;
 }
 let a = 0;
+
 function check() {
   let checkArr = obj_info.map((v) => [...v]);
   for (let i = 0; i < obj_info.length; i++) {
