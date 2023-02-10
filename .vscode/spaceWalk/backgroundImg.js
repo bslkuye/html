@@ -27,23 +27,26 @@ function check() {
   for (let i = 0; i < obj_info.length; i++) {
     for (let j = i; j < obj_info.length; j++) {
       if (i != j) {
+        checkArr = obj_info.map((v) => [...v]);
         if (
-          (obj_info[i][0] - obj_info[j][0]) ** 2 +
-            (obj_info[i][1] - obj_info[j][1]) ** 2 <
+          (checkArr[i][0] - checkArr[j][0]) ** 2 +
+            (checkArr[i][1] - checkArr[j][1]) ** 2 <
           10000
         ) {
           a =
-            ((obj_info[j][0] - obj_info[i][0]) /
-              (obj_info[j][1] - obj_info[i][1])) *
-            (obj_info[j][3] / obj_info[j][2]);
+            ((checkArr[j][0] - checkArr[i][0]) /
+              (checkArr[j][1] - checkArr[i][1])) *
+            (checkArr[j][3] / checkArr[j][2]);
           console.log("a", a);
 
-          checkArr = obj_info.map((v) => [...v]);
+          // checkArr = obj_info.map((v) => [...v]);
           console.log("touch", i, j, obj_info, checkArr);
-          obj_info[i][2] += obj_info[j][2] * a;
-          obj_info[i][3] += obj_info[j][3] * a;
-          obj_info[j][2] -= obj_info[j][2] * a;
-          obj_info[j][3] -= obj_info[j][3] * a;
+          checkArr[i][2] += checkArr[j][2] * a;
+          checkArr[i][3] += checkArr[j][3] * a;
+          checkArr[j][2] -= checkArr[j][2] * a;
+          checkArr[j][3] -= checkArr[j][3] * a;
+
+          obj_info = checkArr;
         }
       }
     }
@@ -51,21 +54,6 @@ function check() {
   }
 }
 
-// if (
-//   (obj_info[i][0] - obj_info[j][0] + leng) ** 2 +
-//     (obj_info[i][1] - obj_info[j][1]) ** 2 <
-//     10000 ||
-//   (obj_info[i][0] - obj_info[j][0] - leng) ** 2 +
-//     (obj_info[i][1] - obj_info[j][1]) ** 2 <
-//     10000 ||
-//   (obj_info[i][0] - obj_info[j][0]) ** 2 +
-//     (obj_info[i][1] - obj_info[j][1] + leng) ** 2 <
-//     10000 ||
-//   (obj_info[i][0] - obj_info[j][0]) ** 2 +
-//     (obj_info[i][1] - obj_info[j][1] - leng) ** 2 <
-//     10000
-// ) {
-// }
 function touchCheck() {
   if (x_position > -1 * leng * 0.5) x_position -= leng;
   if (x_position < -1 * leng * 1.5) x_position += leng;
