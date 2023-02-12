@@ -30,7 +30,7 @@ const App = (): JSX.Element => {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      {/* <input type='checkbox' id='side-menu' className='drawer-toggle' ref={$hamburger} />
+      <input type='checkbox' id='side-menu' className='drawer-toggle' ref={$hamburger} />
       <section className='drawer-content'>
         <section className='main pt-16'>
           <Routes>
@@ -45,7 +45,7 @@ const App = (): JSX.Element => {
         </section>
         <Footer />
       </section>
-      <Drawer closeOverlay={closeOverlay} /> */}
+      <Drawer closeOverlay={closeOverlay} />
     </BrowserRouter>
   );
 };
