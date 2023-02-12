@@ -14,5 +14,5 @@ root.render(
     <RecoilRoot initializeState={() => Object.assign(cartState, initialValue)}>
       <App />
     </RecoilRoot>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
