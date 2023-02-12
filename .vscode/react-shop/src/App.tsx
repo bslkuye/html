@@ -32,7 +32,6 @@ const App = (): JSX.Element => {
       <ScrollToTop />
       <input type='checkbox' id='side-menu' className='drawer-toggle' ref={$hamburger} />
       <section className='drawer-content'>
-        {/* <Nav /> */}
         <section className='main pt-16'>
           <Routes>
             <Route path='*' element={<Error />} />
