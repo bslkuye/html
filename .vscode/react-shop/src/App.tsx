@@ -28,6 +28,10 @@ const App = (): JSX.Element => {
   useCartLoad();
 
   return (
+    <div> aaa </div>
+  )
+
+  return (
     <BrowserRouter>
       <ScrollToTop />
       <input type='checkbox' id='side-menu' className='drawer-toggle' ref={$hamburger} />
@@ -35,12 +39,12 @@ const App = (): JSX.Element => {
         <section className='main pt-16'>
           <Routes>
             <Route path='*' element={<Error />} />
-            <Route path='/' element={<Index />} />
+            {/* <Route path='/' element={<Index />} />
             <Route path='/product/:id' element={<Products />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/fashion' element={<Fashion />} />
             <Route path='/accessory' element={<Accessory />} />
-            <Route path='/digital' element={<Digital />} />
+            <Route path='/digital' element={<Digital />} /> */}
           </Routes>
         </section>
         <Footer />
