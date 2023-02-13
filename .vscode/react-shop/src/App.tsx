@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import './App.css'
+// import './App.css'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './assets/css/tailwind.css'
@@ -25,26 +25,23 @@ const App = (): JSX.Element => {
   const closeOverlay = () => {
     $hamburger?.current?.click();
   };
-  useCartLoad();
-
-  return (
-    <div> aaa </div>
-  )
+  // useCartLoad();
 
   return (
     <BrowserRouter>
       <ScrollToTop />
       <input type='checkbox' id='side-menu' className='drawer-toggle' ref={$hamburger} />
       <section className='drawer-content'>
+        <Nav></Nav>
         <section className='main pt-16'>
           <Routes>
             <Route path='*' element={<Error />} />
-            {/* <Route path='/' element={<Index />} />
+            <Route path='/' element={<Index />} />
             <Route path='/product/:id' element={<Products />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/fashion' element={<Fashion />} />
             <Route path='/accessory' element={<Accessory />} />
-            <Route path='/digital' element={<Digital />} /> */}
+            <Route path='/digital' element={<Digital />} />
           </Routes>
         </section>
         <Footer />
