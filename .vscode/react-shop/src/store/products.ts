@@ -1,4 +1,5 @@
 import {selector} from 'recoil';
+import Products from '../views/Products';
 
 const productsURL = 'https://fakestoreapi.com/products';
 
@@ -22,6 +23,7 @@ export const productsList = selector<Product[]>({
   get: async () => {
     try{
       const response = await fetch(productsURL);
+      console.log(response)
       return (await response.json()) || [];
     } catch (error){
       console.log(`Error: \n${error}`); 

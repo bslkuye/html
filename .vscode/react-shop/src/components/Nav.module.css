@@ -28,6 +28,8 @@
   width: auto;
   flex: none;
   cursor: default;
+  display: flex;
+  align-items: center;
 }
 
 .hamburgerBtn{
@@ -46,11 +48,13 @@
 
 .titleText{
   --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity));
+  color: white;
   font-weight: 700;
   font-size: 1.125rem;
   line-height: 1.75rem;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
 }
 
 .swap {
@@ -121,6 +125,8 @@
   border-color: transparent;
   background-color: transparent;
   color: currentColor;
+  align-items: center;
+  display: flex;
 }
 
 .sideBox{

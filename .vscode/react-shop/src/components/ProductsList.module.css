@@ -17,16 +17,14 @@
 .productsImg{
   max-width: 50%;
   max-height: 50%;
-  transition-duration: .3s;
-  transition-property: transform;
+  transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(.4,0,.2,1);
 }
 
 .products:hover > .productsFigure > .productsImg{
-  max-width: 70%;
-  max-height: 70%;
-  transition-duration: .3s;
-  transition-property: transform;
+  max-width: 60%;
+  max-height: 60%;
+  transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(.4,0,.2,1);
 }
 
