@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { toCurrencyFormat } from '../helpers/helpers';
 import type { Product } from "../store/products";
 import ProductsLoad from './ProductsLoad';
+import styles from './ProductsList.module.css'
 
 const ProductsList = ({ products, limit }: { products: Product[]; limit: number }): JSX.Element => {
   return (
@@ -9,9 +10,9 @@ const ProductsList = ({ products, limit }: { products: Product[]; limit: number 
       {0 < products.length ? (
         products.slice(0, limit).map((products: Product) => {
           return (
-            <Link to={`/product/${products.id}`} key={products.id} className='card card-bordered border-gray200'>
-              <figure className="flex h-80 bg-white overflow-hidden">
-                <img src={products.image} alt='상품 이미지' className='transition-transform duration-300' />
+            <Link to={`/product/${products.id}`} key={products.id} className={styles.products}>
+              <figure className={styles.productsFigure}>
+                <img src={products.image} alt='상품 이미지' className={styles.productsImg} />
               </figure>
               <div className="card-body bg-gray-100 dark:bg-gray-700">
                 <p className="card-title text-base">{products.title}</p>

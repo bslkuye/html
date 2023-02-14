@@ -1,0 +1,50 @@
+.carouselSlider{
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+}
+
+.carouselDescription{
+  display: block;
+  position: absolute;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  text-align: left;
+  margin-bottom: 2.5rem;
+  bottom: 33%;
+  right: auto;
+  left: auto;
+  color: white;
+}
+
+.carouselTitle{
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.carouselText{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.carouselBtn{
+  display: inline-flex;
+  height: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  min-height: 3rem;
+  font-size: .875rem;
+  margin-top: 0.75rem;
+  cursor: pointer;
+  background-color: gray;
+  border-radius: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.carouselBtn::after{
+  margin-left: 0.5rem;
+  content: ' →';
+}

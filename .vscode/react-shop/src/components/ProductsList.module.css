@@ -1,0 +1,30 @@
+.products{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.productsFigure{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20rem;
+}
+
+.productsImg{
+  max-width: 50%;
+  max-height: 50%;
+  transition-duration: .3s;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+}
+
+.products:hover > .productsFigure > .productsImg{
+  max-width: 70%;
+  max-height: 70%;
+  transition-duration: .3s;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+}
