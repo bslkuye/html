@@ -29,8 +29,20 @@ const Slider = () => {
 
   return(
     <div>
-      carousel
-      {/* <Carousel autoPlay showThumbs=(false) interval=(6000) showStatus=(false) infiniteLoop=(true) className='carousel'> */}
+      <Carousel autoPlay showArrows={true} interval={6000} showStatus={false} infiniteLoop={true} className='carousel'>
+        {items.map((item: sliderItem, index: number) => {
+          return(
+            <div key={item.name} className='carousel-slider'>
+              <div className='carousel-description'>
+                <h2 className='carousel-title'>{item.title}</h2>
+                <p className='carousel-text'>{item.text}</p>
+                <a className='carousel-button'>바로가기</a>
+              </div>
+              <img src='../assets/img/img_shop_digital.jpeg' alt={item.name}></img>
+            </div>
+          )
+        })}
+      </Carousel>    
     </div>
   )
 }
