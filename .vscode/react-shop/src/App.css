@@ -39,3 +39,14 @@
 .read-the-docs {
   color: #888;
 } */
+
+input{
+  font-family: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+}

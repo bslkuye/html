@@ -1,4 +1,5 @@
 import { Category } from '../constants/category';
+import styles from './Breadcrumb.module.css'
 
 type BreadCrumbs = {
   category?: string;
@@ -12,7 +13,7 @@ const defaultProps = {
 
 const BreadCrumb = ({ category, crumb }: BreadCrumbs): JSX.Element => {
   return(
-    <div className="text-sm breadcrumbs">
+    <div className={styles.breadcrumbs}>
       <ul>
         <li>{!!Category[category] ? Category[category] : category}</li>
         <li>{crumb}</li>
