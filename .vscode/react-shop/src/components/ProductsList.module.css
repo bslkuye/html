@@ -7,6 +7,7 @@
 }
 
 .productsFigure{
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,4 +28,16 @@
   transition-duration: .3s;
   transition-property: transform;
   transition-timing-function: cubic-bezier(.4,0,.2,1);
+}
+
+.cardBody{
+  padding: 2rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 0.5rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
 }

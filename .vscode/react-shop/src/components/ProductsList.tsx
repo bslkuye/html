@@ -14,7 +14,7 @@ const ProductsList = ({ products, limit }: { products: Product[]; limit: number 
               <figure className={styles.productsFigure}>
                 <img src={products.image} alt='상품 이미지' className={styles.productsImg} />
               </figure>
-              <div className="card-body bg-gray-100 dark:bg-gray-700">
+              <div className={styles.cardBody}>
                 <p className="card-title text-base">{products.title}</p>
                 <p className="text-base">{toCurrencyFormat(products.price)}</p>
               </div>
