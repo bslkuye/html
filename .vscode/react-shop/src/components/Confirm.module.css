@@ -38,6 +38,7 @@
 }
 
 .modalBox{
+  visibility: hidden;
   transition-property: color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-text-decoration-color,-webkit-backdrop-filter;
     transition-duration: .2s;
     transition-timing-function: cubic-bezier(.4,0,.2,1);

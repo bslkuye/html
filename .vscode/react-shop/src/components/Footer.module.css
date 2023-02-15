@@ -1,5 +1,6 @@
 /* p-10 footer bg-base-200 text-base-content footer-center */
 .footerContainer{
+  width: 100%;
   --tw-text-opacity: 1;
   color: hsl(var(--bc) / var(--tw-text-opacity));
   padding: 2.5rem;
