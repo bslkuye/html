@@ -22,6 +22,8 @@ const CartList = ({ data }: Item): JSX.Element => {
     setCart({...cart, [id]: { id: id, count : (cart[id].count || 0) + 1 }})
   }
 
+  addToCartHandler(1);
+
   return(
     <div className='lg:flex lg:items-center mt-4 px-2 lg:px-0'>
       <Link to={`/products/${data.id}`}>

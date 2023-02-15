@@ -72,6 +72,11 @@ const ProductsView = () => {
           <div className={styles.ratingBox}>
             <Rating rate={products[0].rating.rate} count={products[0].rating.count}/>
           </div>
+          <p className={styles.price}>${products[0].price}</p>
+          <div>
+          <button className={styles.cartIn}>장바구니에 담기</button>
+            <a className={styles.cartBtn} href="/cart">장바구니로 이동</a> 
+          </div>
         </div>
 
       </div>
