@@ -19,7 +19,6 @@ const Nav = () => {
 
   const themeChange = (event: any) => {
     if (event.target.checked) {
-      console.log('checked')
       setLight();
     }
   };

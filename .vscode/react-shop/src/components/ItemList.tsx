@@ -20,6 +20,7 @@ const defaultProps = {
 const ItemList = ({ title, limit, scroll }: Items): JSX.Element => {
   const ProductsList = React.lazy(() => import('./ProductsList'));
   const ProductsLoadable = useRecoilValueLoadable<Product[]>(productsList);
+  console.log(ProductsLoadable, '1')
   let products: Product[] = 'hasValue' === ProductsLoadable.state ? ProductsLoadable.contents : [];
   switch (title){
     case '패션':
