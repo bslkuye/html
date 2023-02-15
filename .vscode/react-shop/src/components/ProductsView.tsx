@@ -38,7 +38,6 @@ const ProductsView = () => {
 
   let products: Product[] = 'hasValue' === ProductsLoadable.state ? ProductsLoadable.contents : [];
   products = products.filter((item) => item.id.toString() === params);
-  console.log(products)
   let category = ''
   switch (products[0].category){
     case "men's clothing":
@@ -73,8 +72,6 @@ const ProductsView = () => {
           <div className={styles.ratingBox}>
             <Rating rate={products[0].rating.rate} count={products[0].rating.count}/>
           </div>
-          
-          
         </div>
 
       </div>

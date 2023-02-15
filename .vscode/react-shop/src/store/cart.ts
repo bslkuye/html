@@ -81,6 +81,8 @@ export const addToCart = (cart: CartState, id: number) => {
   return { ...cart, [id]: { id: { id, count: cartState[id].count }}};
 };
 
+
+
 export const removeFromCart = (cart: CartState, id: number) => {
   const tempCart = { ...cart };
   if(tempCart[id].count === 1){
