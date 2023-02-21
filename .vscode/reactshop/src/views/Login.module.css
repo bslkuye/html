@@ -1,0 +1,47 @@
+.loginBox{
+  margin: 0 auto;
+  margin-bottom: 100px;
+  margin-top: 100px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  height: 300px;
+  width: 400px;
+  align-items: center;
+  align-content: center;
+}
+
+.login{
+  margin: 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+}
+
+.gap{
+  height: 50px;
+}
+
+.loginTextBox{
+  margin: 4px;
+}
+
+.loginText{
+  margin-right: 4px;
+  width: 50px;
+}
+
+.siteTitle{
+  margin: 4px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.input{
+  border: 1px solid black;
+}
+
+.loginCheckBox{
+  display: flex;
+  gap: 4px;
+}

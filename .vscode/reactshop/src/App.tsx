@@ -16,6 +16,8 @@ import { ScrollToTop } from './helpers/helpers';
 import { useRef } from 'react';
 import { useCartLoad } from './composables/useCartLoad';
 
+import Longin from './views/Login';
+
 const App = (): JSX.Element => {
   const $hamburger = useRef<HTMLInputElement>(null);
   const closeOverlay = () => {
@@ -31,6 +33,7 @@ const App = (): JSX.Element => {
         <section className='main pt-16'>
           <Routes>
             <Route path='*' element={<Error />} />
+            <Route path='/login' element={<Longin />} />
             <Route path='/' element={<Index />} />
             <Route path='/product/:id' element={<Products />} />
             <Route path='/cart' element={<Cart />} />
