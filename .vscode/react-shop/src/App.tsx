@@ -33,7 +33,7 @@ const App = (): JSX.Element => {
       <input type='checkbox' id='side-menu' className='drawer-toggle' ref={$hamburger} />
       <section className='drawer-content'>
         <Nav></Nav>
-        <section className='main pt-16'>
+        <section className='main'>
           <Routes>
             <Route path='*' element={<Error />} />
             <Route path='/' element={<Index />} />

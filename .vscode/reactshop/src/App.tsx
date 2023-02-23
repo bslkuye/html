@@ -17,6 +17,10 @@ import { useRef } from 'react';
 import { useCartLoad } from './composables/useCartLoad';
 
 import Longin from './views/Login';
+import MainPage from './views/MainPage';
+import MyPage from './views/MyPage';
+import Category1 from './views/Category';
+import Page from './views/Page';
 
 const App = (): JSX.Element => {
   const $hamburger = useRef<HTMLInputElement>(null);
@@ -30,10 +34,14 @@ const App = (): JSX.Element => {
       <input type='checkbox' id='side-menu' className='drawer-toggle' ref={$hamburger} />
       <section className='drawer-content'>
         <Nav />
-        <section className='main pt-16'>
+        <section className='main flex'>
           <Routes>
             <Route path='*' element={<Error />} />
             <Route path='/login' element={<Longin />} />
+            <Route path='/main' element={<MainPage />} />
+            <Route path='/my' element={<MyPage />} />
+            <Route path='/category1' element={<Category1 />} />
+            <Route path='/page' element={<Page />} />
             <Route path='/' element={<Index />} />
             <Route path='/product/:id' element={<Products />} />
             <Route path='/cart' element={<Cart />} />

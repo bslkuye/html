@@ -2,14 +2,20 @@
   margin: 0 auto;
   margin-bottom: 100px;
   margin-top: 100px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  /* border: 1px solid rgba(0, 0, 0, 0.3); */
   height: 300px;
   width: 400px;
   align-items: center;
   align-content: center;
 }
 
+.table{
+  margin: 0 auto;
+}
+
 .login{
+  /* display: flex;
+  justify-content: center; */
   margin: 0 auto;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 8px;
@@ -18,8 +24,20 @@
   align-content: center;
 }
 
+.tdBox{
+  text-align: right;
+  width: 75px;
+}
+
 .gap{
   height: 50px;
+}
+
+.loginBtn{
+  margin-left: 4px;
+  height: 52px;
+  border: 1px solid black;
+  border-radius: 4px;
 }
 
 .loginTextBox{
@@ -28,7 +46,6 @@
 
 .loginText{
   margin-right: 4px;
-  width: 50px;
 }
 
 .siteTitle{
@@ -41,7 +58,7 @@
   border: 1px solid black;
 }
 
-.loginCheckBox{
-  display: flex;
-  gap: 4px;
+.btn{
+  border: 1px solid black;
+  border-radius: 4px;
 }
