@@ -20,35 +20,44 @@ const Category1 = (): JSX.Element => {
           <tr className="h-80 flex gap-2 m-2">
             <td className="w-full border-2">
               <div className="border-2">카테고리 1</div>
-              <tr className='border-b-2'>
-                <td className='pr-3'>순서</td>
-                <td className='w-10/12'>제목</td>
-                <td className='pr-2'>추천</td>
-                <td >조회</td>
+              <tr className='border-b-2 flex'>
+                <td className='pr-3 w-[46px]'>순서</td>
+                <td className='pr-3 w-[100px]'>작성자</td>
+                <td className='grow'>제목</td>
+                <td className='pr-3 w-[46px]'>추천</td>
+                <td className='pr-3 w-[46px]'>조회</td>
               </tr>
-              <tr className='border-b-2'>
-                <td className='pr-3'>1</td>
-                <td className='w-10/12'>title1 -----</td>
-                <td className='pr-2'>20</td>
-                <td >140</td>
+              <tr className='border-b-2 flex'>
+                <td className='pr-3 w-[46px]'>1</td>
+                <td className='pr-3 w-[100px]'>작성자</td>
+                <td className='grow'>
+                  <Link to="/page">
+                    title1 -----
+                  </Link>
+                </td>
+                <td className='pr-3 w-[46px]'>20</td>
+                <td className='pr-3 w-[46px]'>140</td>
               </tr>
-              <tr className='border-b-2'>
-                <td className='pr-3'>2</td>
-                <td className='w-10/12'>title2 -----</td>
-                <td className='pr-2'>23</td>
-                <td >214</td>
+              <tr className='border-b-2 flex'>
+                <td className='pr-3 w-[46px]'>2</td>
+                <td className='pr-3 w-[100px]'>작성자</td>
+                <td className='grow'>title2 -----</td>
+                <td className='pr-3 w-[46px]'>23</td>
+                <td className='pr-3 w-[46px]'>214</td>
               </tr>
-              <tr className='border-b-2'>
-                <td className='pr-3'>3</td>
-                <td className='w-10/12'>title3 -----</td>
-                <td className='pr-2'>41</td>
-                <td >123</td>
+              <tr className='border-b-2 flex'>
+                <td className='pr-3 w-[46px]'>3</td>
+                <td className='pr-3 w-[100px]'>작성자</td>
+                <td className='grow'>title3 -----</td>
+                <td className='pr-3 w-[46px]'>41</td>
+                <td className='pr-3 w-[46px]'>123</td>
               </tr>
-              <tr className='border-b-2'>
-                <td className='pr-3'>4</td>
-                <td className='w-10/12'>title4 -----</td>
-                <td className='pr-2'>12</td>
-                <td >52</td>
+              <tr className='border-b-2 flex'>
+                <td className='pr-3 w-[46px]'>4</td>
+                <td className='pr-3 w-[100px]'>작성자</td>
+                <td className='grow'>title4 -----</td>
+                <td className='pr-3 w-[46px]'>12</td>
+                <td className='pr-3 w-[46px]'>52</td>
               </tr>
             </td>
           </tr>

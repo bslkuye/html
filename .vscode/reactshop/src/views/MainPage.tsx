@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const MainPage = (): JSX.Element => {
   return (
     <>
-      <div className='w-48 border-2 h-screen inline'>
+      <div className='w-48 border-2 h-screen inline min-w-[200px]'>
         <div className='m-1'>
           <Link to='category1'>카테고리1</Link>
         </div>
