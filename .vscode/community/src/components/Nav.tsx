@@ -1,8 +1,5 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
-import { cartCount } from '../store/cart';
-// import Search from './Search';
 import styles from './Nav.module.css'
 
 const Nav = () => {
@@ -12,7 +9,6 @@ const Nav = () => {
     { name: 'digital', title: '디지털' },
   ];
 
-  const count = useRecoilValue(cartCount);
   const $html = document.querySelector('html');
   const themeLight = 'light';
   const themeDark = 'dark';
@@ -55,7 +51,7 @@ const Nav = () => {
           </svg>
         </label>
         <h1 className='shrink-0 flex md:flex-none flex-1 mx-1 sm:mx-2'>
-          <Link to='/main' className='text-4xl text-lg text-gray-700 dark:text-white font-bold whitespace-nowrap'>
+          <Link to='/' className='text-4xl text-lg text-gray-700 dark:text-white font-bold whitespace-nowrap'>
             Site Title
           </Link>
         </h1>

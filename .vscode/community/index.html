@@ -9,30 +9,6 @@
     <title>React Shop</title>
   </head>
   <body>
-    <script defer src="/__/firebase/9.17.1/firebase-app.js"></script>
-    <script defer src="/__/firebase/9.17.1/firebase-auth.js"></script>
-    <script defer src="/__/firebase/9.17.1/firebase-firestore.js"></script>
-    <script defer src="/__/firebase/9.17.1/firebase-storage.js"></script>
-
-    <script>
-      const firebaseConfig = {
-        apiKey: "AIzaSyD23EBXE9RM36uHUqHetRxnVDlAsTA-Ew4",
-        authDomain: "sblueproject-community.firebaseapp.com",
-        projectId: "sblueproject-community",
-        storageBucket: "sblueproject-community.appspot.com",
-        messagingSenderId: "757072864776",
-        appId: "1:757072864776:web:42b9e6a189bed6c7eb93bd",
-        measurementId: "G-QSJQLGLB2V"
-      };
-    </script>
-
-    <script>
-      const db = firebase.firestore();
-      db.collection('product').get().then((snapshot) => {
-        console.log(snapshot)
-      })
-    </script>
-
     <main id="app" class="drawer"></main>
     <script type="module" src="/src/main.tsx"></script>
   </body>
