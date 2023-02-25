@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { cartCount } from '../store/cart';
-import Search from './Search';
+// import Search from './Search';
 import styles from './Nav.module.css'
 
 const Nav = () => {
@@ -65,10 +65,10 @@ const Nav = () => {
         <Link to='category3' className='text-gray-700 ml-4'>인기 카테고리3</Link>
       </div>
         <div className={styles.login}>
-            <Link to='login'>로그아웃
+            <Link to='/login'>로그아웃
             </Link>
           <div></div>
-          <span>마이페이지</span>
+          <Link to='/my'>마이페이지</Link>
         </div>
     </div>
   );
