@@ -1,20 +1,10 @@
-import styles from './MainPage.module.css'
 import { Link } from 'react-router-dom';
+import CategoryList from '../components/CategoryList';
 
 const Category1 = (): JSX.Element => {
   return (
     <>
-      <div className="w-48 border-2 h-screen inline">
-        <div className="m-1">
-          <Link to="category1">카테고리1</Link>
-        </div>
-        <div className="m-1">
-          <Link to="category2">카테고리2</Link>
-        </div>
-        <div className="m-1">
-          <Link to="category3">카테고리3</Link>
-        </div>
-      </div>
+      <CategoryList />
       <div className="w-full">
         <table className="w-full">
           <tr className="h-80 flex gap-2 m-2">

@@ -1,43 +1,62 @@
-import styles from './MainPage.module.css'
 import { Link, useParams } from 'react-router-dom';
+import CategoryList from '../components/CategoryList';
+import axios from 'axios';
+import { productsList } from '../components/products';
 
 const Page = (): JSX.Element => {
+
+  console.log('prod', productsList)
+
+  const dataURL = 'https://sblueproject-community-default-rtdb.firebaseio.com/';
+
+  interface Category {
+    id: number;
+    title: string;
+    user: string;
+    description: string;
+  }
+  
+  fetch('https://sblueproject-community-default-rtdb.firebaseio.com/category.json')
+    .then(response => response.json())
+    .then((data: { [key: string]: Category }) => {
+      const categories: Category[] = Object.values(data);
+      console.log('category',categories);
+      const titles: string[] = Object.keys(data).map(key => data[key].title);
+      console.log('titles', titles);
+    })
+    .catch((error: Error) => console.error(error));
+
+
   return (
     <>
-      <div className="w-48 border-2 h-screen inline">
-        <div className="m-1">
-          <Link to="category1">카테고리1</Link>
-        </div>
-        <div className="m-1">
-          <Link to="category2">카테고리2</Link>
-        </div>
-        <div className="m-1">
-          <Link to="category3">카테고리3</Link>
-        </div>
-      </div>
-      <div className="w-full">
-        
-      <table className="w-full">
-          <tr className="h-96 flex gap-2 m-2">
-            <td className="w-full border-2">
+      <CategoryList />
+      <div className="w-full m-2">
+        <div className="w-full border-2 p-2 min-h-[400px]">
+          <table className="h-16 flex">
+            <td className="w-full">
               <div className="border-2 text-2xl">게시글 제목</div>
-              <tr className='border-b-2 flex'>
+              <td className='border-b-2 flex'>
                 <td className='grow	'>작성자</td>
                 <td className='pr-2'>15</td>
                 <td className='ml-2 border-2'>추천</td>
-              </tr>
-              <tr>게시글 내용 -----</tr>
-              <tr>게시글 내용 -----</tr>
-              <tr>게시글 내용 -----</tr>
-              <tr>게시글 내용 -----</tr>
-              <tr>게시글 내용 -----</tr>
-              
+              </td>
             </td>
-          </tr>
-        </table>
+          </table>
+          <div className='m-2'>
+            <span>
+              text 글 내용 내용
+              <br />
+              내용
+              <br />
+              000
+              <br />
+              ㅅㄷㅌㅅ
+            </span>
+          </div>
+        </div>
 
-        <table className="w-full">
-          <tr className="h-96 flex gap-2 m-2">
+        <table className="w-full mt-2">
+          <tr className="h-96 flex gap-2">
             <td className="w-full border-2">
               <div className="border-2">댓글</div>
               <tr className='border-b-2 flex'>
@@ -52,10 +71,9 @@ const Page = (): JSX.Element => {
                 </td>
                 <td className='pr-2'>2</td>
                 <button className='border-2'>추천</button>
-
               </tr>
 
-              <tr className='border-b-2 flex bg-slate-400'>
+              <tr className='border-b-2 flex bg-[#d3d3d3]'>
                 <td className='pr-2'>→ 대댓</td>
                 <td className='pr-2 grow'>ㅁㅂㅅㅇ</td>
                 <td className='pr-2'>3</td>

@@ -19,7 +19,6 @@ const App = (): JSX.Element => {
   };
   return (
     <BrowserRouter>
-      <input type='checkbox' id='side-menu' className='drawer-toggle' ref={$hamburger} />
       <section className='drawer-content w-[900px]'>
         <Nav />
         <section className='main flex'>
