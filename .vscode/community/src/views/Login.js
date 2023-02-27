@@ -1,9 +1,9 @@
 // import ItemList from '../components/ItemList';
 // import BreadCrumb from '../components/Breadcrumb';
 
-import styles from './Login.module.css'
+import styles from "./Login.module.css";
 
-const Longin = (): JSX.Element => {
+const Longin = () => {
   return (
     <section className={styles.loginBox}>
       <a className={styles.siteTitle}>Site Title</a>
@@ -19,7 +19,7 @@ const Longin = (): JSX.Element => {
               <input className={styles.input}></input>
             </td>
             <td rowSpan={2}>
-              <button  className={styles.loginBtn}>로그인</button>
+              <button className={styles.loginBtn}>로그인</button>
             </td>
           </tr>
           <tr>
