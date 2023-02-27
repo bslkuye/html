@@ -3,12 +3,6 @@ import { Link } from 'react-router-dom';
 import styles from './Nav.module.css'
 
 const Nav = () => {
-  const menus = [
-    { name: 'fashion', title: '패션' },
-    { name: 'accessory', title: '액세서리' },
-    { name: 'digital', title: '디지털' },
-  ];
-
   const $html = document.querySelector('html');
   const themeLight = 'light';
   const themeDark = 'dark';
