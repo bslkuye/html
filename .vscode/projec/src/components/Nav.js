@@ -12,13 +12,13 @@ const Nav = () => {
           </Link>
         </h1>
 
-        <Link to="category1" className="text-gray-700 ml-4">
+        <Link to="category1" className={styles.categoryTitle}>
           인기 카테고리1
         </Link>
-        <Link to="category2" className="text-gray-700 ml-4">
+        <Link to="category2" className={styles.categoryTitle}>
           인기 카테고리2
         </Link>
-        <Link to="category3" className="text-gray-700 ml-4">
+        <Link to="category3" className={styles.categoryTitle}>
           인기 카테고리3
         </Link>
       </div>

@@ -51,4 +51,8 @@
   line-height: 1.75rem;
 }
 
+.categoryTitle{
+  margin-left: 1rem;
+  color: rgb(55 65 81);
+}
 /* "border-b-2 z-10 w-full navbar border-solid bg-white dark:bg-neutral text-neutral-content" */

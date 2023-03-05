@@ -1,0 +1,10 @@
+.categoryBox{
+  border-width: 2px;
+  width: 12rem;
+  height: 100vh;
+  display: inline;
+}
+
+.categoryTitle{
+  margin: 0.25rem;
+}

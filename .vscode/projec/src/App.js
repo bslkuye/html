@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import "./assets/css/tailwind.css";
+// import "./assets/css/style.css";
 
-function App() {
+import Nav from "./components/Nav";
+import Error from "./views/Error";
+import { useRef } from "react";
+
+import Longin from "./views/Login";
+import MainPage from "./views/MainPage";
+import MyPage from "./views/MyPage";
+import Category1 from "./views/Category";
+import Page from "./views/Page";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <section className="drawer-content w-[900px]">
+        <Nav />
+        <section className="main flex">
+          <Routes>
+            <Route path="*" element={<Error />} />
+            <Route path="/login" element={<Longin />} />
+            <Route path="/" element={<MainPage />} />
+            <Route path="/my" element={<MyPage />} />
+            <Route path="/category1" element={<Category1 />} />
+            <Route path="/page" element={<Page />} />
+          </Routes>
+        </section>
+      </section>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
