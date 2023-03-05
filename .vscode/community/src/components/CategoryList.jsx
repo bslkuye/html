@@ -1,62 +1,51 @@
 import { Link } from "react-router-dom";
 import React from "react";
-import { productsList } from "./products";
-// import firebase from "firebase/app";
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// import type { FirebaseApp } from "firebase/app";
-import "firebase/auth";
-import "firebase/firestore";
-import "firebase/database";
 
 const CategoryList = () => {
-  console.log(productsList);
+  // const firebaseConfig = {
+  //   apiKey: "AIzaSyD23EBXE9RM36uHUqHetRxnVDlAsTA-Ew4",
+  //   authDomain: "sblueproject-community.firebaseapp.com",
+  //   databaseURL: "https://sblueproject-community-default-rtdb.firebaseio.com",
+  //   projectId: "sblueproject-community",
+  //   storageBucket: "sblueproject-community.appspot.com",
+  //   messagingSenderId: "757072864776",
+  //   appId: "1:757072864776:web:42b9e6a189bed6c7eb93bd",
+  //   measurementId: "G-QSJQLGLB2V",
+  // };
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyD23EBXE9RM36uHUqHetRxnVDlAsTA-Ew4",
-    authDomain: "sblueproject-community.firebaseapp.com",
-    databaseURL: "https://sblueproject-community-default-rtdb.firebaseio.com",
-    projectId: "sblueproject-community",
-    storageBucket: "sblueproject-community.appspot.com",
-    messagingSenderId: "757072864776",
-    appId: "1:757072864776:web:42b9e6a189bed6c7eb93bd",
-    measurementId: "G-QSJQLGLB2V",
-  };
+  // firebase.initializeApp(firebaseConfig);
 
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  // const databaseRef = firebase.database().ref();
+  // databaseRef.once("value").then((snapshot) => {
+  //   const data = snapshot.val();
+  //   console.log(data);
+  // });npx create-react-app 파일명
 
-  firebase.initializeApp(firebaseConfig);
+  // const app = initializeApp(firebaseConfig);
+  // const analytics = getAnalytics(app);
 
-  // interface Category {
-  //   like: number;
-  //   text: string[];
-  //   time: string;
-  //   title: string;
-  //   user: string;
-  //   comment?: {
-  //     like: number;
-  //     text: string;
-  //     time: string;
-  //     user: string;
-  //   }[];
-  // }
+  // const db = firebase.database().ref("category").limitToLast(10);
+  // db.once("index", (snapshot) => {
+  //   snapshot.val();
+  // });
 
-  // interface Data {
-  //   category1: Category[];
-  // }
+  // const [data, setData] = useState(null);
 
-  const db = firebase.database().ref("category").limitToLast(10);
-  db.once("index", (snapshot) => {
-    snapshot.val();
-  });
+  // useEffect(() => {
+  //   const databaseRef = firebase.database().ref();
+  //   databaseRef.once("value").then((snapshot) => {
+  //     const data = snapshot.val();
+  //     console.log("data", data);
+  //     setData(data);
+  //   });
+  // }, []);
 
-  const ref = firebase.database().ref("category");
-  ref.once("value", (snapshot) => {
-    const data = snapshot.val();
-    const titles = data.category1.map((category) => category.title);
-    console.log(titles);
-  });
+  // const ref = firebase.database().ref("category");
+  // ref.once("value", (snapshot) => {
+  //   const data = snapshot.val();
+  //   const titles = data.category1.map((category) => category.title);
+  //   console.log(titles);
+  // });
 
   // const dataURL = 'https://sblueproject-community-default-rtdb.firebaseio.com/category';
 
