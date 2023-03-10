@@ -3,7 +3,7 @@ const space = document.querySelector(".space");
 const astro = document.querySelector(".characters");
 const ctx = canvas[0].getContext("2d");
 
-const leng = 2000;
+const leng = 4000;
 document.documentElement.style.setProperty("--width", leng + "px");
 
 /** [x_position, y_position, x_speed, y_speed, deg, spin] */
@@ -49,8 +49,6 @@ function check() {
           obj_info = checkArr;
         }
       }
-    }
-    // obj_info = checkArr.map((v) => [...v]);
   }
 }
 

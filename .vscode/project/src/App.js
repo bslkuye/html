@@ -1,6 +1,6 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./assets/css/tailwind.css";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import "./assets/css/style.css";
+import React from "react";
 
 import Nav from "./components/Nav";
 import Error from "./views/Error";
@@ -10,13 +10,13 @@ import MainPage from "./views/MainPage";
 import MyPage from "./views/MyPage";
 import Category1 from "./views/Category";
 import Page from "./views/Page";
-
+import styles from "./App.module.css";
 const App = () => {
   return (
-    <BrowserRouter>
-      <section className="drawer-content w-[900px]">
+    <HashRouter>
+      <section className={styles.drawer}>
         <Nav />
-        <section className="main flex">
+        <section className={styles.mainBox}>
           <Routes>
             <Route path="*" element={<Error />} />
             <Route path="/login" element={<Longin />} />
@@ -27,7 +27,7 @@ const App = () => {
           </Routes>
         </section>
       </section>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 

@@ -1,37 +1,21 @@
 import { Link, useParams } from "react-router-dom";
 import CategoryList from "../components/CategoryList";
 import axios from "axios";
-import { productsList } from "../components/products";
-// import { db } from "../firebase";
-// import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
+import styles from "./Page.module.css";
 
 const Page = () => {
-  // const readDataFromFirestore = async () => {
-  //   try {
-  //     const snapshot = await db.collection("").get();
-  //     const data = snapshot.docs.map((doc) => ({
-  //       id: doc.id,
-  //       ...doc.data(),
-  //     }));
-  //     console.log("data", data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-  // readDataFromFirestore();
-
   return (
     <>
       <CategoryList />
-      <div className="w-full m-2">
-        <div className="w-full border-2 p-2 min-h-[400px]">
-          <table className="h-16 flex">
-            <td className="w-full">
-              <div className="border-2 text-2xl">게시글 제목</div>
-              <td className="border-b-2 flex">
-                <td className="grow	">작성자</td>
-                <td className="pr-2">15</td>
-                <td className="ml-2 border-2">추천</td>
+      <div className={styles.contentBox}>
+        <div className={styles.contentMain}>
+          <table className={styles.contentTitleBox}>
+            <td className={styles.contentTitle}>
+              <div className={styles.contentTitleText}>게시글 제목</div>
+              <td className={styles.contentInfo}>
+                <td className={styles.contentWriter}>작성자</td>
+                <td className={styles.like}>15</td>
+                <td className={styles.likeBtn}>추천</td>
               </td>
             </td>
           </table>

@@ -1,0 +1,44 @@
+.contentBox{
+  width: 100%;
+  margin: 0.5rem;
+}
+
+.contentMain{
+  padding: 0.5rem;
+  border-width: 2px;
+  width: 100%;
+  min-height: 400px;
+}
+
+.contentTitleBox{
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.contentTitle{
+  width: 100%;
+}
+
+.contentTitleText{
+  font-size: 1.5rem;
+  line-height: 2rem;
+  border-width: 2px;
+}
+
+.contentInfo{
+  border-bottom-width: 2px;
+  display: flex;
+}
+
+.contentWriter{
+  flex-grow: 1;
+}
+
+.like{
+  padding-right: 0.5rem;
+}
+
+.likeBtn{
+  border-width: 2px;
+  margin-left: 0.5rem;
+}
