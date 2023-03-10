@@ -49,6 +49,7 @@ function check() {
           obj_info = checkArr;
         }
       }
+    }
   }
 }
 
