@@ -21,30 +21,20 @@ for (let i = 0; i < 9; i++) {
   canvas[i].height = leng;
 }
 let a = 0;
+//* a, b = obj number */
+function collisionMomentum(a, b) {}
 
 function check() {
-  let checkArr = obj_info.map((v) => [...v]);
   for (let i = 0; i < obj_info.length; i++) {
     for (let j = i; j < obj_info.length; j++) {
       if (i != j) {
-        checkArr = obj_info.map((v) => [...v]);
+        let checkArr = obj_info.map((v) => [...v]);
         if (
           (checkArr[i][0] - checkArr[j][0]) ** 2 +
             (checkArr[i][1] - checkArr[j][1]) ** 2 <
           10000
         ) {
-          a =
-            ((checkArr[j][0] - checkArr[i][0]) /
-              (checkArr[j][1] - checkArr[i][1])) *
-            (checkArr[j][3] / checkArr[j][2]);
-          console.log("a", a);
-
-          // checkArr = obj_info.map((v) => [...v]);
           console.log("touch", i, j, obj_info, checkArr);
-          checkArr[i][2] += checkArr[j][2] * a;
-          checkArr[i][3] += checkArr[j][3] * a;
-          checkArr[j][2] -= checkArr[j][2] * a;
-          checkArr[j][3] -= checkArr[j][3] * a;
 
           obj_info = checkArr;
         }
