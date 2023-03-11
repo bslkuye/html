@@ -3,13 +3,13 @@ const space = document.querySelector(".space");
 const astro = document.querySelector(".characters");
 const ctx = canvas[0].getContext("2d");
 
-const leng = 8000;
+const leng = 500;
 document.documentElement.style.setProperty("--width", leng + "px");
 
 /** [x_position, y_position, x_speed, y_speed, deg, spin] */
 let obj_info = [
   [leng / 2, leng / 2, 0.3, 0.1, 0, 0.1],
-  [0, 0, 1, 2, 0, 1],
+  [0, 120, 1, 2, 0, 1],
 ];
 
 let x_position = -leng;
