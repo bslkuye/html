@@ -3,13 +3,13 @@ const space = document.querySelector(".space");
 const astro = document.querySelector(".characters");
 const ctx = canvas[0].getContext("2d");
 
-const leng = 4000;
+const leng = 8000;
 document.documentElement.style.setProperty("--width", leng + "px");
 
 /** [x_position, y_position, x_speed, y_speed, deg, spin] */
 let obj_info = [
-  [leng / 2, leng / 2, 0, 0, 0, 0.1],
-  [0, 0, 6, -6, 0, 1],
+  [leng / 2, leng / 2, 0.3, 0.1, 0, 0.1],
+  [0, 0, 1, 2, 0, 1],
 ];
 
 let x_position = -leng;
@@ -22,21 +22,52 @@ for (let i = 0; i < 9; i++) {
 }
 let a = 0;
 //* a, b = obj number */
-function collisionMomentum(a, b) {}
+function collisionMomentum(a, b) {
+  let saveArr = [];
+  let x = [...obj_info[a]];
+  let y = [...obj_info[b]];
+  console.log(x, y, "x,y");
+  saveArr[0] =
+    (x[2] * (x[1] - y[1]) ** 2 +
+      y[2] * (x[0] - y[0]) ** 2 +
+      (-1 * x[3] + y[3]) * (x[0] - y[0]) * (x[1] - y[1])) /
+    ((x[0] - y[0]) ** 2 + (x[1] - y[1]) ** 2);
+  saveArr[1] =
+    (y[3] * (x[1] - y[1]) ** 2 +
+      x[3] * (x[0] - y[0]) ** 2 +
+      (-1 * x[2] + y[2]) * (x[0] - y[0]) * (x[1] - y[1])) /
+    ((x[0] - y[0]) ** 2 + (x[1] - y[1]) ** 2);
+  y = [...obj_info[a]];
+  x = [...obj_info[b]];
+
+  saveArr[2] =
+    (x[2] * (x[1] - y[1]) ** 2 +
+      y[2] * (x[0] - y[0]) ** 2 +
+      (-1 * x[3] + y[3]) * (x[0] - y[0]) * (x[1] - y[1])) /
+    ((x[0] - y[0]) ** 2 + (x[1] - y[1]) ** 2);
+  saveArr[3] =
+    (y[3] * (x[1] - y[1]) ** 2 +
+      x[3] * (x[0] - y[0]) ** 2 +
+      (-1 * x[2] + y[2]) * (x[0] - y[0]) * (x[1] - y[1])) /
+    ((x[0] - y[0]) ** 2 + (x[1] - y[1]) ** 2);
+  console.log(saveArr, "savearr");
+  obj_info[a][2] = saveArr[0];
+  obj_info[a][3] = saveArr[1];
+  obj_info[b][2] = saveArr[2];
+  obj_info[b][3] = saveArr[3];
+}
 
 function check() {
   for (let i = 0; i < obj_info.length; i++) {
     for (let j = i; j < obj_info.length; j++) {
       if (i != j) {
-        let checkArr = obj_info.map((v) => [...v]);
         if (
-          (checkArr[i][0] - checkArr[j][0]) ** 2 +
-            (checkArr[i][1] - checkArr[j][1]) ** 2 <
+          (obj_info[i][0] - obj_info[j][0]) ** 2 +
+            (obj_info[i][1] - obj_info[j][1]) ** 2 <
           10000
         ) {
-          console.log("touch", i, j, obj_info, checkArr);
-
-          obj_info = checkArr;
+          console.log("touch");
+          collisionMomentum(i, j);
         }
       }
     }
@@ -137,8 +168,8 @@ let x_speed = -2;
 let y_speed = 0;
 
 function astroMove() {
-  x_position += obj_info[0][2];
-  y_position += obj_info[0][3];
+  x_position -= obj_info[0][2];
+  y_position -= obj_info[0][3];
   space.style.setProperty("--x-position", x_position + "px");
   space.style.setProperty("--y-position", y_position + "px");
   obj_info[0][0] = x_position * -1 - leng / 2;
