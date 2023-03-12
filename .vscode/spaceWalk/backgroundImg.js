@@ -3,7 +3,7 @@ const space = document.querySelector(".space");
 const astro = document.querySelector(".characters");
 const ctx = canvas[0].getContext("2d");
 
-const leng = 500;
+const leng = 9000;
 document.documentElement.style.setProperty("--width", leng + "px");
 
 /** [x_position, y_position, x_speed, y_speed, deg, spin] */
@@ -57,6 +57,13 @@ function collisionMomentum(a, b) {
   obj_info[b][3] = saveArr[3];
 }
 
+function torque(a, b) {
+  obj_info[b][5] +=
+    (obj_info[a][2] * (obj_info[a][1] - obj_info[b][1]) -
+      obj_info[a][3] * (obj_info[a][0] - obj_info[b][0])) *
+    0.6;
+}
+
 function check() {
   for (let i = 0; i < obj_info.length; i++) {
     for (let j = i; j < obj_info.length; j++) {
@@ -68,6 +75,16 @@ function check() {
         ) {
           console.log("touch");
           collisionMomentum(i, j);
+          console.log(obj_info, "info");
+        }
+        if (
+          (obj_info[i][0] - obj_info[j][0] - leng) ** 2 +
+            (obj_info[i][1] - obj_info[j][1]) ** 2 <
+          10000
+        ) {
+          console.log("touch");
+          collisionMomentum(i, j);
+          console.log(obj_info, "info");
         }
       }
     }
@@ -161,7 +178,7 @@ let deg = 0;
 
 function astroSpin() {
   astro.style.setProperty("--deg", deg);
-  deg = (deg + spin) % 360;
+  deg = (deg + obj_info[5]) % 360;
 }
 
 let x_speed = -2;
@@ -183,7 +200,7 @@ function objMove() {
   for (let i = 1; i < obj_info.length; i++) {
     obj_info[i][0] += obj_info[i][2];
     obj_info[i][1] += obj_info[i][3];
-    obj_info[i][4] += obj_info[i][5];
+    obj_info[i][4] = (obj_info[i][4] + obj_info[i][5]) % 360;
     objTouch(obj_info[i]);
     for (let j = 0; j < 9; j++) {
       obj[j].style.setProperty("--x-position", obj_info[i][0] + "px");
@@ -199,7 +216,7 @@ setTimeout(() => {
     touchCheck();
     astroMove();
     objMove();
-  }, 16);
+  }, 1000 / 60);
 }, 1000);
 
 /**
