@@ -8,7 +8,7 @@ document.documentElement.style.setProperty("--width", leng + "px");
 
 /** [x_position, y_position, x_speed, y_speed, deg, spin] */
 let obj_info = [
-  [leng / 2, leng / 2, 0.3, 0.1, 0, 0.1],
+  [leng / 2, leng / 2, 0.3, 0.1, 0, 2],
   [0, 120, 1, 2, 0, 1],
 ];
 
@@ -173,16 +173,10 @@ const makeStar = setInterval(() => {
   paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(0, 150, 255)");
 }, 1);
 
-let spin = 0.1;
-let deg = 0;
-
 function astroSpin() {
-  astro.style.setProperty("--deg", deg);
-  deg = (deg + obj_info[5]) % 360;
+  astro.style.setProperty("--deg", obj_info[0][4]);
+  obj_info[0][4] += obj_info[0][5];
 }
-
-let x_speed = -2;
-let y_speed = 0;
 
 function astroMove() {
   x_position -= obj_info[0][2];
@@ -194,6 +188,7 @@ function astroMove() {
   check();
   astroSpin();
 }
+
 const obj = document.querySelectorAll(".object");
 
 function objMove() {
@@ -209,7 +204,9 @@ function objMove() {
     }
   }
 }
+
 console.log(obj_info);
+
 setTimeout(() => {
   clearTimeout(makeStar);
   setInterval(() => {
