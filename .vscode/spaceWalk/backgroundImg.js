@@ -8,7 +8,7 @@ document.documentElement.style.setProperty("--width", leng + "px");
 
 /** [x_position, y_position, x_speed, y_speed, deg, spin] */
 let obj_info = [
-  [leng / 2, leng / 2, 0.3, 0.1, 0, 2],
+  [leng / 2, leng / 2, 0.3, 0.1, 0, 0.2],
   [0, 120, 1, 2, 0, 1],
 ];
 
