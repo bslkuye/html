@@ -3,7 +3,7 @@ const space = document.querySelector(".space");
 const astro = document.querySelector(".characters");
 const ctx = canvas[0].getContext("2d");
 
-const leng = 9000;
+const leng = 200;
 document.documentElement.style.setProperty("--width", leng + "px");
 
 /** [x_position, y_position, x_speed, y_speed, deg, spin] */
@@ -69,6 +69,7 @@ function check() {
     for (let j = i; j < obj_info.length; j++) {
       if (i != j) {
         if (
+          //정상적인 충돌
           (obj_info[i][0] - obj_info[j][0]) ** 2 +
             (obj_info[i][1] - obj_info[j][1]) ** 2 <
           10000
@@ -76,10 +77,55 @@ function check() {
           console.log("touch");
           collisionMomentum(i, j);
           console.log(obj_info, "info");
-        }
-        if (
+        } else if (
+          //x 예외
           (obj_info[i][0] - obj_info[j][0] - leng) ** 2 +
             (obj_info[i][1] - obj_info[j][1]) ** 2 <
+          10000
+        ) {
+          console.log("touch");
+          collisionMomentum(i, j);
+          console.log(obj_info, "info");
+        } else if (
+          //y 예외
+          (obj_info[i][0] - obj_info[j][0]) ** 2 +
+            (obj_info[i][1] - obj_info[j][1] - leng) ** 2 <
+          10000
+        ) {
+          console.log("touch");
+          collisionMomentum(i, j);
+          console.log(obj_info, "info");
+        } else if (
+          //x,y 예외
+          (obj_info[i][0] - obj_info[j][0] - leng) ** 2 +
+            (obj_info[i][1] - obj_info[j][1] - leng) ** 2 <
+          10000
+        ) {
+          console.log("touch");
+          collisionMomentum(i, j);
+          console.log(obj_info, "info");
+        } else if (
+          //x 예외
+          (obj_info[i][0] - obj_info[j][0] + leng) ** 2 +
+            (obj_info[i][1] - obj_info[j][1]) ** 2 <
+          10000
+        ) {
+          console.log("touch");
+          collisionMomentum(i, j);
+          console.log(obj_info, "info");
+        } else if (
+          //y 예외
+          (obj_info[i][0] - obj_info[j][0]) ** 2 +
+            (obj_info[i][1] - obj_info[j][1] + leng) ** 2 <
+          10000
+        ) {
+          console.log("touch");
+          collisionMomentum(i, j);
+          console.log(obj_info, "info");
+        } else if (
+          //x,y 예외
+          (obj_info[i][0] - obj_info[j][0] + leng) ** 2 +
+            (obj_info[i][1] - obj_info[j][1] + leng) ** 2 <
           10000
         ) {
           console.log("touch");
