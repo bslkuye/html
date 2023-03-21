@@ -68,70 +68,92 @@ function check() {
   for (let i = 0; i < obj_info.length; i++) {
     for (let j = i; j < obj_info.length; j++) {
       if (i != j) {
+        let overx =
+          Math.min[
+            (obj_info[i][0] - obj_info[j][0],
+            obj_info[i][0] - obj_info[j][0] - 1000,
+            obj_info[i][0] - obj_info[j][0] + 1000)
+          ];
+        let overy =
+          Math.min[
+            (obj_info[i][1] - obj_info[j][1],
+            obj_info[i][1] - obj_info[j][1] - 1000,
+            obj_info[i][1] - obj_info[j][1] + 1000)
+          ];
+
         if (
           //정상적인 충돌
-          (obj_info[i][0] - obj_info[j][0]) ** 2 +
-            (obj_info[i][1] - obj_info[j][1]) ** 2 <
-          10000
-        ) {
-          console.log("touch");
-          collisionMomentum(i, j);
-          console.log(obj_info, "info");
-        } else if (
-          //x 예외
-          (obj_info[i][0] - obj_info[j][0] - leng) ** 2 +
-            (obj_info[i][1] - obj_info[j][1]) ** 2 <
-          10000
-        ) {
-          console.log("touch");
-          collisionMomentum(i, j);
-          console.log(obj_info, "info");
-        } else if (
-          //y 예외
-          (obj_info[i][0] - obj_info[j][0]) ** 2 +
-            (obj_info[i][1] - obj_info[j][1] - leng) ** 2 <
-          10000
-        ) {
-          console.log("touch");
-          collisionMomentum(i, j);
-          console.log(obj_info, "info");
-        } else if (
-          //x,y 예외
-          (obj_info[i][0] - obj_info[j][0] - leng) ** 2 +
-            (obj_info[i][1] - obj_info[j][1] - leng) ** 2 <
-          10000
-        ) {
-          console.log("touch");
-          collisionMomentum(i, j);
-          console.log(obj_info, "info");
-        } else if (
-          //x 예외
-          (obj_info[i][0] - obj_info[j][0] + leng) ** 2 +
-            (obj_info[i][1] - obj_info[j][1]) ** 2 <
-          10000
-        ) {
-          console.log("touch");
-          collisionMomentum(i, j);
-          console.log(obj_info, "info");
-        } else if (
-          //y 예외
-          (obj_info[i][0] - obj_info[j][0]) ** 2 +
-            (obj_info[i][1] - obj_info[j][1] + leng) ** 2 <
-          10000
-        ) {
-          console.log("touch");
-          collisionMomentum(i, j);
-          console.log(obj_info, "info");
-        } else if (
-          //x,y 예외
-          (obj_info[i][0] - obj_info[j][0] + leng) ** 2 +
-            (obj_info[i][1] - obj_info[j][1] + leng) ** 2 <
+          overx ** 2 + overy ** 2 <
           10000
         ) {
           console.log("touch");
           collisionMomentum(i, j);
           console.log(obj_info, "info");
         }
+        // if (
+        //   //정상적인 충돌
+        //   (obj_info[i][0] - obj_info[j][0]) ** 2 +
+        //     (obj_info[i][1] - obj_info[j][1]) ** 2 <
+        //   10000
+        // ) {
+        //   console.log("touch");
+        //   collisionMomentum(i, j);
+        //   console.log(obj_info, "info");
+        // } else if (
+        //   //x 예외
+        //   (obj_info[i][0] - obj_info[j][0] - leng) ** 2 +
+        //     (obj_info[i][1] - obj_info[j][1]) ** 2 <
+        //   10000
+        // ) {
+        //   console.log("touch");
+        //   collisionMomentum(i, j);
+        //   console.log(obj_info, "info");
+        // } else if (
+        //   //y 예외
+        //   (obj_info[i][0] - obj_info[j][0]) ** 2 +
+        //     (obj_info[i][1] - obj_info[j][1] - leng) ** 2 <
+        //   10000
+        // ) {
+        //   console.log("touch");
+        //   collisionMomentum(i, j);
+        //   console.log(obj_info, "info");
+        // } else if (
+        //   //x,y 예외
+        //   (obj_info[i][0] - obj_info[j][0] - leng) ** 2 +
+        //     (obj_info[i][1] - obj_info[j][1] - leng) ** 2 <
+        //   10000
+        // ) {
+        //   console.log("touch");
+        //   collisionMomentum(i, j);
+        //   console.log(obj_info, "info");
+        // } else if (
+        //   //x 예외
+        //   (obj_info[i][0] - obj_info[j][0] + leng) ** 2 +
+        //     (obj_info[i][1] - obj_info[j][1]) ** 2 <
+        //   10000
+        // ) {
+        //   console.log("touch");
+        //   collisionMomentum(i, j);
+        //   console.log(obj_info, "info");
+        // } else if (
+        //   //y 예외
+        //   (obj_info[i][0] - obj_info[j][0]) ** 2 +
+        //     (obj_info[i][1] - obj_info[j][1] + leng) ** 2 <
+        //   10000
+        // ) {
+        //   console.log("touch");
+        //   collisionMomentum(i, j);
+        //   console.log(obj_info, "info");
+        // } else if (
+        //   //x,y 예외
+        //   (obj_info[i][0] - obj_info[j][0] + leng) ** 2 +
+        //     (obj_info[i][1] - obj_info[j][1] + leng) ** 2 <
+        //   10000
+        // ) {
+        //   console.log("touch");
+        //   collisionMomentum(i, j);
+        //   console.log(obj_info, "info");
+        // }
       }
     }
   }
