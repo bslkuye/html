@@ -3,7 +3,7 @@ const space = document.querySelector(".space");
 const astro = document.querySelector(".characters");
 const ctx = canvas[0].getContext("2d");
 
-const leng = 200;
+const leng = 300;
 document.documentElement.style.setProperty("--width", leng + "px");
 
 /** [x_position, y_position, x_speed, y_speed, deg, spin] */
@@ -16,7 +16,7 @@ let x_position = -leng;
 let y_position = -leng;
 
 for (let i = 0; i < 9; i++) {
-  console.log(i);
+  // console.log(i);
   canvas[i].width = leng;
   canvas[i].height = leng;
 }
@@ -26,7 +26,7 @@ function collisionMomentum(a, b) {
   let saveArr = [];
   let x = [...obj_info[a]];
   let y = [...obj_info[b]];
-  console.log(x, y, "x,y");
+  // console.log(x, y, "x,y");
   saveArr[0] =
     (x[2] * (x[1] - y[1]) ** 2 +
       y[2] * (x[0] - y[0]) ** 2 +
@@ -50,7 +50,7 @@ function collisionMomentum(a, b) {
       x[3] * (x[0] - y[0]) ** 2 +
       (-1 * x[2] + y[2]) * (x[0] - y[0]) * (x[1] - y[1])) /
     ((x[0] - y[0]) ** 2 + (x[1] - y[1]) ** 2);
-  console.log(saveArr, "savearr");
+  // console.log(saveArr, "savearr");
   obj_info[a][2] = saveArr[0];
   obj_info[a][3] = saveArr[1];
   obj_info[b][2] = saveArr[2];
@@ -64,31 +64,29 @@ function torque(a, b) {
     0.6;
 }
 
+let overx;
+let overy;
+
 function check() {
   for (let i = 0; i < obj_info.length; i++) {
     for (let j = i; j < obj_info.length; j++) {
       if (i != j) {
-        let overx =
-          Math.min[
-            (obj_info[i][0] - obj_info[j][0],
-            obj_info[i][0] - obj_info[j][0] - 1000,
-            obj_info[i][0] - obj_info[j][0] + 1000)
-          ];
-        let overy =
-          Math.min[
-            (obj_info[i][1] - obj_info[j][1],
-            obj_info[i][1] - obj_info[j][1] - 1000,
-            obj_info[i][1] - obj_info[j][1] + 1000)
-          ];
+        // 지금 두 번 연산됨
+        overx = Math.min(
+          (obj_info[i][0] - obj_info[j][0]) ** 2,
+          (obj_info[i][0] - obj_info[j][0] - 1000) ** 2,
+          (obj_info[i][0] - obj_info[j][0] + 1000) ** 2
+        );
+        overy = Math.min(
+          (obj_info[i][1] - obj_info[j][1]) ** 2,
+          (obj_info[i][1] - obj_info[j][1] - 1000) ** 2,
+          (obj_info[i][1] - obj_info[j][1] + 1000) ** 2
+        );
 
-        if (
-          //정상적인 충돌
-          overx ** 2 + overy ** 2 <
-          10000
-        ) {
-          console.log("touch");
+        if (overx + overy <= 10000) {
+          // console.log("touch");
           collisionMomentum(i, j);
-          console.log(obj_info, "info");
+          // console.log(obj_info, "info");
         }
         // if (
         //   //정상적인 충돌
