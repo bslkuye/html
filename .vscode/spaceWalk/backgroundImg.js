@@ -26,7 +26,28 @@ function collisionMomentum(a, b) {
   let saveArr = [];
   let x = [...obj_info[a]];
   let y = [...obj_info[b]];
-  // console.log(x, y, "x,y");
+  if ((x[0] - y[0]) ** 2 > 10000) {
+    console.log("other x");
+    if (x[0] > y[0]) {
+      x[0] -= leng / 2;
+      y[0] += leng / 2;
+    }
+    if (x[0] < y[0]) {
+      x[0] += leng / 2;
+      y[0] -= leng / 2;
+    }
+  }
+  if ((x[1] - y[1]) ** 2 > 10000) {
+    console.log("other y");
+    if (x[1] > y[1]) {
+      x[1] -= leng / 2;
+      y[1] += leng / 2;
+    }
+    if (x[1] < y[1]) {
+      x[1] += leng / 2;
+      y[1] -= leng / 2;
+    }
+  }
   saveArr[0] =
     (x[2] * (x[1] - y[1]) ** 2 +
       y[2] * (x[0] - y[0]) ** 2 +
@@ -74,13 +95,13 @@ function check() {
         // 지금 두 번 연산됨
         overx = Math.min(
           (obj_info[i][0] - obj_info[j][0]) ** 2,
-          (obj_info[i][0] - obj_info[j][0] - 1000) ** 2,
-          (obj_info[i][0] - obj_info[j][0] + 1000) ** 2
+          (obj_info[i][0] - obj_info[j][0] - leng) ** 2,
+          (obj_info[i][0] - obj_info[j][0] + leng) ** 2
         );
         overy = Math.min(
           (obj_info[i][1] - obj_info[j][1]) ** 2,
-          (obj_info[i][1] - obj_info[j][1] - 1000) ** 2,
-          (obj_info[i][1] - obj_info[j][1] + 1000) ** 2
+          (obj_info[i][1] - obj_info[j][1] - leng) ** 2,
+          (obj_info[i][1] - obj_info[j][1] + leng) ** 2
         );
 
         if (overx + overy <= 10000) {
