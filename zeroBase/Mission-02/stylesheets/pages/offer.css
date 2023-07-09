@@ -1,0 +1,176 @@
+/* 오늘의 쇼핑 제안 */
+*{
+    box-sizing: border-box;
+}
+
+body {
+    width: 1280px;
+    height: 2000px;
+    padding: 100px 0 0 147px;
+    margin: 0 auto;
+    -webkit-font-smoothing: antialiased;
+    -mox-osx-font-smoothing: grayscale;
+}
+
+.logo{
+    margin: 0;
+}
+
+.header{
+    height: 40px;
+    margin: 0px;
+}
+
+.today_shopping_section{
+    margin: 48px 0 0 0;
+    height: 354px;
+    width: 1022px;
+}
+
+.shopping_title{
+    display: flex;
+    height: 28px;
+}
+
+.shopping_icon{
+    width: 30px;
+    height: 30px;
+    background-image: url(../../assets/icon/shopping.svg);
+    background-repeat: no-repeat;
+}
+
+.today_shopping_proposal{
+    height: 28px;
+    font-weight: 500;
+    font-size: 24px;
+    display: flex;
+    margin: 0;
+}
+
+.shopping_items{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0 0;
+}
+
+.item_link>.item_img{
+    padding: 14px 20px 0 20px;
+}
+
+h3{
+    padding: 12px;
+    margin: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+}
+
+.item{
+    height: 270px;
+    width: 200px;
+    padding: 0 5px 0 2px;
+    position:relative;
+}
+
+.percent{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    width: 33px;
+    height: 24px;
+    overflow: hidden;
+    color: var(--color-white);
+}
+
+.sale{
+    padding: 3px 10px;
+
+    position: absolute;
+    width: 53px;
+    height: 30px;
+    left: 0px;
+    top: 0px;
+
+    border-radius: 0 0 4px 0;
+    background-color: var(--color-red-500);
+}
+
+.logo_picture > *{
+    width: 176px;
+    height: 40px;
+}
+
+/* .account{
+    width: fit-content;
+    gap: 0px 4px;
+} */
+
+.star_score_50{
+    background-repeat: no-repeat;
+    background-position: 0px -138px;
+    margin: 0 0 0 12px;
+    width: 68px;
+    height: 14px;
+    background-image: url(../../assets/sprites/rating-stars.png);
+}
+
+.star_score_45{
+    background-repeat: no-repeat;
+    background-position: 0px -124px;
+    margin: 0 0 0 12px;
+    width: 68px;
+    height: 14px;
+    background-image: url(../../assets/sprites/rating-stars.png);
+}
+
+.star_score_40{
+    background-repeat: no-repeat;
+    background-position: 0px -110px;
+    margin: 0 0 0 12px;
+    width: 68px;
+    height: 14px;
+    background-image: url(../../assets/sprites/rating-stars.png);
+}
+
+.star_comment {
+    display: flex;
+    gap: 4px;
+}
+
+.comment_num{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    color: var(--color-gray-700);
+}
+
+.rocket {
+    height: 16px;
+    width: 55px;
+    margin: 0 0 4px 12px;
+}
+
+.rocket_container{
+    display: flex;
+}
+
+.rocket_container>span{
+    text-indent: -300em;
+}
+
+.free_delivery{
+    width: 53px;
+    height: 17px;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    color: var(--color-gray-700);
+    margin: 0 0 4px 12px;
+}
+

@@ -54,13 +54,13 @@ body{
 }
 
 .main{
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }
 
 .object{
   --deg: 0;
   z-index: 999;
-  background-image: url(./obj.png);
+  /* background-image: url(./obj.png); */
   background-size: cover;
   transform: rotate(calc(var(--deg) * 1deg));
   position: absolute;
@@ -73,6 +73,14 @@ body{
   border: 3px solid white;
   border-radius: 50%;
   color: white;
+}
+
+.obj1{
+  background-image: url(./obj.png);
+}
+
+.obj2{
+  background-image: url(./obj.png);
 }
 
 .characters{

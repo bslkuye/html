@@ -1,0 +1,285 @@
+.wrap{
+  /* background-color: black; */
+  width: 80%;
+  max-width: 1920px;
+  margin: 20px;
+  /* border: 1px solid black; */
+}
+
+header{
+  /* background-color: black; */
+  text-align: center;
+  padding-top: 20px;
+  position: relative;
+  color: white;
+}
+
+header .gnb{
+  display: grid;
+  width: 100%;
+  grid-template-columns: 300px 1fr 300px;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+  "logo gnb-menu menu"
+  "search search search";
+}
+
+header .gnb .logo{
+  grid-area: logo;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+header .gnb .gnb-menu{
+  grid-area: gnb-menu;
+  display: flex;
+  align-items: center;
+}
+header .gnb .gnb-menu ul{
+  width: 70%;
+  display: flex;
+  justify-content: space-evenly;  
+  margin: 0 auto;
+}
+
+header .gnb .gnb-menu ul li{
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+header .gnb .gnb-menu ul .active::before{
+  content: "";
+  height: 2px;
+  width: 15px;
+  background-color: white;
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+
+header .gnb .gnb-menu ul li:hover::before{
+  content: "";
+  height: 2px;
+  width: 5px;
+  background-color: white;
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+
+header .gnb .gnb-menu ul li:hover{
+  color: gray;
+}
+
+header .gnb .gnb-menu ul .active:hover::before{
+  content: "";
+  height: 2px;
+  width: 15px;
+  background-color: white;
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+
+header .gnb .gnb-menu ul .active:hover{
+  color: white;
+}
+
+
+
+header .gnb .menu{
+  grid-area: menu;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+header .gnb .search{
+  grid-area: search;
+  width: 70%;
+  margin: 0 auto;
+}
+
+header .gnb .search .searchUl{
+  background-color: white;
+  color: black;
+  display: flex;
+  border-radius: 50px;
+  margin-top: 10px;
+}
+
+header .gnb .search .searchUl li{
+  width: 25%;
+  text-align: left;
+  padding: 20px 50px 20px 20px;
+  font-weight: bold;
+  border-radius: 50px;
+  position: relative;
+}
+
+header .gnb .search .searchUl li::after{
+  position: absolute;
+  content: "";
+  width: 1.5px;
+  height: calc(100% - 20px);
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  background-color: gray;
+}
+
+header .gnb .search .searchUl li:last-of-type::after{
+  display: none;
+}
+
+header .gnb .search .searchUl li:hover{
+  background-color: lightgray;
+}
+
+header .gnb .search .searchUl li span{
+  color: gray;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.notice{
+  background-color: #ff385c;
+  border-radius: 14px;
+  text-align: center;
+  height: 320px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.notice p{
+  font-size: 1.5rem;
+  color: white;
+  font-weight: bold;
+  line-height: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.notice button{
+  border: 1px solid white;
+  padding: 5px 15px;
+  color: white;
+  background-color: inherit;
+  font-weight: bold;
+  border-radius: 14px;
+}
+
+.mainbanner{
+  height: 600px;
+  border: 1px solid black;
+  background-color: black;
+  border-radius: 14px ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 50px;
+  background-image: url(./img1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.mainbanner .content{
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+.mainbanner .content p {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.mainbanner .content button{
+  border: 1px solid white;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: white;
+  font-weight: bold;
+  border-radius: 24px;
+}
+
+.black-bg{
+  background-color: black;
+  width: 100%;
+  height: 1000px;
+  left: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.idea{
+  display: flex;
+  background-color: white;
+}
+
+.wrap p{
+  font-weight: bold;
+  font-size: 24px;
+  margin: 20px;
+}
+
+.cityimg{
+  background-image: url(./img1.png);
+  background-size: cover;
+  height: 50%;
+}
+
+.citybox{
+  width: 25%;
+  height: 600px;
+  border: 1px solid black;
+  border-radius: 14px;
+  margin: 20px;
+  color: white;
+  overflow: hidden;
+}
+
+.citytitle{
+  font-size: 26px;
+}
+
+.citytext .cityinfo{
+  font-size: 14px;
+}
+
+.box{
+  color: white;
+  display: flex;
+}
+
+.box .contentbox{
+  padding: 40px;
+  margin: 20px;
+  background-image: url(./img1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 48%;
+  height: 1200px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.box .contentbox .boxtext{
+  font-size: 40px;
+}
+
+.box .contentbox .boxbutton{
+  margin: 10px 20px;
+  padding: 10px 20px;
+  border-radius: 14px;
+}

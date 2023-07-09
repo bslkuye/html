@@ -3,14 +3,23 @@ const space = document.querySelector(".space");
 const astro = document.querySelector(".characters");
 const ctx = canvas[0].getContext("2d");
 
-const leng = 300;
+const leng = 3000;
 document.documentElement.style.setProperty("--width", leng + "px");
 
 /** [x_position, y_position, x_speed, y_speed, deg, spin] */
 let obj_info = [
   [leng / 2, leng / 2, 0.3, 0.1, 0, 0.2],
   [0, 120, 1, 2, 0, 1],
+  // [42, 190, 2, 1, 1, 0],
 ];
+
+// canvas.forEach((canvas) => {
+//   const div = document.createElement("div");
+
+//   div.className = "object obj2";
+
+//   canvas.appendChild(div);
+// });
 
 let x_position = -leng;
 let y_position = -leng;
@@ -26,24 +35,20 @@ function collisionMomentum(a, b) {
   let saveArr = [];
   let x = [...obj_info[a]];
   let y = [...obj_info[b]];
-  if ((x[0] - y[0]) ** 2 > 10000) {
-    console.log("other x");
+  if ((x[0] - y[0]) ** 2 >= 10000) {
     if (x[0] > y[0]) {
       x[0] -= leng / 2;
       y[0] += leng / 2;
-    }
-    if (x[0] < y[0]) {
+    } else if (x[0] < y[0]) {
       x[0] += leng / 2;
       y[0] -= leng / 2;
     }
   }
-  if ((x[1] - y[1]) ** 2 > 10000) {
-    console.log("other y");
+  if ((x[1] - y[1]) ** 2 >= 10000) {
     if (x[1] > y[1]) {
       x[1] -= leng / 2;
       y[1] += leng / 2;
-    }
-    if (x[1] < y[1]) {
+    } else if (x[1] < y[1]) {
       x[1] += leng / 2;
       y[1] -= leng / 2;
     }
@@ -297,9 +302,9 @@ console.log(obj_info);
 setTimeout(() => {
   clearTimeout(makeStar);
   setInterval(() => {
-    touchCheck();
     astroMove();
     objMove();
+    touchCheck();
   }, 1000 / 60);
 }, 1000);
 
