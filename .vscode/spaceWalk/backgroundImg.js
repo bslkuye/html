@@ -3,56 +3,84 @@ const space = document.querySelector(".space");
 const astro = document.querySelector(".characters");
 const ctx = canvas[0].getContext("2d");
 
-const leng = 3000;
+const leng = 5000;
 document.documentElement.style.setProperty("--width", leng + "px");
 
+// 오브젝트 정보
 /** [x_position, y_position, x_speed, y_speed, deg, spin] */
 let obj_info = [
   [leng / 2, leng / 2, 0.3, 0.1, 0, 0.2],
   [0, 120, 1, 2, 0, 1],
-  // [42, 190, 2, 1, 1, 0],
+  [300, 300, 2, 1, 1, 0.4],
 ];
 
-// canvas.forEach((canvas) => {
-//   const div = document.createElement("div");
+console.log(obj_info.length);
 
-//   div.className = "object obj2";
+//오브젝트 추가
+function add_obj(object_img) {
+  canvas.forEach((canvas) => {
+    const div = document.createElement("div");
+    div.className = "object obj" + obj_info.length;
+    div.style.backgroundImage = "url(" + object_img + ")";
+    canvas.after(div);
+  });
+  const randa = Math.floor(Math.random() * leng);
+  const randb = Math.floor(Math.random() * leng);
+  const randx = Math.random() * 4 - 2;
+  const randy = Math.random() * 4 - 2;
 
-//   canvas.appendChild(div);
-// });
+  obj_info.push([randa, randb, randx, randy, 0, randx]);
+}
 
+add_obj("obj.png");
+add_obj("obj1.png");
+add_obj("obj1.png");
+add_obj("obj3.png");
+add_obj("obj3.png");
+
+canvas.forEach((canvas) => {
+  const div = document.createElement("div");
+
+  div.className = "object obj2";
+
+  canvas.after(div);
+});
+
+//astro초기 위치값 (obj과는 다르게 map전체를 움직여야 해서 아레와 같은 값을 가짐)
 let x_position = -leng;
 let y_position = -leng;
 
+//캔버스 초기화
 for (let i = 0; i < 9; i++) {
-  // console.log(i);
   canvas[i].width = leng;
   canvas[i].height = leng;
 }
 let a = 0;
+
+//a,b 충돌 체크(제거, 두 번 계산하고 있었음.), 충돌 후 운동량 계산
 //* a, b = obj number */
 function collisionMomentum(a, b) {
   let saveArr = [];
   let x = [...obj_info[a]];
   let y = [...obj_info[b]];
-  if ((x[0] - y[0]) ** 2 >= 10000) {
-    if (x[0] > y[0]) {
-      x[0] -= leng / 2;
-      y[0] += leng / 2;
-    } else if (x[0] < y[0]) {
-      x[0] += leng / 2;
-      y[0] -= leng / 2;
-    }
-  }
-  if ((x[1] - y[1]) ** 2 >= 10000) {
-    if (x[1] > y[1]) {
-      x[1] -= leng / 2;
-      y[1] += leng / 2;
-    } else if (x[1] < y[1]) {
-      x[1] += leng / 2;
-      y[1] -= leng / 2;
-    }
-  }
+  // if ((x[0] - y[0]) ** 2 >= 10000) {
+  //   if (x[0] > y[0]) {
+  //     x[0] -= leng / 2;
+  //     y[0] += leng / 2;
+  //   } else if (x[0] < y[0]) {
+  //     x[0] += leng / 2;
+  //     y[0] -= leng / 2;
+  //   }
+  // }
+  // if ((x[1] - y[1]) ** 2 >= 10000) {
+  //   if (x[1] > y[1]) {
+  //     x[1] -= leng / 2;
+  //     y[1] += leng / 2;
+  //   } else if (x[1] < y[1]) {
+  //     x[1] += leng / 2;
+  //     y[1] -= leng / 2;
+  //   }
+  // }
   saveArr[0] =
     (x[2] * (x[1] - y[1]) ** 2 +
       y[2] * (x[0] - y[0]) ** 2 +
@@ -77,12 +105,19 @@ function collisionMomentum(a, b) {
       (-1 * x[2] + y[2]) * (x[0] - y[0]) * (x[1] - y[1])) /
     ((x[0] - y[0]) ** 2 + (x[1] - y[1]) ** 2);
   // console.log(saveArr, "savearr");
+  if (obj_info[a][0] > obj_info[b][0]) {
+    obj_info[b][0] -= 0.1;
+  } else {
+    obj_info[b][0] += 0.1;
+    console.log("out");
+  }
   obj_info[a][2] = saveArr[0];
   obj_info[a][3] = saveArr[1];
   obj_info[b][2] = saveArr[2];
   obj_info[b][3] = saveArr[3];
 }
 
+//토크값 계산
 function torque(a, b) {
   obj_info[b][5] +=
     (obj_info[a][2] * (obj_info[a][1] - obj_info[b][1]) -
@@ -93,11 +128,11 @@ function torque(a, b) {
 let overx;
 let overy;
 
+//충돌 체크
 function check() {
   for (let i = 0; i < obj_info.length; i++) {
     for (let j = i; j < obj_info.length; j++) {
       if (i != j) {
-        // 지금 두 번 연산됨
         overx = Math.min(
           (obj_info[i][0] - obj_info[j][0]) ** 2,
           (obj_info[i][0] - obj_info[j][0] - leng) ** 2,
@@ -110,9 +145,8 @@ function check() {
         );
 
         if (overx + overy <= 10000) {
-          // console.log("touch");
+          console.log("touch!", i, j);
           collisionMomentum(i, j);
-          // console.log(obj_info, "info");
         }
         // if (
         //   //정상적인 충돌
@@ -254,6 +288,11 @@ const makeStar = setInterval(() => {
     getRandomInt(1, leng - 1),
     "white"
   );
+  paintCellMiddle(
+    getRandomInt(1, leng - 1),
+    getRandomInt(1, leng - 1),
+    "rgb(0, 150, 255)"
+  );
   paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "white");
   paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(255, 100, 100)");
   paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(0, 150, 255)");
@@ -281,10 +320,9 @@ function astroMove() {
   astroSpin();
 }
 
-const obj = document.querySelectorAll(".object");
-
 function objMove() {
   for (let i = 1; i < obj_info.length; i++) {
+    const obj = document.querySelectorAll(".obj" + i);
     obj_info[i][0] += obj_info[i][2];
     obj_info[i][1] += obj_info[i][3];
     obj_info[i][4] = (obj_info[i][4] + obj_info[i][5]) % 360;
