@@ -4,6 +4,7 @@ const astro = document.querySelector(".characters");
 const ctx = canvas[0].getContext("2d");
 
 const leng = 5000;
+const characterWidth = 30;
 document.documentElement.style.setProperty("--width", leng + "px");
 
 // 오브젝트 정보
@@ -45,6 +46,22 @@ canvas.forEach((canvas) => {
 
   canvas.after(div);
 });
+
+var addbutton = document.getElementById("button1");
+addbutton.addEventListener("click", function () {
+  add_obj("obj1.png");
+});
+
+var addbutton = document.getElementById("button2");
+addbutton.addEventListener("click", function () {
+  add_obj("obj" + getRandomInt(1, 7) + ".png");
+});
+
+var addbutton = document.getElementById("button2");
+addbutton.addEventListener("click", function () {
+  add_obj("astro" + getRandomInt(1, 3) + ".png");
+});
+// addbutton.addEventListener("click", add_obj("obj1.png"));
 
 //astro초기 위치값 (obj과는 다르게 map전체를 움직여야 해서 아레와 같은 값을 가짐)
 let x_position = -leng;
@@ -144,7 +161,7 @@ function check() {
           (obj_info[i][1] - obj_info[j][1] + leng) ** 2
         );
 
-        if (overx + overy <= 10000) {
+        if (overx + overy <= characterWidth ** 2) {
           console.log("touch!", i, j);
           collisionMomentum(i, j);
         }
