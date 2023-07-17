@@ -110,6 +110,6 @@ body{
     transition: transform 0.3s ease;
 }
 
-.button{
-  width: 0.1vw;
+#score{
+  color: white;
 }

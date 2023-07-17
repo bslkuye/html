@@ -54,12 +54,12 @@ addbutton.addEventListener("click", function () {
 
 var addbutton = document.getElementById("button2");
 addbutton.addEventListener("click", function () {
-  add_obj("obj" + getRandomInt(1, 7) + ".png");
+  add_obj("obj" + getRandomInt(1, 8) + ".png");
 });
 
-var addbutton = document.getElementById("button2");
+var addbutton = document.getElementById("button3");
 addbutton.addEventListener("click", function () {
-  add_obj("astro" + getRandomInt(1, 3) + ".png");
+  add_obj("astro" + getRandomInt(1, 4) + ".png");
 });
 // addbutton.addEventListener("click", add_obj("obj1.png"));
 
@@ -80,24 +80,6 @@ function collisionMomentum(a, b) {
   let saveArr = [];
   let x = [...obj_info[a]];
   let y = [...obj_info[b]];
-  // if ((x[0] - y[0]) ** 2 >= 10000) {
-  //   if (x[0] > y[0]) {
-  //     x[0] -= leng / 2;
-  //     y[0] += leng / 2;
-  //   } else if (x[0] < y[0]) {
-  //     x[0] += leng / 2;
-  //     y[0] -= leng / 2;
-  //   }
-  // }
-  // if ((x[1] - y[1]) ** 2 >= 10000) {
-  //   if (x[1] > y[1]) {
-  //     x[1] -= leng / 2;
-  //     y[1] += leng / 2;
-  //   } else if (x[1] < y[1]) {
-  //     x[1] += leng / 2;
-  //     y[1] -= leng / 2;
-  //   }
-  // }
   saveArr[0] =
     (x[2] * (x[1] - y[1]) ** 2 +
       y[2] * (x[0] - y[0]) ** 2 +
@@ -145,6 +127,11 @@ function torque(a, b) {
 let overx;
 let overy;
 
+let checkArrA = [];
+let checkArrB = [];
+
+let score = 0;
+
 //충돌 체크
 function check() {
   for (let i = 0; i < obj_info.length; i++) {
@@ -163,75 +150,24 @@ function check() {
 
         if (overx + overy <= characterWidth ** 2) {
           console.log("touch!", i, j);
+          checkArrB.push(i + "-" + j);
+          if (checkArrA.includes(i + "-" + j)) {
+            // 중복터치면
+          } else {
+            // 아니면 스코어 상승, checkarr에 정보 저장
+            if (i == 0) {
+              score += 10;
+            }
+            score++;
+            document.getElementById("score").textContent = score;
+          }
           collisionMomentum(i, j);
         }
-        // if (
-        //   //정상적인 충돌
-        //   (obj_info[i][0] - obj_info[j][0]) ** 2 +
-        //     (obj_info[i][1] - obj_info[j][1]) ** 2 <
-        //   10000
-        // ) {
-        //   console.log("touch");
-        //   collisionMomentum(i, j);
-        //   console.log(obj_info, "info");
-        // } else if (
-        //   //x 예외
-        //   (obj_info[i][0] - obj_info[j][0] - leng) ** 2 +
-        //     (obj_info[i][1] - obj_info[j][1]) ** 2 <
-        //   10000
-        // ) {
-        //   console.log("touch");
-        //   collisionMomentum(i, j);
-        //   console.log(obj_info, "info");
-        // } else if (
-        //   //y 예외
-        //   (obj_info[i][0] - obj_info[j][0]) ** 2 +
-        //     (obj_info[i][1] - obj_info[j][1] - leng) ** 2 <
-        //   10000
-        // ) {
-        //   console.log("touch");
-        //   collisionMomentum(i, j);
-        //   console.log(obj_info, "info");
-        // } else if (
-        //   //x,y 예외
-        //   (obj_info[i][0] - obj_info[j][0] - leng) ** 2 +
-        //     (obj_info[i][1] - obj_info[j][1] - leng) ** 2 <
-        //   10000
-        // ) {
-        //   console.log("touch");
-        //   collisionMomentum(i, j);
-        //   console.log(obj_info, "info");
-        // } else if (
-        //   //x 예외
-        //   (obj_info[i][0] - obj_info[j][0] + leng) ** 2 +
-        //     (obj_info[i][1] - obj_info[j][1]) ** 2 <
-        //   10000
-        // ) {
-        //   console.log("touch");
-        //   collisionMomentum(i, j);
-        //   console.log(obj_info, "info");
-        // } else if (
-        //   //y 예외
-        //   (obj_info[i][0] - obj_info[j][0]) ** 2 +
-        //     (obj_info[i][1] - obj_info[j][1] + leng) ** 2 <
-        //   10000
-        // ) {
-        //   console.log("touch");
-        //   collisionMomentum(i, j);
-        //   console.log(obj_info, "info");
-        // } else if (
-        //   //x,y 예외
-        //   (obj_info[i][0] - obj_info[j][0] + leng) ** 2 +
-        //     (obj_info[i][1] - obj_info[j][1] + leng) ** 2 <
-        //   10000
-        // ) {
-        //   console.log("touch");
-        //   collisionMomentum(i, j);
-        //   console.log(obj_info, "info");
-        // }
       }
     }
   }
+  checkArrA = checkArrB;
+  checkArrB = [];
 }
 
 function touchCheck() {
@@ -361,7 +297,7 @@ setTimeout(() => {
     objMove();
     touchCheck();
   }, 1000 / 60);
-}, 1000);
+}, 2000);
 
 /**
 item - 
