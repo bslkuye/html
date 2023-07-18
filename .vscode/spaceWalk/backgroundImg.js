@@ -31,6 +31,8 @@ function add_obj(object_img) {
   const randy = Math.random() * 4 - 2;
 
   obj_info.push([randa, randb, randx, randy, 0, randx]);
+
+  console.log("create obj", object_img);
 }
 
 add_obj("obj.png");
@@ -47,19 +49,36 @@ canvas.forEach((canvas) => {
   canvas.after(div);
 });
 
-var addbutton = document.getElementById("button1");
-addbutton.addEventListener("click", function () {
+var addbutton1 = document.getElementById("button1");
+addbutton1.addEventListener("click", function () {
   add_obj("obj1.png");
 });
 
-var addbutton = document.getElementById("button2");
-addbutton.addEventListener("click", function () {
-  add_obj("obj" + getRandomInt(1, 8) + ".png");
+var addbutton2 = document.getElementById("button2");
+addbutton2.addEventListener("click", function () {
+  if (score > 0) {
+    score--;
+    document.getElementById("score").textContent = score;
+    add_obj("obj" + getRandomInt(1, 8) + ".png");
+  }
 });
 
-var addbutton = document.getElementById("button3");
-addbutton.addEventListener("click", function () {
+var addbutton3 = document.getElementById("button3");
+addbutton3.addEventListener("click", function () {
   add_obj("astro" + getRandomInt(1, 4) + ".png");
+});
+
+var addbutton4 = document.getElementById("button4");
+addbutton4.addEventListener("click", function () {
+  let r = getRandomInt(0, 256);
+  let g = getRandomInt(0, 256);
+  let b = getRandomInt(0, 256);
+  console.log(r, g, b);
+  paintCell(
+    getRandomInt(0, leng),
+    getRandomInt(0, leng),
+    "rgb(" + r + "," + g + "," + b + ")"
+  );
 });
 // addbutton.addEventListener("click", add_obj("obj1.png"));
 
@@ -74,6 +93,19 @@ for (let i = 0; i < 9; i++) {
 }
 let a = 0;
 
+//item box
+let itembutton = document.getElementById("item_button");
+itembutton.addEventListener("click", function () {
+  let itemlist = document.getElementById("item");
+  if (itemlist.className == "hidden") {
+    itemlist.classList.add("active");
+    itemlist.classList.remove("hidden");
+  } else {
+    itemlist.classList.remove("active");
+    itemlist.classList.add("hidden");
+  }
+  console.log(itemlist.className);
+});
 //a,b 충돌 체크(제거, 두 번 계산하고 있었음.), 충돌 후 운동량 계산
 //* a, b = obj number */
 function collisionMomentum(a, b) {
@@ -132,7 +164,7 @@ let checkArrB = [];
 
 let score = 0;
 
-//충돌 체크
+//충돌 체크, 스코어 상승
 function check() {
   for (let i = 0; i < obj_info.length; i++) {
     for (let j = i; j < obj_info.length; j++) {

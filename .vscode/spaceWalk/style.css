@@ -113,3 +113,33 @@ body{
 #score{
   color: white;
 }
+
+.hidden{
+  visibility: hidden;
+}
+
+.active{
+  visibility: visible;
+}
+
+.item_box{
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 100%;
+  transform: translateX(-100%) scale(1);
+    transform-origin: bottom center;
+    transition: transform 0.3s ease;
+}
+
+#item{
+  width: 400px;
+  height: 100vh;
+  background-color: white;
+  border: 1px solid red;
+}
+
+#item_button{
+  height: 30px;
+  width: 80px;
+}
