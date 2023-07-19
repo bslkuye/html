@@ -39,7 +39,21 @@ add_obj("obj.png");
 add_obj("obj1.png");
 add_obj("obj1.png");
 add_obj("obj3.png");
-add_obj("obj3.png");
+add_obj("obj4.png");
+add_obj("obj5.png");
+add_obj("obj6.png");
+add_obj("obj7.png");
+add_obj("obj8.png");
+add_obj("obj9.png");
+add_obj("obj9.png");
+
+//obj count
+function countObj() {
+  const objnum = document.querySelectorAll(".object");
+  document.getElementById("obj_count").innerText = objnum.length / 9 + "/50";
+  return objnum.length / 9;
+}
+countObj();
 
 canvas.forEach((canvas) => {
   const div = document.createElement("div");
@@ -51,15 +65,17 @@ canvas.forEach((canvas) => {
 
 var addbutton1 = document.getElementById("button1");
 addbutton1.addEventListener("click", function () {
-  add_obj("obj1.png");
+  if (countObj() < 50) {
+    add_obj("obj1.png");
+  }
 });
 
 var addbutton2 = document.getElementById("button2");
 addbutton2.addEventListener("click", function () {
-  if (score > 0) {
+  if (score > 0 && countObj() < 50) {
     score--;
     document.getElementById("score").textContent = score;
-    add_obj("obj" + getRandomInt(1, 8) + ".png");
+    add_obj("obj" + getRandomInt(1, 10) + ".png");
   }
 });
 
@@ -68,17 +84,41 @@ addbutton3.addEventListener("click", function () {
   add_obj("astro" + getRandomInt(1, 4) + ".png");
 });
 
+function getrgb() {
+  let r = 255;
+  let g = getRandomInt(0, 256);
+  let b = g;
+  let rgb = "rgb(" + r + "," + g + "," + b + ")";
+  if (getRandomInt(0, 100) < 90) {
+    //주황색 적색
+    g = getRandomInt(0, 100);
+    r = getRandomInt(150, 256);
+    b = g;
+    rgb = "rgb(" + r + "," + g + "," + b + ")";
+  } else if (getRandomInt(0, 100) > 10) {
+    //노란색 주황색
+    r = getRandomInt(150, 256);
+    g = r;
+    b = 0;
+    rgb = "rgb(" + r + "," + g + "," + b + ")";
+  } else if (getRandomInt(0, 100) > 50) {
+    //흰색 푸른색
+    b = getRandomInt(150, 256);
+    g = 0;
+    r = 0;
+    rgb = "rgb(" + r + "," + g + "," + b + ")";
+  } else {
+    b = 255;
+    g = 255;
+    r = 255;
+    rgb = "rgb(" + r + "," + g + "," + b + ")";
+  }
+  return rgb;
+}
+
 var addbutton4 = document.getElementById("button4");
 addbutton4.addEventListener("click", function () {
-  let r = getRandomInt(0, 256);
-  let g = getRandomInt(0, 256);
-  let b = getRandomInt(0, 256);
-  console.log(r, g, b);
-  paintCell(
-    getRandomInt(0, leng),
-    getRandomInt(0, leng),
-    "rgb(" + r + "," + g + "," + b + ")"
-  );
+  paintCellBig(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
 });
 // addbutton.addEventListener("click", add_obj("obj1.png"));
 
@@ -253,40 +293,67 @@ function paintCellMiddle(x, y, color, alpha) {
   }
 }
 
+//블랙홀 그리기
+var image = new Image();
+image.src = "blackhole.png"; // 실제 이미지 파일의 경로로 바꿔주세요
+
+image.onload = function () {
+  // 기울일 각도 설정
+  var angle = getRandomInt(0, 361); // 45도로 기울임
+
+  // 이미지를 기울이기 위해 변환(transform) 적용
+  ctx.translate(getRandomInt(0, leng), getRandomInt(0, leng)); // 캔버스의 중앙으로 이동
+  ctx.rotate((angle * Math.PI) / 180); // 각도를 라디안 값으로 변환하여 회전
+  ctx.drawImage(image, getRandomInt(0, leng), getRandomInt(0, leng)); // 이미지 그리기
+};
+
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
 }
 
+let starArr = [2000, 8000, 40000];
+for (let i = 0; i < starArr[0]; i++) {
+  paintCellBig(getRandomInt(2, leng - 2), getRandomInt(2, leng - 2), getrgb());
+}
+for (let i = 0; i < starArr[1]; i++) {
+  paintCellMiddle(
+    getRandomInt(2, leng - 2),
+    getRandomInt(2, leng - 2),
+    getrgb()
+  );
+}
+for (let i = 0; i < starArr[2]; i++) {
+  paintCell(getRandomInt(2, leng - 2), getRandomInt(2, leng - 2), getrgb());
+}
 const makeStar = setInterval(() => {
-  getRandomInt(0, leng, Math.random());
-
-  paintCellBig(getRandomInt(2, leng - 2), getRandomInt(2, leng - 2), "white");
-  paintCellBig(
-    getRandomInt(2, leng - 2),
-    getRandomInt(2, leng - 2),
-    "rgb(0, 150, 255)"
-  );
-  paintCellMiddle(
-    getRandomInt(1, leng - 1),
-    getRandomInt(1, leng - 1),
-    "white"
-  );
-  paintCellMiddle(
-    getRandomInt(1, leng - 1),
-    getRandomInt(1, leng - 1),
-    "rgb(0, 150, 255)"
-  );
-  paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "white");
-  paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(255, 100, 100)");
-  paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(0, 150, 255)");
-  paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "white");
-  paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(255, 100, 100)");
-  paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(0, 150, 255)");
-  paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "white");
-  paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(255, 100, 100)");
-  paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(0, 150, 255)");
+  // getRandomInt(0, leng, Math.random());
+  // paintCellBig(getRandomInt(2, leng - 2), getRandomInt(2, leng - 2), "white");
+  // paintCellBig(
+  //   getRandomInt(2, leng - 2),
+  //   getRandomInt(2, leng - 2),
+  //   "rgb(0, 150, 255)"
+  // );
+  // paintCellMiddle(
+  //   getRandomInt(1, leng - 1),
+  //   getRandomInt(1, leng - 1),
+  //   "white"
+  // );
+  // paintCellMiddle(
+  //   getRandomInt(1, leng - 1),
+  //   getRandomInt(1, leng - 1),
+  //   "rgb(0, 150, 255)"
+  // );
+  // paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "white");
+  // paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(255, 100, 100)");
+  // paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(0, 150, 255)");
+  // paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "white");
+  // paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(255, 100, 100)");
+  // paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(0, 150, 255)");
+  // paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "white");
+  // paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(255, 100, 100)");
+  // paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(0, 150, 255)");
 }, 1);
 
 function astroSpin() {
@@ -328,8 +395,9 @@ setTimeout(() => {
     astroMove();
     objMove();
     touchCheck();
+    countObj();
   }, 1000 / 60);
-}, 2000);
+}, starArr.max);
 
 /**
 item - 
