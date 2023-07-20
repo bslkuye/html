@@ -174,6 +174,7 @@ addbutton4.addEventListener("click", function () {
       }
     }
     blackhole();
+    earth();
   }
 });
 
@@ -352,20 +353,32 @@ function getRandomInt(min, max) {
 
 let starArr = [2000, 8000, 40000];
 // let starArr = [0, 0, 0];
-for (let i = 0; i < starArr[0]; i++) {
-  paintCellBig(getRandomInt(2, leng - 2), getRandomInt(2, leng - 2), getrgb());
-}
-for (let i = 0; i < starArr[1]; i++) {
-  paintCellMiddle(
-    getRandomInt(2, leng - 2),
-    getRandomInt(2, leng - 2),
-    getrgb()
-  );
-}
-for (let i = 0; i < starArr[2]; i++) {
-  paintCell(getRandomInt(2, leng - 2), getRandomInt(2, leng - 2), getrgb());
-}
+// for (let i = 0; i < starArr[0]; i++) {
+//   paintCellBig(getRandomInt(2, leng - 2), getRandomInt(2, leng - 2), getrgb());
+// }
+// for (let i = 0; i < starArr[1]; i++) {
+//   paintCellMiddle(
+//     getRandomInt(1, leng - 1),
+//     getRandomInt(1, leng - 1),
+//     getrgb()
+//   );
+// }
+// for (let i = 0; i < starArr[2]; i++) {
+//   paintCell(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
+// }
 const makeStar = setInterval(() => {
+  paintCellBig(getRandomInt(2, leng - 2), getRandomInt(2, leng - 2), getrgb());
+  for (let i = 0; i < 4; i++) {
+    paintCellMiddle(
+      getRandomInt(1, leng - 1),
+      getRandomInt(1, leng - 1),
+      getrgb()
+    );
+  }
+  for (let i = 0; i < 20; i++) {
+    paintCell(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
+  }
+
   // getRandomInt(0, leng, Math.random());
   // paintCellBig(getRandomInt(2, leng - 2), getRandomInt(2, leng - 2), "white");
   // paintCellBig(
@@ -433,7 +446,7 @@ setTimeout(() => {
     touchCheck();
     countObj();
   }, 1000 / 60);
-}, starArr.max);
+}, 4000);
 
 /**
 item - 
