@@ -15,8 +15,6 @@ let obj_info = [
   [300, 300, 2, 1, 1, 0.4],
 ];
 
-console.log(obj_info.length);
-
 //오브젝트 추가
 function add_obj(object_img) {
   canvas.forEach((canvas) => {
@@ -31,8 +29,6 @@ function add_obj(object_img) {
   const randy = Math.random() * 4 - 2;
 
   obj_info.push([randa, randb, randx, randy, 0, randx]);
-
-  console.log("create obj", object_img);
 }
 
 add_obj("obj.png");
@@ -62,6 +58,50 @@ canvas.forEach((canvas) => {
 
   canvas.after(div);
 });
+
+//블랙홀 그리기
+let blackhole_x = getRandomInt(0, leng - 400) + 100;
+let blackhole_y = getRandomInt(0, leng - 400) + 100;
+let angle = getRandomInt(0, 361);
+
+function blackhole() {
+  let image = new Image();
+  image.src = "blackhole.png";
+  image.onload = function () {
+    for (let i = 0; i < 9; i++) {
+      const ctx = canvas[i].getContext("2d");
+      ctx.translate(blackhole_x, blackhole_y);
+      ctx.rotate((angle * Math.PI) / 180);
+      ctx.drawImage(image, 0, 0);
+      ctx.rotate((-1 * angle * Math.PI) / 180);
+      ctx.translate(-1 * blackhole_x, -1 * blackhole_y);
+    }
+  };
+}
+
+blackhole();
+
+//지구 그리기
+let earth_x = getRandomInt(0, leng - 400) + 100;
+let earth_y = getRandomInt(0, leng - 400) + 100;
+let earth_angle = getRandomInt(0, 361);
+
+function earth() {
+  let image = new Image();
+  image.src = "donut.png";
+  image.onload = function () {
+    for (let i = 0; i < 9; i++) {
+      const ctx = canvas[i].getContext("2d");
+      ctx.translate(earth_x, earth_y);
+      ctx.rotate((earth_angle * Math.PI) / 180);
+      ctx.drawImage(image, 0, 0);
+      ctx.rotate((-1 * earth_angle * Math.PI) / 180);
+      ctx.translate(-1 * earth_x, -1 * earth_y);
+    }
+  };
+}
+
+earth();
 
 var addbutton1 = document.getElementById("button1");
 addbutton1.addEventListener("click", function () {
@@ -118,9 +158,24 @@ function getrgb() {
 
 var addbutton4 = document.getElementById("button4");
 addbutton4.addEventListener("click", function () {
-  paintCellBig(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
+  if (score > 0) {
+    score--;
+    document.getElementById("score").textContent = score;
+    for (let i = 0; i < 1000; i++) {
+      if (getRandomInt(0, 6) != 0) {
+        starArr[2]++;
+        paintCell(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
+      } else if (getRandomInt(0, 4) != 0) {
+        starArr[1]++;
+        paintCellMiddle(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
+      } else {
+        starArr[0]++;
+        paintCellBig(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
+      }
+    }
+    blackhole();
+  }
 });
-// addbutton.addEventListener("click", add_obj("obj1.png"));
 
 //astro초기 위치값 (obj과는 다르게 map전체를 움직여야 해서 아레와 같은 값을 가짐)
 let x_position = -leng;
@@ -144,7 +199,6 @@ itembutton.addEventListener("click", function () {
     itemlist.classList.remove("active");
     itemlist.classList.add("hidden");
   }
-  console.log(itemlist.className);
 });
 //a,b 충돌 체크(제거, 두 번 계산하고 있었음.), 충돌 후 운동량 계산
 //* a, b = obj number */
@@ -175,12 +229,10 @@ function collisionMomentum(a, b) {
       x[3] * (x[0] - y[0]) ** 2 +
       (-1 * x[2] + y[2]) * (x[0] - y[0]) * (x[1] - y[1])) /
     ((x[0] - y[0]) ** 2 + (x[1] - y[1]) ** 2);
-  // console.log(saveArr, "savearr");
   if (obj_info[a][0] > obj_info[b][0]) {
     obj_info[b][0] -= 0.1;
   } else {
     obj_info[b][0] += 0.1;
-    console.log("out");
   }
   obj_info[a][2] = saveArr[0];
   obj_info[a][3] = saveArr[1];
@@ -221,7 +273,6 @@ function check() {
         );
 
         if (overx + overy <= characterWidth ** 2) {
-          console.log("touch!", i, j);
           checkArrB.push(i + "-" + j);
           if (checkArrA.includes(i + "-" + j)) {
             // 중복터치면
@@ -293,20 +344,6 @@ function paintCellMiddle(x, y, color, alpha) {
   }
 }
 
-//블랙홀 그리기
-var image = new Image();
-image.src = "blackhole.png"; // 실제 이미지 파일의 경로로 바꿔주세요
-
-image.onload = function () {
-  // 기울일 각도 설정
-  var angle = getRandomInt(0, 361); // 45도로 기울임
-
-  // 이미지를 기울이기 위해 변환(transform) 적용
-  ctx.translate(getRandomInt(0, leng), getRandomInt(0, leng)); // 캔버스의 중앙으로 이동
-  ctx.rotate((angle * Math.PI) / 180); // 각도를 라디안 값으로 변환하여 회전
-  ctx.drawImage(image, getRandomInt(0, leng), getRandomInt(0, leng)); // 이미지 그리기
-};
-
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -314,6 +351,7 @@ function getRandomInt(min, max) {
 }
 
 let starArr = [2000, 8000, 40000];
+// let starArr = [0, 0, 0];
 for (let i = 0; i < starArr[0]; i++) {
   paintCellBig(getRandomInt(2, leng - 2), getRandomInt(2, leng - 2), getrgb());
 }
@@ -386,8 +424,6 @@ function objMove() {
     }
   }
 }
-
-console.log(obj_info);
 
 setTimeout(() => {
   clearTimeout(makeStar);
