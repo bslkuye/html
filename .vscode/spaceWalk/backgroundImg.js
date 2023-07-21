@@ -103,6 +103,16 @@ function earth() {
 
 earth();
 
+//배경오브젝트 아이템창
+let itmebox = document.getElementById("item");
+
+let buttonbox = document.getElementById("buttonbox");
+const backgroundObj = document.createElement("button");
+backgroundObj.innerText = "backObj";
+backgroundObj.className = "background_obj_button";
+buttonbox.appendChild(backgroundObj);
+
+//add button
 var addbutton1 = document.getElementById("button1");
 addbutton1.addEventListener("click", function () {
   if (countObj() < 50) {
@@ -162,21 +172,25 @@ addbutton4.addEventListener("click", function () {
     score--;
     document.getElementById("score").textContent = score;
     for (let i = 0; i < 1000; i++) {
-      if (getRandomInt(0, 6) != 0) {
-        starArr[2]++;
-        paintCell(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
-      } else if (getRandomInt(0, 4) != 0) {
-        starArr[1]++;
-        paintCellMiddle(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
-      } else {
-        starArr[0]++;
-        paintCellBig(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
-      }
+      star();
     }
     blackhole();
     earth();
   }
 });
+
+function star() {
+  if (getRandomInt(0, 6) != 0) {
+    starArr[2]++;
+    paintCell(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
+  } else if (getRandomInt(0, 4) != 0) {
+    starArr[1]++;
+    paintCellMiddle(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
+  } else {
+    starArr[0]++;
+    paintCellBig(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
+  }
+}
 
 //astro초기 위치값 (obj과는 다르게 map전체를 움직여야 해서 아레와 같은 값을 가짐)
 let x_position = -leng;
@@ -352,59 +366,9 @@ function getRandomInt(min, max) {
 }
 
 let starArr = [2000, 8000, 40000];
-// let starArr = [0, 0, 0];
-// for (let i = 0; i < starArr[0]; i++) {
-//   paintCellBig(getRandomInt(2, leng - 2), getRandomInt(2, leng - 2), getrgb());
-// }
-// for (let i = 0; i < starArr[1]; i++) {
-//   paintCellMiddle(
-//     getRandomInt(1, leng - 1),
-//     getRandomInt(1, leng - 1),
-//     getrgb()
-//   );
-// }
-// for (let i = 0; i < starArr[2]; i++) {
-//   paintCell(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
-// }
-const makeStar = setInterval(() => {
-  paintCellBig(getRandomInt(2, leng - 2), getRandomInt(2, leng - 2), getrgb());
-  for (let i = 0; i < 4; i++) {
-    paintCellMiddle(
-      getRandomInt(1, leng - 1),
-      getRandomInt(1, leng - 1),
-      getrgb()
-    );
-  }
-  for (let i = 0; i < 20; i++) {
-    paintCell(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
-  }
 
-  // getRandomInt(0, leng, Math.random());
-  // paintCellBig(getRandomInt(2, leng - 2), getRandomInt(2, leng - 2), "white");
-  // paintCellBig(
-  //   getRandomInt(2, leng - 2),
-  //   getRandomInt(2, leng - 2),
-  //   "rgb(0, 150, 255)"
-  // );
-  // paintCellMiddle(
-  //   getRandomInt(1, leng - 1),
-  //   getRandomInt(1, leng - 1),
-  //   "white"
-  // );
-  // paintCellMiddle(
-  //   getRandomInt(1, leng - 1),
-  //   getRandomInt(1, leng - 1),
-  //   "rgb(0, 150, 255)"
-  // );
-  // paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "white");
-  // paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(255, 100, 100)");
-  // paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(0, 150, 255)");
-  // paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "white");
-  // paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(255, 100, 100)");
-  // paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(0, 150, 255)");
-  // paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "white");
-  // paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(255, 100, 100)");
-  // paintCell(getRandomInt(0, leng), getRandomInt(0, leng), "rgb(0, 150, 255)");
+const makeStar = setInterval(() => {
+  star();
 }, 1);
 
 function astroSpin() {
@@ -437,25 +401,12 @@ function objMove() {
     }
   }
 }
-
+countObj();
 setTimeout(() => {
   clearTimeout(makeStar);
   setInterval(() => {
     astroMove();
     objMove();
     touchCheck();
-    countObj();
   }, 1000 / 60);
-}, 4000);
-
-/**
-item - 
-배경 별 : 색, 크기, 개수, 특별한 모양
-배경 obj : 우주선, 우주인, 작은 행성, 성운
-obj : 사진 직접 추가로 날아다니게 , 크기
-
-캔버스마다 오브젝트를 넣어서 포지션을 복잡하게 안해도 되게
-
--1000 = -leng - 1000
--3000 = 2000
- */
+}, starArr[0] + starArr[0] + starArr[0]);

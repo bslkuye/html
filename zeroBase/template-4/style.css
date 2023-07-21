@@ -1,0 +1,155 @@
+*{
+  box-sizing: border-box;
+}
+
+:root{
+  --calender-bord-width: 420px;
+}
+
+body{
+  height: 1000px;
+  width: 1000px;
+  padding: 30px;
+}
+
+.title{
+  color: red;
+  width: 200px;
+  font-size: 30px;
+}
+
+.calender-container{
+  width: 200px;
+}
+
+.datePicker{
+  all: unset;
+  cursor: pointer;
+  color: gray;
+  padding-left: 15px;
+  height: 40px;
+  width: 150px;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  position: relative;
+  z-index: 0;
+}
+
+.datePicker:hover{
+  border: 2px solid blue;
+}
+
+.datePicker:focus{
+  border: 2px solid blue;
+}
+
+.calender{
+  height: calc(var(--calender-bord-width) * 26 / 21);
+  width: var(--calender-bord-width);
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin: 10px;
+  box-shadow: 0 0 10px gray;
+  position: absolute;
+  z-index: 1;
+}
+
+.calender-nav{
+  width: 100%;
+  height: calc(var(--calender-bord-width) * 5 / 21);
+  border-radius: 10px 10px 0 0;
+  background-color: rgb(80, 200, 80);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.calender-grid{
+  width: 100%;
+  height: calc(var(--calender-bord-width));
+  border-radius: 0 0 10px 10px;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.month-btn{
+  all: unset;
+  cursor: pointer;
+  width: 70px;
+  height: 70px;
+  color: white;
+  font-size: calc(var(--calender-bord-width) / 12);
+  align-items: center;
+  text-align: center;
+  margin: auto 0;
+}
+
+.year-month-container{
+  width: 100px;
+  height: auto;
+  letter-spacing: 0;
+  word-spacing: 0;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.month{
+  font-size: calc(var(--calender-bord-width) / 18);
+}
+
+.year{
+  font-size: calc(var(--calender-bord-width) / 24);
+}
+
+.week{
+  margin: auto;
+  color: gray;
+  text-align: center;
+}
+
+.daybtn{
+  height: calc(var(--calender-bord-width) / 7);
+  width: calc(var(--calender-bord-width) / 7);
+  font-size: calc(var(--calender-bord-width) / 30);
+  border-radius: 50%;
+  background-color: white;
+  border: 0;
+  transition: background-color 0.3s;
+}
+
+.daybtn:hover{
+  background-color: rgb(80, 200, 80);
+}
+
+.today{
+  border: 2px solid rgb(80, 200, 80);
+}
+
+.select{
+  background-color: rgb(80, 200, 80);
+}
+
+.sun{
+  color: red;
+}
+
+.next_month{
+  color: rgb(200, 200, 200);
+}
+
+.last_month{
+  color: rgb(200, 200, 200);
+}
+
+.hidden{
+  visibility: hidden;
+}
+
+.gap{
+  height: 300px;
+}

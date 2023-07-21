@@ -59,7 +59,6 @@ body{
 
 .object{
   --deg: 0;
-  z-index: 999;
   background-image: url(./obj.png);
   background-size: cover;
   transform: rotate(calc(var(--deg) * 1deg));
@@ -85,7 +84,7 @@ body{
 
 .characters{
   --deg: 0;
-  z-index: 999;
+  z-index: 1;
   background-image: url(./astro_img.png);
   background-size: cover;
   transform: rotate(calc(var(--deg) * 1deg));
@@ -111,7 +110,7 @@ body{
   z-index: 10;
 }
 
-.ui_box > *{
+.ui_box *{
   z-index: 10;
 }
 
@@ -139,7 +138,7 @@ body{
   transition: transform 0.3s ease;
 }
 
-.item_box > * {
+.item_box * {
   z-index: 10;
 }
 
@@ -148,6 +147,7 @@ body{
   height: 100vh;
   background-color: white;
   border: 1px solid red;
+  z-index: 10;
 }
 
 #buttonbox{
@@ -155,23 +155,14 @@ body{
   flex-direction: column;
 }
 
-#item_button{
+#buttonbox > * {
   height: 30px;
   width: 80px;
   z-index: 10;
-
-}
-
-#setting_button{
-  height: 30px;
-  width: 80px;
-  z-index: 10;
-
 }
 
 #obj_count{
   color: white;
   font-weight: bold;
   z-index: 10;
-
 }
