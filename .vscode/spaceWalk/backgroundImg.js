@@ -130,9 +130,7 @@ addbutton2.addEventListener("click", function () {
 });
 
 var addbutton3 = document.getElementById("button3");
-addbutton3.addEventListener("click", function () {
-  add_obj("astro" + getRandomInt(1, 4) + ".png");
-});
+addbutton3.addEventListener("click", reset());
 
 function getrgb() {
   let r = 255;
@@ -172,25 +170,21 @@ addbutton4.addEventListener("click", function () {
     score--;
     document.getElementById("score").textContent = score;
     for (let i = 0; i < 1000; i++) {
-      star();
+      if (getRandomInt(0, 6) != 0) {
+        starArr[2]++;
+        paintCell(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
+      } else if (getRandomInt(0, 4) != 0) {
+        starArr[1]++;
+        paintCellMiddle(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
+      } else {
+        starArr[0]++;
+        paintCellBig(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
+      }
     }
     blackhole();
     earth();
   }
 });
-
-function star() {
-  if (getRandomInt(0, 6) != 0) {
-    starArr[2]++;
-    paintCell(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
-  } else if (getRandomInt(0, 4) != 0) {
-    starArr[1]++;
-    paintCellMiddle(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
-  } else {
-    starArr[0]++;
-    paintCellBig(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
-  }
-}
 
 //astro초기 위치값 (obj과는 다르게 map전체를 움직여야 해서 아레와 같은 값을 가짐)
 let x_position = -leng;
@@ -368,7 +362,17 @@ function getRandomInt(min, max) {
 let starArr = [2000, 8000, 40000];
 
 const makeStar = setInterval(() => {
-  star();
+  paintCellBig(getRandomInt(2, leng - 2), getRandomInt(2, leng - 2), getrgb());
+  for (let i = 0; i < 4; i++) {
+    paintCellMiddle(
+      getRandomInt(1, leng - 1),
+      getRandomInt(1, leng - 1),
+      getrgb()
+    );
+  }
+  for (let i = 0; i < 20; i++) {
+    paintCell(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
+  }
 }, 1);
 
 function astroSpin() {
@@ -409,4 +413,16 @@ setTimeout(() => {
     objMove();
     touchCheck();
   }, 1000 / 60);
-}, starArr[0] + starArr[0] + starArr[0]);
+}, 4000);
+
+function reset() {
+  // countObj();
+  // setTimeout(() => {
+  //   clearTimeout(makeStar);
+  //   setInterval(() => {
+  //     astroMove();
+  //     objMove();
+  //     touchCheck();
+  //   }, 1000 / 60);
+  // }, 4000);
+}
