@@ -59,11 +59,9 @@ canvas.forEach((canvas) => {
   canvas.after(div);
 });
 
-//블랙홀 그리기
-let blackhole_x = getRandomInt(0, leng - 400) + 100;
-let blackhole_y = getRandomInt(0, leng - 400) + 100;
-let angle = getRandomInt(0, 361);
+let background_obj_arr = [blackhole, deathStar, donut, earth, flet];
 
+//블랙홀 그리기
 function blackhole() {
   let image = new Image();
   image.src = "blackhole.png";
@@ -81,14 +79,56 @@ function blackhole() {
 
 blackhole();
 
+let deathStar_x = getRandomInt(0, leng - 400) + 100;
+let deathStar_y = getRandomInt(0, leng - 400) + 100;
+let angle = getRandomInt(0, 361);
+
+function deathStar() {
+  let image = new Image();
+  image.src = "deathStar.png";
+  image.onload = function () {
+    for (let i = 0; i < 9; i++) {
+      const ctx = canvas[i].getContext("2d");
+      ctx.translate(deathStar_x, deathStar_y);
+      ctx.rotate((angle * Math.PI) / 180);
+      ctx.drawImage(image, 0, 0);
+      ctx.rotate((-1 * angle * Math.PI) / 180);
+      ctx.translate(-1 * deathStar_x, -1 * deathStar_y);
+    }
+  };
+}
+
+deathStar();
+
 //지구 그리기
+let donut_x = getRandomInt(0, leng - 400) + 100;
+let donut_y = getRandomInt(0, leng - 400) + 100;
+let donut_angle = getRandomInt(0, 361);
+
+function donut() {
+  let image = new Image();
+  image.src = "donut.png";
+  image.onload = function () {
+    for (let i = 0; i < 9; i++) {
+      const ctx = canvas[i].getContext("2d");
+      ctx.translate(donut_x, donut_y);
+      ctx.rotate((donut_angle * Math.PI) / 180);
+      ctx.drawImage(image, 0, 0);
+      ctx.rotate((-1 * donut_angle * Math.PI) / 180);
+      ctx.translate(-1 * donut_x, -1 * donut_y);
+    }
+  };
+}
+
+donut();
+
 let earth_x = getRandomInt(0, leng - 400) + 100;
 let earth_y = getRandomInt(0, leng - 400) + 100;
 let earth_angle = getRandomInt(0, 361);
 
 function earth() {
   let image = new Image();
-  image.src = "donut.png";
+  image.src = "earth.png";
   image.onload = function () {
     for (let i = 0; i < 9; i++) {
       const ctx = canvas[i].getContext("2d");
@@ -103,6 +143,26 @@ function earth() {
 
 earth();
 
+let flet_x = getRandomInt(0, leng - 400) + 100;
+let flet_y = getRandomInt(0, leng - 400) + 100;
+let flet_angle = getRandomInt(0, 361);
+
+function flet() {
+  let image = new Image();
+  image.src = "flet.png";
+  image.onload = function () {
+    for (let i = 0; i < 9; i++) {
+      const ctx = canvas[i].getContext("2d");
+      ctx.translate(flet_x, flet_y);
+      ctx.rotate((flet_angle * Math.PI) / 180);
+      ctx.drawImage(image, 0, 0);
+      ctx.rotate((-1 * flet_angle * Math.PI) / 180);
+      ctx.translate(-1 * flet_x, -1 * flet_y);
+    }
+  };
+}
+
+flet();
 //배경오브젝트 아이템창
 let itmebox = document.getElementById("item");
 
@@ -166,9 +226,9 @@ function getrgb() {
 
 var addbutton4 = document.getElementById("button4");
 addbutton4.addEventListener("click", function () {
-  if (score > 0) {
-    score--;
-    document.getElementById("score").textContent = score;
+  if (true) {
+    // score--;
+    // document.getElementById("score").textContent = score;
     for (let i = 0; i < 1000; i++) {
       if (getRandomInt(0, 6) != 0) {
         starArr[2]++;
@@ -181,8 +241,9 @@ addbutton4.addEventListener("click", function () {
         paintCellBig(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
       }
     }
-    blackhole();
-    earth();
+    background_obj_arr.forEach(function (func) {
+      func();
+    });
   }
 });
 
@@ -406,14 +467,18 @@ function objMove() {
   }
 }
 countObj();
+
 setTimeout(() => {
   clearTimeout(makeStar);
+  background_obj_arr.forEach(function (func) {
+    func();
+  });
   setInterval(() => {
     astroMove();
     objMove();
     touchCheck();
   }, 1000 / 60);
-}, 4000);
+}, 8000);
 
 function reset() {
   // countObj();
