@@ -15,6 +15,15 @@ let obj_info = [
   [300, 300, 2, 1, 1, 0.4],
 ];
 
+//오브젝트 추가 코스트
+function cost(n) {
+  let costArr = [1, 1];
+  for (let i = 0; i < n - 1; i++) {
+    costArr.push(costArr[costArr.length - 2] + costArr[costArr.length - 1]);
+  }
+  return costArr.pop();
+}
+
 //오브젝트 추가
 function add_obj(object_img) {
   canvas.forEach((canvas) => {
@@ -59,29 +68,111 @@ canvas.forEach((canvas) => {
   canvas.after(div);
 });
 
-let background_obj_arr = [blackhole, deathStar, donut, earth, flet];
+let background_obj_arr = [
+  blackhole,
+  deathStar,
+  donut,
+  earth,
+  flet,
+  spaceStation,
+];
 
-//블랙홀 그리기
-function blackhole() {
-  let image = new Image();
-  image.src = "blackhole.png";
+// for (let j = 0; j < 3; j++) {
+//   for (let k = 0; k < 3; k++) {
+//     ctx.translate(dumm_x + j * leng, dumm_y + k * leng);
+//     ctx.rotate((dumm_angle * Math.PI) / 180);
+//     ctx.drawImage(image, 0, 0);
+//     ctx.rotate((-1 * dumm_angle * Math.PI) / 180);
+//     ctx.translate(-1 * (dumm_x + j * leng), -1 * (dumm_y + k * leng));
+//   }
+// }
+
+function drawImageOnCanvas(imageUrl, x, y, angle) {
+  const image = new Image();
+  image.src = imageUrl;
   image.onload = function () {
     for (let i = 0; i < 9; i++) {
       const ctx = canvas[i].getContext("2d");
-      ctx.translate(blackhole_x, blackhole_y);
-      ctx.rotate((angle * Math.PI) / 180);
-      ctx.drawImage(image, 0, 0);
-      ctx.rotate((-1 * angle * Math.PI) / 180);
-      ctx.translate(-1 * blackhole_x, -1 * blackhole_y);
+      for (let j = 0; j < 3; j++) {
+        for (let k = 0; k < 3; k++) {
+          ctx.translate(x + j * leng, y + k * leng);
+          ctx.rotate((angle * Math.PI) / 180);
+          ctx.drawImage(image, 0, 0);
+          ctx.rotate((-1 * angle * Math.PI) / 180);
+          ctx.translate(-1 * (x + j * leng), -1 * (y + k * leng));
+        }
+      }
     }
   };
 }
 
+//블랙홀 그리기
+let blackhole_x = getRandomInt(0, leng) - leng;
+let blackhole_y = getRandomInt(0, leng) - leng;
+let blackhole_angle = getRandomInt(0, 361);
+
+function blackhole() {
+  drawImageOnCanvas("blackhole.png", blackhole_x, blackhole_y, blackhole_angle);
+}
+
 blackhole();
 
-let deathStar_x = getRandomInt(0, leng - 400) + 100;
-let deathStar_y = getRandomInt(0, leng - 400) + 100;
-let angle = getRandomInt(0, 361);
+// function blackhole() {
+//   let image = new Image();
+//   image.src = "blackhole.png";
+//   image.onload = function () {
+//     for (let i = 0; i < 9; i++) {
+//       const ctx = canvas[i].getContext("2d");
+//       for (let j = 0; j < 3; j++) {
+//         for (let k = 0; k < 3; k++) {
+//           ctx.translate(blackhole_x + j * leng, blackhole_y + k * leng);
+//           ctx.rotate((blackhole_angle * Math.PI) / 180);
+//           ctx.drawImage(image, 0, 0);
+//           ctx.rotate((-1 * blackhole_angle * Math.PI) / 180);
+//           ctx.translate(
+//             -1 * (blackhole_x + j * leng),
+//             -1 * (blackhole_y + k * leng)
+//           );
+//         }
+//       }
+//     }
+//   };
+// }
+
+// blackhole();
+
+let spaceStation_x = getRandomInt(0, leng) - leng;
+let spaceStation_y = getRandomInt(0, leng) - leng;
+let spaceStation_angle = getRandomInt(0, 361);
+
+function spaceStation() {
+  let image = new Image();
+  image.src = "spaceStation.png";
+  image.onload = function () {
+    for (let i = 0; i < 9; i++) {
+      const ctx = canvas[i].getContext("2d");
+      for (let j = 0; j < 3; j++) {
+        for (let k = 0; k < 3; k++) {
+          ctx.translate(spaceStation_x + j * leng, spaceStation_y + k * leng);
+          ctx.rotate((spaceStation_angle * Math.PI) / 180);
+          ctx.drawImage(image, 0, 0);
+          ctx.rotate((-1 * spaceStation_angle * Math.PI) / 180);
+          ctx.translate(
+            -1 * (spaceStation_x + j * leng),
+            -1 * (spaceStation_y + k * leng)
+          );
+        }
+      }
+    }
+  };
+}
+
+spaceStation();
+
+//deadStar 그리기
+let deathStar_x = getRandomInt(0, leng) - leng;
+let deathStar_y = getRandomInt(0, leng) - leng;
+let deathStar_angle = getRandomInt(0, 361);
 
 function deathStar() {
   let image = new Image();
@@ -89,11 +180,18 @@ function deathStar() {
   image.onload = function () {
     for (let i = 0; i < 9; i++) {
       const ctx = canvas[i].getContext("2d");
-      ctx.translate(deathStar_x, deathStar_y);
-      ctx.rotate((angle * Math.PI) / 180);
-      ctx.drawImage(image, 0, 0);
-      ctx.rotate((-1 * angle * Math.PI) / 180);
-      ctx.translate(-1 * deathStar_x, -1 * deathStar_y);
+      for (let j = 0; j < 3; j++) {
+        for (let k = 0; k < 3; k++) {
+          ctx.translate(deathStar_x + j * leng, deathStar_y + k * leng);
+          ctx.rotate((deathStar_angle * Math.PI) / 180);
+          ctx.drawImage(image, 0, 0);
+          ctx.rotate((-1 * deathStar_angle * Math.PI) / 180);
+          ctx.translate(
+            -1 * (deathStar_x + j * leng),
+            -1 * (deathStar_y + k * leng)
+          );
+        }
+      }
     }
   };
 }
@@ -101,8 +199,8 @@ function deathStar() {
 deathStar();
 
 //지구 그리기
-let donut_x = getRandomInt(0, leng - 400) + 100;
-let donut_y = getRandomInt(0, leng - 400) + 100;
+let donut_x = getRandomInt(0, leng) - leng;
+let donut_y = getRandomInt(0, leng) - leng;
 let donut_angle = getRandomInt(0, 361);
 
 function donut() {
@@ -111,19 +209,23 @@ function donut() {
   image.onload = function () {
     for (let i = 0; i < 9; i++) {
       const ctx = canvas[i].getContext("2d");
-      ctx.translate(donut_x, donut_y);
-      ctx.rotate((donut_angle * Math.PI) / 180);
-      ctx.drawImage(image, 0, 0);
-      ctx.rotate((-1 * donut_angle * Math.PI) / 180);
-      ctx.translate(-1 * donut_x, -1 * donut_y);
+      for (let j = 0; j < 3; j++) {
+        for (let k = 0; k < 3; k++) {
+          ctx.translate(donut_x + j * leng, donut_y + k * leng);
+          ctx.rotate((donut_angle * Math.PI) / 180);
+          ctx.drawImage(image, 0, 0);
+          ctx.rotate((-1 * donut_angle * Math.PI) / 180);
+          ctx.translate(-1 * (donut_x + j * leng), -1 * (donut_y + k * leng));
+        }
+      }
     }
   };
 }
 
 donut();
 
-let earth_x = getRandomInt(0, leng - 400) + 100;
-let earth_y = getRandomInt(0, leng - 400) + 100;
+let earth_x = getRandomInt(0, leng) - leng;
+let earth_y = getRandomInt(0, leng) - leng;
 let earth_angle = getRandomInt(0, 361);
 
 function earth() {
@@ -132,19 +234,23 @@ function earth() {
   image.onload = function () {
     for (let i = 0; i < 9; i++) {
       const ctx = canvas[i].getContext("2d");
-      ctx.translate(earth_x, earth_y);
-      ctx.rotate((earth_angle * Math.PI) / 180);
-      ctx.drawImage(image, 0, 0);
-      ctx.rotate((-1 * earth_angle * Math.PI) / 180);
-      ctx.translate(-1 * earth_x, -1 * earth_y);
+      for (let j = 0; j < 3; j++) {
+        for (let k = 0; k < 3; k++) {
+          ctx.translate(earth_x + j * leng, earth_y + k * leng);
+          ctx.rotate((earth_angle * Math.PI) / 180);
+          ctx.drawImage(image, 0, 0);
+          ctx.rotate((-1 * earth_angle * Math.PI) / 180);
+          ctx.translate(-1 * (earth_x + j * leng), -1 * (earth_y + k * leng));
+        }
+      }
     }
   };
 }
 
 earth();
 
-let flet_x = getRandomInt(0, leng - 400) + 100;
-let flet_y = getRandomInt(0, leng - 400) + 100;
+let flet_x = getRandomInt(0, leng) - leng;
+let flet_y = getRandomInt(0, leng) - leng;
 let flet_angle = getRandomInt(0, 361);
 
 function flet() {
@@ -153,11 +259,15 @@ function flet() {
   image.onload = function () {
     for (let i = 0; i < 9; i++) {
       const ctx = canvas[i].getContext("2d");
-      ctx.translate(flet_x, flet_y);
-      ctx.rotate((flet_angle * Math.PI) / 180);
-      ctx.drawImage(image, 0, 0);
-      ctx.rotate((-1 * flet_angle * Math.PI) / 180);
-      ctx.translate(-1 * flet_x, -1 * flet_y);
+      for (let j = 0; j < 3; j++) {
+        for (let k = 0; k < 3; k++) {
+          ctx.translate(flet_x + j * leng, flet_y + k * leng);
+          ctx.rotate((flet_angle * Math.PI) / 180);
+          ctx.drawImage(image, 0, 0);
+          ctx.rotate((-1 * flet_angle * Math.PI) / 180);
+          ctx.translate(-1 * (flet_x + j * leng), -1 * (flet_y + k * leng));
+        }
+      }
     }
   };
 }
@@ -190,7 +300,9 @@ addbutton2.addEventListener("click", function () {
 });
 
 var addbutton3 = document.getElementById("button3");
-addbutton3.addEventListener("click", reset());
+addbutton3.addEventListener("click", function () {
+  console.log(obj_info);
+});
 
 function getrgb() {
   let r = 255;
@@ -227,8 +339,8 @@ function getrgb() {
 var addbutton4 = document.getElementById("button4");
 addbutton4.addEventListener("click", function () {
   if (true) {
-    // score--;
-    // document.getElementById("score").textContent = score;
+    score--;
+    document.getElementById("score").textContent = score;
     for (let i = 0; i < 1000; i++) {
       if (getRandomInt(0, 6) != 0) {
         starArr[2]++;
@@ -308,14 +420,6 @@ function collisionMomentum(a, b) {
   obj_info[a][3] = saveArr[1];
   obj_info[b][2] = saveArr[2];
   obj_info[b][3] = saveArr[3];
-}
-
-//토크값 계산
-function torque(a, b) {
-  obj_info[b][5] +=
-    (obj_info[a][2] * (obj_info[a][1] - obj_info[b][1]) -
-      obj_info[a][3] * (obj_info[a][0] - obj_info[b][0])) *
-    0.6;
 }
 
 let overx;
@@ -468,26 +572,24 @@ function objMove() {
 }
 countObj();
 
-setTimeout(() => {
+function animate() {
+  astroMove();
+  objMove();
+  touchCheck();
+  requestAnimationFrame(animate);
+}
+
+// 최초 프레임 요청
+
+const movestart = setTimeout(() => {
   clearTimeout(makeStar);
   background_obj_arr.forEach(function (func) {
     func();
   });
-  setInterval(() => {
-    astroMove();
-    objMove();
-    touchCheck();
-  }, 1000 / 60);
+  requestAnimationFrame(animate);
+  // setInterval(() => {
+  //   astroMove();
+  //   objMove();
+  //   touchCheck();
+  // }, 1000 / 60);
 }, 8000);
-
-function reset() {
-  // countObj();
-  // setTimeout(() => {
-  //   clearTimeout(makeStar);
-  //   setInterval(() => {
-  //     astroMove();
-  //     objMove();
-  //     touchCheck();
-  //   }, 1000 / 60);
-  // }, 4000);
-}
