@@ -527,7 +527,10 @@ function getRandomInt(min, max) {
 let starArr = [2000, 8000, 40000];
 
 const makeStar = setInterval(() => {
-  paintCellBig(getRandomInt(2, leng - 2), getRandomInt(2, leng - 2), getrgb());
+  for (let i = 0; i < 20; i++) {
+    paintCell(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
+  }
+
   for (let i = 0; i < 4; i++) {
     paintCellMiddle(
       getRandomInt(1, leng - 1),
@@ -535,9 +538,8 @@ const makeStar = setInterval(() => {
       getrgb()
     );
   }
-  for (let i = 0; i < 20; i++) {
-    paintCell(getRandomInt(0, leng), getRandomInt(0, leng), getrgb());
-  }
+
+  paintCellBig(getRandomInt(2, leng - 2), getRandomInt(2, leng - 2), getrgb());
 }, 1);
 
 function astroSpin() {
