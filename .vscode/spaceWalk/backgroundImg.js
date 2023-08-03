@@ -291,9 +291,13 @@ addbutton1.addEventListener("click", function () {
 });
 
 var addbutton2 = document.getElementById("button2");
+let addobjnum = 1;
+addbutton2.innerText = "add obj\ncost : " + cost(addobjnum);
 addbutton2.addEventListener("click", function () {
-  if (score > 0 && countObj() < 50) {
-    score--;
+  if (score > cost(addobjnum) && countObj() < 50) {
+    score -= cost(addobjnum);
+    addobjnum++;
+    addbutton2.innerText = "add obj\ncost : " + cost(addobjnum);
     document.getElementById("score").textContent = score;
     add_obj("obj" + getRandomInt(1, 10) + ".png");
   }
@@ -337,9 +341,13 @@ function getrgb() {
 }
 
 var addbutton4 = document.getElementById("button4");
+addbutton4.innerText = "add star\ncost : " + cost(1) * 10;
+let staraddnum = 1;
 addbutton4.addEventListener("click", function () {
-  if (true) {
-    score--;
+  addbutton4.innerText = "add star\ncost : " + cost(staraddnum) * 10;
+  if (score >= cost(staraddnum) * 10) {
+    score -= cost(staraddnum) * 10;
+    staraddnum++;
     document.getElementById("score").textContent = score;
     for (let i = 0; i < 1000; i++) {
       if (getRandomInt(0, 6) != 0) {
@@ -428,7 +436,7 @@ let overy;
 let checkArrA = [];
 let checkArrB = [];
 
-let score = 0;
+let score = 1000;
 
 //충돌 체크, 스코어 상승
 function check() {
@@ -456,6 +464,7 @@ function check() {
               score += 10;
             }
             score++;
+            score += background_obj_arr.length;
             document.getElementById("score").textContent = score;
           }
           collisionMomentum(i, j);
