@@ -77,6 +77,31 @@ let background_obj_arr = [
   spaceStation,
 ];
 
+let background_obj_list = [
+  "blackhole",
+  "deathStar",
+  "donut",
+  "earth",
+  "flet",
+  "spaceStation",
+];
+
+let itemList = document.getElementById("itemList");
+for (let i = 0; i < background_obj_list.length; i++) {
+  const item = document.createElement("li");
+  item.className = "bgimgitme";
+  const itemImg = document.createElement("div");
+
+  const imageURL = `${background_obj_list[i]}.png`;
+
+  item.style.backgroundImage = `url(./${imageURL})`;
+  item.style.backgroundSize = "contain";
+  item.style.backgroundRepeat = "no-repeat";
+  item.style.backgroundPosition = "center";
+  item.appendChild(itemImg);
+
+  itemList.appendChild(item);
+}
 // for (let j = 0; j < 3; j++) {
 //   for (let k = 0; k < 3; k++) {
 //     ctx.translate(dumm_x + j * leng, dumm_y + k * leng);
