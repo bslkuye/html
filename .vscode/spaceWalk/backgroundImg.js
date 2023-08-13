@@ -1,3 +1,5 @@
+// import onoffButton from "./components/onoffbutton";
+
 const canvas = document.querySelectorAll(".map");
 const space = document.querySelector(".space");
 const astro = document.querySelector(".characters");
@@ -6,6 +8,8 @@ const ctx = canvas[0].getContext("2d");
 const leng = 5000;
 const characterWidth = 30;
 document.documentElement.style.setProperty("--width", leng + "px");
+
+scoreMultiful = 100;
 
 // 오브젝트 정보
 /** [x_position, y_position, x_speed, y_speed, deg, spin] */
@@ -92,6 +96,15 @@ for (let i = 0; i < background_obj_list.length; i++) {
   item.className = "bgimgitme";
   const itemImg = document.createElement("div");
 
+  const switchbutton = document.createElement("label");
+  switchbutton.className = "switch";
+
+  const onoffbutton = document.createElement("span");
+  onoffbutton.classList.add("slider", "round");
+
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+
   const imageURL = `${background_obj_list[i]}.png`;
 
   item.style.backgroundImage = `url(./${imageURL})`;
@@ -99,7 +112,10 @@ for (let i = 0; i < background_obj_list.length; i++) {
   item.style.backgroundRepeat = "no-repeat";
   item.style.backgroundPosition = "center";
   item.appendChild(itemImg);
+  switchbutton.appendChild(checkbox);
+  switchbutton.appendChild(onoffbutton);
 
+  item.insertBefore(switchbutton, item.nextSibling);
   itemList.appendChild(item);
 }
 // for (let j = 0; j < 3; j++) {
@@ -486,10 +502,9 @@ function check() {
           } else {
             // 아니면 스코어 상승, checkarr에 정보 저장
             if (i == 0) {
-              score += 10;
+              score += 10 * scoreMultiful;
             }
-            score++;
-            score += background_obj_arr.length;
+            score += scoreMultiful;
             document.getElementById("score").textContent = score;
           }
           collisionMomentum(i, j);
