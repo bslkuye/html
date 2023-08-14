@@ -121,7 +121,8 @@ body{
 .hidden{
   visibility: hidden;
   pointer-events: none;
-  
+  transition: 0s;
+  z-index: -999;
 }
 
 .active{
