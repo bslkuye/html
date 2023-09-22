@@ -158,30 +158,6 @@ function blackhole() {
 
 blackhole();
 
-// function blackhole() {
-//   let image = new Image();
-//   image.src = "blackhole.png";
-//   image.onload = function () {
-//     for (let i = 0; i < 9; i++) {
-//       const ctx = canvas[i].getContext("2d");
-//       for (let j = 0; j < 3; j++) {
-//         for (let k = 0; k < 3; k++) {
-//           ctx.translate(blackhole_x + j * leng, blackhole_y + k * leng);
-//           ctx.rotate((blackhole_angle * Math.PI) / 180);
-//           ctx.drawImage(image, 0, 0);
-//           ctx.rotate((-1 * blackhole_angle * Math.PI) / 180);
-//           ctx.translate(
-//             -1 * (blackhole_x + j * leng),
-//             -1 * (blackhole_y + k * leng)
-//           );
-//         }
-//       }
-//     }
-//   };
-// }
-
-// blackhole();
-
 let spaceStation_x = getRandomInt(0, leng) - leng;
 let spaceStation_y = getRandomInt(0, leng) - leng;
 let spaceStation_angle = getRandomInt(0, 361);
@@ -210,7 +186,7 @@ function spaceStation() {
 
 spaceStation();
 
-//deadStar 그리기
+//deathStar 그리기
 let deathStar_x = getRandomInt(0, leng) - leng;
 let deathStar_y = getRandomInt(0, leng) - leng;
 let deathStar_angle = getRandomInt(0, 361);
@@ -637,10 +613,10 @@ const movestart = setTimeout(() => {
   background_obj_arr.forEach(function (func) {
     func();
   });
-  requestAnimationFrame(animate);
-  // setInterval(() => {
-  //   astroMove();
-  //   objMove();
-  //   touchCheck();
-  // }, 1000 / 60);
+  // requestAnimationFrame(animate);
+  setInterval(() => {
+    astroMove();
+    objMove();
+    touchCheck();
+  }, 1000 / 60);
 }, 8000);

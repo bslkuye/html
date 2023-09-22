@@ -1,0 +1,50 @@
+{
+  "sectionInfoList" : [
+    {
+      "sectionTitle" : "인기 상품",
+      "productList": [
+        {
+          "id" : 1,
+          "imgSrc" : "/js_basic_market/public/assets/파프리카.jpg",
+          "name" : "파프리카 2입",
+          "discountPercent" : 20,
+          "price" : 2000,
+          "originalPrice" : 2500
+        },
+        {
+          "id" : 1,
+          "imgSrc" : "/js_basic_market/public/assets/파프리카.jpg",
+          "name" : "파프리카 2입",
+          "discountPercent" : 20,
+          "price" : 2000,
+          "originalPrice" : 2500
+        },
+        {
+          "id" : 1,
+          "imgSrc" : "/js_basic_market/public/assets/파프리카.jpg",
+          "name" : "파프리카 2입",
+          "discountPercent" : 20,
+          "price" : 2000,
+          "originalPrice" : 2500
+        },
+        {
+          "id" : 1,
+          "imgSrc" : "/js_basic_market/public/assets/파프리카.jpg",
+          "name" : "파프리카 2입",
+          "discountPercent" : 20,
+          "price" : 2000,
+          "originalPrice" : 2500
+        },
+        {
+          "id" : 1,
+          "imgSrc" : "/js_basic_market/public/assets/파프리카.jpg",
+          "name" : "파프리카 2입",
+          "discountPercent" : 20,
+          "price" : 2000,
+          "originalPrice" : 2500
+        },
+        
+      ]
+    }
+  ]
+}

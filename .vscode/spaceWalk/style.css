@@ -16,6 +16,11 @@ body{
   margin: 0 auto;
 }
 
+button{
+  background-color: black;
+  color: red;
+}
+
 .canvasContainer{
   height: var(--width);
   width: var(--width);
