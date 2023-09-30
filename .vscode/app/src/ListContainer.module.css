@@ -5,3 +5,19 @@
   height: 22px;
 
 }
+
+.topSection{
+  display: flex;
+  flex-direction: 'space-between';
+}
+
+.input{
+  background: #f6f8fa;
+  border-radius: 6px;
+  border: 1px solid #d0d7de;
+  padding-left: 10px;
+  color: #53606a;
+  width: 60%;
+  margin-right: auto;
+  box-shadow: none;
+}
