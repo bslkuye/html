@@ -1,0 +1,17 @@
+.wrapper{
+  padding: 8px 16px;
+  border-top: 1px solid #d0d7de;
+  background: white;
+  display: flex;
+
+}
+
+.wrapper:hover{
+  background: rgb(246, 248, 250);
+}
+
+.checkbox{
+  margin-right: 8px;
+  margin-top: 5px;
+  margin-bottom: auto;
+}
