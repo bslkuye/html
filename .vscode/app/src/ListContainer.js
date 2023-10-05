@@ -1,16 +1,28 @@
 import styles from "./ListContainer.module.css";
 import Button from "./component/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ListItem from "./component/ListItem";
 import ListItemLayout from "./component/ListItemLayout";
 import clsx from "clsx";
 import Modal from "./component/Modal";
 import Pagination from "./component/Pagination";
+import axios from "axios";
 
 export default function ListContainer() {
   const [inputValue, setInputValue] = useState("is:pr is:open");
+  const [checked, setChecked] = useState(false);
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
+
+  async function getData() {
+    const data = await axios.get(
+      `https://api.github.com/repos/facebook/react/issues`,
+    );
+    setList(data.data);
+  }
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <>
@@ -36,9 +48,11 @@ export default function ListContainer() {
           <ListFilter onChangeFilter={(filteredData) => {}} />
         </ListItemLayout>
         <div className={styles.container}>
-          {list.map((listItem, index) => {
+          {list.map((item, index) => {
             <ListItem
+              checked={checked}
               key={index}
+              onclickCheckbox={() => setChecked((checked) => !checked)}
               badges={[
                 { color: "red", title: "bug" },
                 { color: "red", title: "bug2" },
