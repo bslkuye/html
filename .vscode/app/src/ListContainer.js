@@ -23,7 +23,6 @@ export default function ListContainer() {
   useEffect(() => {
     getData();
   }, []);
-
   return (
     <>
       <div className={styles.listContainer}>
@@ -47,19 +46,26 @@ export default function ListContainer() {
         <ListItemLayout className={styles.listFilter}>
           <ListFilter onChangeFilter={(filteredData) => {}} />
         </ListItemLayout>
-        <div className={styles.container}>
-          {list.map((item, index) => {
-            <ListItem
-              checked={checked}
-              key={index}
-              onclickCheckbox={() => setChecked((checked) => !checked)}
-              badges={[
-                { color: "red", title: "bug" },
-                { color: "red", title: "bug2" },
-              ]}
-            />;
-          })}
-        </div>
+        <ListItem
+          checked={checked}
+          onclickCheckbox={() => setChecked((checked) => !checked)}
+          badges={[
+            { color: "red", title: "bug" },
+            { color: "red", title: "bug2" },
+          ]}
+        />
+
+        {list.map((item, index) => {
+          <ListItem
+            checked={checked}
+            key={index}
+            onclickCheckbox={() => setChecked((checked) => !checked)}
+            badges={[
+              { color: "red", title: "bug" },
+              { color: "red", title: "bug2" },
+            ]}
+          />;
+        })}
       </div>
       <div className={styles.paginationContainer}>
         <Pagination
