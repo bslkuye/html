@@ -2,13 +2,21 @@
 .listContainer{
   padding: 0 32px;
   margin-top: 24px;
-  height: 22px;
+  height: 220px;
 
 }
 
 .topSection{
   display: flex;
   flex-direction: 'space-between';
+  margin-bottom: 20px;
+}
+
+.listFilter{
+  margin-top: 20px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background: rgb(246, 248, 250);
 }
 
 .input{
@@ -20,4 +28,46 @@
   width: 60%;
   margin-right: auto;
   box-shadow: none;
+}
+
+.filterLists{
+  display: flex;
+  align-items: center;
+
+}
+
+.filterLists > div > span{
+  padding: 0 16px;
+  line-height: 21px;
+  cursor: pointer;
+  color: #53606a;
+}
+
+.filterLists > div > span:hover {
+  color: black;
+}
+
+.textFilter{
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.selected{
+  font-weight: 800;
+}
+
+.modalContainer{
+  top: 20px;
+  left: 20px;
+  position: absolute;
+}
+
+.filterItem{
+  position: relative;
+}
+
+.paginationContainer{
+  display: flex;
+  justify-content: center;
+  
 }

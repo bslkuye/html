@@ -29,7 +29,7 @@ const ItemList = ({ title, limit, scroll }: Items): JSX.Element => {
       products = products.filter((item) => item.category === "jewelery").slice(0, limit);
       break;
     case '디지털':
-      products = products.filter((item) => item.category === "electromics").slice(0, limit);
+      products = products.filter((item) => item.category === "electronics").slice(0, limit);
       break;
     default:
       products = products;

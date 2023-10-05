@@ -10,14 +10,7 @@ module.exports = {
       xl: "1280px",
       xl2: "1360px",
     },
-    extend: {
-      // lineClamp: {
-      //   1: "1",
-      //   2: "2",
-      //   3: "3",
-      //   4: "4",
-      // },
-    },
+    extend: {},
   },
   plugins: [require("daisyui")],
   daisyui: {
