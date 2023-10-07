@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input[type= 'checkbox']:checked + span{
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <input type="text" class="todo-input" placeholder="Enter todos"/>
+    <button>add</button>
+  </form>
+
+  <ul class="todo-list"></ul>
+    
+  <script>
+    const todoForm = document.querySelector("form");
+    const todoInput = document.querySelector('.todo-input');
+    const todoList = document.querySelector('.todo-list');
+
+    let todots = [];
+
+    const render = () => {
+      todoList.innerHTML = todos.map(todo => `
+        <li id = '${todo.id}'>
+          <input type="checkbox" ${todo.completed ? 'checked' : ''} />
+          <span>${todo.content}</span>
+          <button class="todo-remove">x</button>
+        </li>
+      `).join('');
+    }
+
+    const generateNextId = () => Matn.max(...todos.map(todo => todo.id), 0) + 1;
+  </script>
+</body>
+</html>
