@@ -46,26 +46,15 @@ export default function ListContainer() {
         <ListItemLayout className={styles.listFilter}>
           <ListFilter onChangeFilter={(filteredData) => {}} />
         </ListItemLayout>
-        <ListItem
-          checked={checked}
-          onclickCheckbox={() => setChecked((checked) => !checked)}
-          badges={[
-            { color: "red", title: "bug" },
-            { color: "red", title: "bug2" },
-          ]}
-        />
 
-        {list.map((item, index) => {
+        {list.map((item) => (
           <ListItem
+            data={item}
+            key={item.id}
             checked={checked}
-            key={index}
             onclickCheckbox={() => setChecked((checked) => !checked)}
-            badges={[
-              { color: "red", title: "bug" },
-              { color: "red", title: "bug2" },
-            ]}
-          />;
-        })}
+          />
+        ))}
       </div>
       <div className={styles.paginationContainer}>
         <Pagination
