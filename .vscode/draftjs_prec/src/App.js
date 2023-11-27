@@ -11,6 +11,8 @@ import {
 } from "draft-js";
 import "draft-js/dist/Draft.css";
 
+import RichTextEditior from "../components/RichTextEditor.js";
+
 function App() {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
@@ -47,6 +49,7 @@ function App() {
 
   return (
     <div className="App">
+      <RichTextEditior />
       <header className="App-header">
         <div className="editor">
           <Editor editorState={editorState} onChange={onChange} />
