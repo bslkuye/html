@@ -14,15 +14,16 @@ export default function ListContainer() {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
 
-  async function getData() {
+  async function getData(pageParam) {
     const data = await axios.get(
       `https://api.github.com/repos/facebook/react/issues`,
+      { params: { page: page } },
     );
     setList(data.data);
   }
   useEffect(() => {
-    getData();
-  }, []);
+    getData(page);
+  }, [page]);
   return (
     <>
       <div className={styles.listContainer}>

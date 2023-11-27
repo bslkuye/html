@@ -6,6 +6,11 @@ import ProductsLoad from './ProductsLoad';
 import BreadCrumb from './Breadcrumb';
 import styles from './ProductsView.module.css'
 import Rating from './Rating';
+import CartList from './CartList';
+import { Link } from 'react-router-dom'
+import { CartItems, CartState, cartState, removeFromCart } from '../store/cart';
+import { toCurrencyFormat } from '../helpers/helpers';
+import { useRecoilState } from 'recoil';
 
 type Items = {
   id?: number;
@@ -49,11 +54,26 @@ const ProductsView = () => {
     case "jewelery":
       category = '액세서리';
     break;
-    case 'digital':
+    case 'electronics':
       category = '디지털';
     break;
     default:
     break;
+  }
+  
+  const [cart, setCart] = useRecoilState<CartState>(cartState);
+
+  const removeFromCartHandler = (id: number) => {
+    setCart(removeFromCart(cart, id));
+  }
+
+  const addToCartHandler = (id: number) => {
+    setCart({...cart, [id]: { id: id, count : (cart[id].count || 0) + 1 }})
+  }
+
+  const cartBtn = (id : any) => {
+    addToCartHandler(id)
+    console.log('cart btn clicked', products[0])
   }
 
   return(
@@ -74,7 +94,7 @@ const ProductsView = () => {
           </div>
           <p className={styles.price}>${products[0].price}</p>
           <div>
-          <button className={styles.cartIn}>장바구니에 담기</button>
+          <button className={styles.cartIn} onClick={() => cartBtn(products[0].id)}>장바구니에 담기</button>
             <a className={styles.cartBtn} href="/cart">장바구니로 이동</a> 
           </div>
         </div>

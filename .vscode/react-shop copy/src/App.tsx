@@ -12,7 +12,7 @@ import Accessory from './views/Accessory'
 import Digital from './views/Digital'
 import { ScrollToTop } from './helpers/helpers'
 import { useRef } from 'react'
-
+import Header from './components/Header'
 
 const App = (): JSX.Element => {
   const $hamburger = useRef<HTMLInputElement>(null);
@@ -24,9 +24,9 @@ const App = (): JSX.Element => {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <input type='checkbox' id='side-menu' className='drawer-toggle' ref={$hamburger} />
       <section className='drawer-content'>
-        <section className='main pt-16'>
+        <Header></Header>
+        <section className='main'>
           <Routes>
             <Route path='*' element={<Error />} />
             <Route path='/' element={<Index />} />

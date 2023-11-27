@@ -5,7 +5,7 @@ const Drawer = ({ closeOverlay }: any): JSX.Element => {
   const menus = [
     { name: 'fashion', title: '패션'},
     { name: 'accessory', title: '액세서리'},
-    { name: 'digital', title: '디지털'},
+    { name: 'electronics', title: '디지털'},
   ];
 
   return(

@@ -11,11 +11,8 @@ const CartView = (): JSX.Element => {
   const cartLoadable = useRecoilValueLoadable<CartItems[]>(cartList);
   const cartItems: CartItems[] = 'hasValue' === cartLoadable.state ? cartLoadable.contents : [];
   const totalPrice = useRecoilValueLoadable(cartTotal).contents;
-
-  if('loading' === cartLoadable.state){
-    // return <ProductsViewLoad />;
-    return <div>ProductsViewLoad</div>
-  }
+  
+  
 
   return(
     <>

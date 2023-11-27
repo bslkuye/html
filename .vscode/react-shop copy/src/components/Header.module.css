@@ -1,0 +1,39 @@
+.header{
+  display: flex;
+  padding: 20px;
+  background: rgb(100, 100, 100);
+  position: sticky;
+  top: 0px;
+  z-index: 99;
+}
+
+.title{
+  font-weight: 800;
+  font-size: 24px;
+  color: white;  
+  margin-right: 40px;
+
+}
+
+.categoryContainer{
+  display: flex;
+  align-items: center;
+}
+
+.category{
+  margin: 0 20px 0 20px;
+  color: white;
+}
+
+.search{
+  display: flex;
+  float: right;
+  position: fixed;
+  right: 50px;
+  background: white;
+  color: black;
+}
+.cart{
+  position: fixed;
+  right: 10px;
+}
